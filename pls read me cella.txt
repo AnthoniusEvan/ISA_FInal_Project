@@ -1,0 +1,6 @@
+1. buat schema di workbench dengan nama "domainz"
+2. import sql pake file "domainz.sql"
+3. kalau mau lihat ERD bisa buka file "projectERD.mwb"
+4. ak gatau password databasemu apa, kalau punyaku kosong jadi ak setting di programnya otomatis ke set
+kosong, jadi kalau misal km error ga isa connect mgkn sebabnya itu, ya lmk aja klo error nnti ak ksh tau cr 
+spy bisa connect
