@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace FlightReservationProject
 {
-    class User
+    public class User
     {
         #region Data Members
         private int id;

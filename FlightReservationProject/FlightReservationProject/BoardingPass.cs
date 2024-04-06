@@ -10,25 +10,20 @@ namespace FlightReservationProject
     {
         #region Data Members
         private DateTime date;
-        private User user;
-        private Plane plane;
-        private Airport fromAirport;
-        private Airport toAirport;
         private Class flightClass;
-        private string gate;;
-        private
+        private string gate;
         #endregion
 
         #region Properties
-        public int Id { get => id; set => id = value; }
-        public string Name { get => name; set => name = value; }
+        public DateTime Date { get => date; set => date = value; }
+        public Class FlightClass { get => flightClass; set => flightClass = value; }
+        public string Gate { get => gate; set => gate = value; }
         #endregion
 
         #region Constructors
-        public Class(int id, string name)
+        public BoardingPass(DateTime date, Plane plane, string gate)
         {
-            Id = id;
-            Name = name;
+
         }
         #endregion
 
