@@ -24,3 +24,9 @@ C:\Users\Anthonius Evan\Documents\FlightReservationProject\DbSalesPurchasing\obj
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\DbSalesPurchasing\obj\Debug\DbSalesPurchasing.csproj.CopyComplete
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\DbSalesPurchasing\obj\Debug\DbSalesPurchasing.dll
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\DbSalesPurchasing\obj\Debug\DbSalesPurchasing.pdb
+F:\Documents\GitHub\ISA_FInal_Project\DbSalesPurchasing\bin\Debug\DbSalesPurchasing.dll
+F:\Documents\GitHub\ISA_FInal_Project\DbSalesPurchasing\bin\Debug\DbSalesPurchasing.pdb
+F:\Documents\GitHub\ISA_FInal_Project\DbSalesPurchasing\obj\Debug\DbSalesPurchasing.csproj.AssemblyReference.cache
+F:\Documents\GitHub\ISA_FInal_Project\DbSalesPurchasing\obj\Debug\DbSalesPurchasing.csproj.CoreCompileInputs.cache
+F:\Documents\GitHub\ISA_FInal_Project\DbSalesPurchasing\obj\Debug\DbSalesPurchasing.dll
+F:\Documents\GitHub\ISA_FInal_Project\DbSalesPurchasing\obj\Debug\DbSalesPurchasing.pdb
