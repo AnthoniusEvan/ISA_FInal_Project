@@ -56,5 +56,13 @@ namespace FlightReservationProject
             if (cbShowPass.Checked) txtPassword.PasswordChar = '\0';
             else txtPassword.PasswordChar = '•';
         }
+
+        private void lblCreateAcc_Click(object sender, EventArgs e)
+        {
+            RegisterPage p = new RegisterPage();
+            p.Owner = this;
+            p.Show();
+            this.Hide();
+        }
     }
 }

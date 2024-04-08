@@ -54,6 +54,7 @@
             this.lblCreateAcc.Size = new System.Drawing.Size(140, 28);
             this.lblCreateAcc.TabIndex = 56;
             this.lblCreateAcc.Text = "Create account";
+            this.lblCreateAcc.Click += new System.EventHandler(this.lblCreateAcc_Click);
             // 
             // btnLogin
             // 
