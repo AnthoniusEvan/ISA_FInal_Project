@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 
-namespace DbSalesPurchasing
+namespace DbLib
 {
     public class CustomPrint
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 
-namespace DbSalesPurchasing
+namespace DbLib
 {
     public class dbConnection : IDisposable
     {
@@ -30,7 +30,8 @@ namespace DbSalesPurchasing
             string DbServer = settingSection.Settings.Get("DbServer").Value.ValueXml.InnerText;
             string DbName = settingSection.Settings.Get("DbName").Value.ValueXml.InnerText;
             string DbUsername = settingSection.Settings.Get("DbUsername").Value.ValueXml.InnerText;
-            string DbPassword = settingSection.Settings.Get("DbPassword").Value.ValueXml.InnerText;
+            //string DbPassword = settingSection.Settings.Get("DbPassword").Value.ValueXml.InnerText;
+            string DbPassword = configFile.AppSettings.Settings["DbPassword"].Value;
 
             DbCon = new MySqlConnection();
             DbCon.ConnectionString = "server=" + DbServer + ";database=" + DbName + ";uid=" + DbUsername + ";password=" + DbPassword;

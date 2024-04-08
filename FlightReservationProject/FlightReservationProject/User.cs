@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DbSalesPurchasing;
+using DbLib;
 using System.Text.RegularExpressions;
 
 
@@ -71,6 +71,8 @@ namespace FlightReservationProject
         {
             string sql = "SELECT u.full_name, u.email, u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.email ='" + email + "' AND u.password = SHA2('" + password + "',512)";
             MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+            // VERY PRONE TO SQL INJECTIONS!!!!!!!!
+
 
             if (results.Read())
             {

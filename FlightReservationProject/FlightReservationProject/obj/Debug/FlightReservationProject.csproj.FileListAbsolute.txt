@@ -1,14 +1,11 @@
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.csproj.AssemblyReference.cache
-C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.FormMain.resources
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.Properties.Resources.resources
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.csproj.GenerateResource.cache
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.csproj.CoreCompileInputs.cache
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\FlightReservationProject.exe.config
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\FlightReservationProject.exe
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\FlightReservationProject.pdb
-C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\DbSalesPurchasing.dll
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\MySql.Data.dll
-C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\DbSalesPurchasing.pdb
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\MySql.Data.xml
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.csproj.CopyComplete
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.exe
@@ -31,3 +28,9 @@ F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservation
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.csproj.CopyComplete
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.exe
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.pdb
+C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.DashboardPage.resources
+C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.FlightPage.resources
+C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.LoginPage.resources
+C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.RegisterPage.resources
+C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\DbLib.dll
+C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\DbLib.pdb
