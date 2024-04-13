@@ -21,5 +21,15 @@ namespace FlightReservationProject
         {
             this.Owner.Dispose();
         }
+
+        private void DashboardPage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCityOri_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            City selectedCity = (City)cbCityOri.SelectedItem;
+        }
     }
 }

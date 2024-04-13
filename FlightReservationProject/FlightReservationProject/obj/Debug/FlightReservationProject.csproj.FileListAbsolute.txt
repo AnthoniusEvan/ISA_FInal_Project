@@ -13,13 +13,10 @@ C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProj
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\FlightReservationProject.exe.config
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\FlightReservationProject.exe
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\FlightReservationProject.pdb
-F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\DbSalesPurchasing.dll
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\MySql.Data.dll
-F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\DbSalesPurchasing.pdb
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\MySql.Data.xml
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.csproj.AssemblyReference.cache
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.DashboardPage.resources
-F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.FormMain.resources
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.LoginPage.resources
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.Properties.Resources.resources
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.RegisterPage.resources
@@ -34,3 +31,8 @@ C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProj
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.RegisterPage.resources
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\DbLib.dll
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\bin\Debug\DbLib.pdb
+F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\DbLib.dll
+F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\DbLib.pdb
+F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.FlightPage.resources
+F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.ProfilePage.resources
+F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.ReservationPage.resources
