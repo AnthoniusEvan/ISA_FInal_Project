@@ -52,6 +52,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlPage3 = new System.Windows.Forms.Panel();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cbCity = new System.Windows.Forms.ComboBox();
             this.cbCountry = new System.Windows.Forms.ComboBox();
@@ -62,8 +64,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlPage1.SuspendLayout();
             this.pnlPage2.SuspendLayout();
@@ -139,6 +139,8 @@
             this.cbShowPass.Text = "Show Password";
             this.cbShowPass.UseVisualStyleBackColor = false;
             this.cbShowPass.CheckedChanged += new System.EventHandler(this.cbShowPass_CheckedChanged);
+            this.cbShowPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbShowPass_MouseDown);
+            this.cbShowPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.cbShowPass_MouseUp);
             // 
             // lblConfirmPass
             // 
@@ -157,10 +159,9 @@
             this.txtConfirmPass.Font = new System.Drawing.Font("Poppins", 10F);
             this.txtConfirmPass.Location = new System.Drawing.Point(8, 266);
             this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtConfirmPass.Multiline = true;
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PasswordChar = '•';
-            this.txtConfirmPass.Size = new System.Drawing.Size(242, 34);
+            this.txtConfirmPass.Size = new System.Drawing.Size(242, 37);
             this.txtConfirmPass.TabIndex = 65;
             // 
             // lblPassword
@@ -168,7 +169,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.BackColor = System.Drawing.Color.Snow;
             this.lblPassword.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblPassword.Location = new System.Drawing.Point(4, 166);
+            this.lblPassword.Location = new System.Drawing.Point(7, 161);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(93, 28);
             this.lblPassword.TabIndex = 64;
@@ -178,23 +179,21 @@
             // 
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtPassword.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtPassword.Location = new System.Drawing.Point(8, 196);
+            this.txtPassword.Location = new System.Drawing.Point(11, 191);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(242, 34);
+            this.txtPassword.Size = new System.Drawing.Size(242, 37);
             this.txtPassword.TabIndex = 63;
             // 
             // txtEmail
             // 
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtEmail.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtEmail.Location = new System.Drawing.Point(8, 129);
+            this.txtEmail.Location = new System.Drawing.Point(13, 113);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(242, 33);
+            this.txtEmail.Size = new System.Drawing.Size(242, 37);
             this.txtEmail.TabIndex = 62;
             // 
             // lblUsername
@@ -202,7 +201,7 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.BackColor = System.Drawing.Color.Snow;
             this.lblUsername.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblUsername.Location = new System.Drawing.Point(4, 100);
+            this.lblUsername.Location = new System.Drawing.Point(9, 84);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(59, 28);
             this.lblUsername.TabIndex = 61;
@@ -312,9 +311,8 @@
             this.txtFullName.Font = new System.Drawing.Font("Poppins", 10F);
             this.txtFullName.Location = new System.Drawing.Point(8, 135);
             this.txtFullName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFullName.Multiline = true;
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(242, 33);
+            this.txtFullName.Size = new System.Drawing.Size(242, 37);
             this.txtFullName.TabIndex = 62;
             // 
             // label4
@@ -336,9 +334,8 @@
             this.txtID.Font = new System.Drawing.Font("Poppins", 10F);
             this.txtID.Location = new System.Drawing.Point(8, 202);
             this.txtID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtID.Multiline = true;
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(242, 34);
+            this.txtID.Size = new System.Drawing.Size(242, 37);
             this.txtID.TabIndex = 63;
             this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
@@ -384,6 +381,27 @@
             this.pnlPage3.Size = new System.Drawing.Size(290, 476);
             this.pnlPage3.TabIndex = 75;
             // 
+            // txtAddress
+            // 
+            this.txtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
+            this.txtAddress.Font = new System.Drawing.Font("Poppins", 10F);
+            this.txtAddress.Location = new System.Drawing.Point(11, 264);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(241, 37);
+            this.txtAddress.TabIndex = 77;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Snow;
+            this.label11.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(9, 232);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(81, 28);
+            this.label11.TabIndex = 76;
+            this.label11.Text = "Address";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -406,7 +424,9 @@
             this.cbCity.Enabled = false;
             this.cbCity.Font = new System.Drawing.Font("Poppins", 10F);
             this.cbCity.FormattingEnabled = true;
+            this.cbCity.IntegralHeight = false;
             this.cbCity.Location = new System.Drawing.Point(11, 184);
+            this.cbCity.MaxDropDownItems = 5;
             this.cbCity.Name = "cbCity";
             this.cbCity.Size = new System.Drawing.Size(241, 44);
             this.cbCity.TabIndex = 74;
@@ -418,6 +438,7 @@
             this.cbCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.cbCountry.Font = new System.Drawing.Font("Poppins", 10F);
             this.cbCountry.FormattingEnabled = true;
+            this.cbCountry.IntegralHeight = false;
             this.cbCountry.Location = new System.Drawing.Point(11, 106);
             this.cbCountry.MaxDropDownItems = 5;
             this.cbCountry.Name = "cbCountry";
@@ -444,9 +465,8 @@
             this.txtMobileNumber.Font = new System.Drawing.Font("Poppins", 10F);
             this.txtMobileNumber.Location = new System.Drawing.Point(72, 338);
             this.txtMobileNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtMobileNumber.Multiline = true;
             this.txtMobileNumber.Name = "txtMobileNumber";
-            this.txtMobileNumber.Size = new System.Drawing.Size(183, 34);
+            this.txtMobileNumber.Size = new System.Drawing.Size(183, 37);
             this.txtMobileNumber.TabIndex = 71;
             this.txtMobileNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMobileNumber_KeyPress);
             // 
@@ -512,36 +532,14 @@
             this.label9.TabIndex = 66;
             this.label9.Text = "Mobile Number";
             // 
-            // txtAddress
-            // 
-            this.txtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
-            this.txtAddress.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtAddress.Location = new System.Drawing.Point(11, 264);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(241, 34);
-            this.txtAddress.TabIndex = 77;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Snow;
-            this.label11.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(9, 232);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(81, 28);
-            this.label11.TabIndex = 76;
-            this.label11.Text = "Address";
-            // 
             // RegisterPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 616);
             this.Controls.Add(this.pnlPage1);
-            this.Controls.Add(this.pnlPage3);
             this.Controls.Add(this.pnlPage2);
+            this.Controls.Add(this.pnlPage3);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

@@ -49,19 +49,23 @@ namespace FlightReservationProject
             cbCity.DataSource = City.GetCities(selectedCountry);
             cbCity.DisplayMember = "Name";
             cbCity.ValueMember = "Id";
+            cbCity.MaxDropDownItems = 5;
         }
 
+        User newUser;
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            User newUser = new User();
+            newUser = new User();
             try
             {
-                if (txtPassword.Text != txtConfirmPass.Text)        throw new ArgumentException("Password and confirm password does not match!");
+                if (txtPassword.Text != txtConfirmPass.Text)
+                  throw new ArgumentException("Password and confirm password does not match!");
                 if (txtPassword.Text == "" || txtConfirmPass.Text == "") throw new ArgumentException("Please fill in your password!");
 
                 newUser.Email = txtEmail.Text;
+                if (User.IsUserRegistered(newUser.Email))
+                    throw new ArgumentException("Email " + newUser.Email + " is already registered!");
                 newUser.Password = txtPassword.Text;
-
                 pnlPage2.BringToFront();
             }
             catch(Exception ex)
@@ -80,7 +84,21 @@ namespace FlightReservationProject
 
         private void btnContinue_Click(object sender, EventArgs e)
         {
-            pnlPage3.BringToFront();
+            try
+            {
+                newUser.FullName = txtFullName.Text;
+                newUser.Id = txtID.Text;
+                if (User.IsUserRegistered(newUser.Id))
+                    throw new ArgumentException("ID " + newUser.Id + " is already registered!");
+                newUser.BirthDate = dtpDob.Value;
+                pnlPage3.BringToFront();
+            }
+            catch(Exception ex)
+            {
+                // temporarily using msgbox but pls change it to be more visually aesthetic
+                // better if shown with label imo
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void label10_Click(object sender, EventArgs e)
@@ -95,6 +113,9 @@ namespace FlightReservationProject
             cbCountry.ValueMember = "Id";
 
             cbCountry.SelectedIndex = 103;
+            cbCountry.MaxDropDownItems = 5;
+
+            pnlPage1.BringToFront();
         }
 
         private void RegisterPage_FormClosed(object sender, FormClosedEventArgs e)
@@ -114,22 +135,43 @@ namespace FlightReservationProject
 
         private void btnContinue2_Click(object sender, EventArgs e)
         {
-            User newUser = new User(txtFullName.Text, txtEmail.Text, txtPassword.Text, txtAddress.Text, dtpDob.Value, txtMobileNumber.Text, (City)cbCity.SelectedItem);
-            int rowsAffected = User.Add(newUser);
+            try
+            {
+                newUser.FromCity = (City)cbCity.SelectedItem;
+                newUser.Address = txtAddress.Text;
+                newUser.MobileNumber = lblPhoneCode.Text + "-"+ txtMobileNumber.Text;
+                int rowsAffected = User.Add(newUser);
 
-            if (rowsAffected > 0)
-            {
-                MessageBox.Show("Succesfully created your new account!");
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Succesfully created your new account!");
+                }
+                else
+                {
+                    MessageBox.Show("Unknown error occured!");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Unknown error occured!");
+                // temporarily using msgbox but pls change it to be more visually aesthetic
+                // better if shown with label imo
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             txtMobileNumber_KeyPress(sender, e);
+        }
+
+        private void cbShowPass_MouseDown(object sender, MouseEventArgs e)
+        {
+            cbShowPass.Checked = true;
+        }
+
+        private void cbShowPass_MouseUp(object sender, MouseEventArgs e)
+        {
+            cbShowPass.Checked = false;
         }
     }
 }

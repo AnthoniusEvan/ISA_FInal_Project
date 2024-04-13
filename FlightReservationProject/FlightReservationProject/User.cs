@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using DbLib;
 using System.Text.RegularExpressions;
-
+using System.Security.Cryptography;
+using MySql.Data.MySqlClient;
 
 namespace FlightReservationProject
 {
     public class User
     {
         #region Data Members
-        private int id;
+        private string id;
         private string fullName;
         private string email;
         private string password;
@@ -23,21 +24,28 @@ namespace FlightReservationProject
         #endregion
 
         #region Properties
-        public int Id
+        public string Id
         {
             get => id;
             set
             {
-                List<User> registeredUsers = GetUsers();
-                foreach (User u in registeredUsers)
-                {
-                    if (u.Id == value)
-                        throw new ArgumentException("User with that ID is already registered!");
-                }
+                if (value=="")
+                    throw new ArgumentException("Please provide your ID/NIK!");
+                
                 id = value;
             }
         }
-        public string FullName { get => fullName; set => fullName = value; }
+        public string FullName
+        {
+            get => fullName;
+            set
+            {
+                if (value != "")
+                    fullName = value;
+                else
+                    throw new ArgumentException("Please provide your full name!");
+            }
+        }
         public string Email { get => email;
             set
             {
@@ -46,13 +54,6 @@ namespace FlightReservationProject
  
                 if (value.Contains("@") && value.EndsWith(".com"))
                 {
-                    List<User> registeredUsers = GetUsers();
-                    foreach (User u in registeredUsers)
-                    {
-                        if (u.Email == value)
-                            throw new ArgumentException("User with email " + u.Email + " is already registered!");
-                    }
-
                     email = value;
                 }
                 else
@@ -80,9 +81,30 @@ namespace FlightReservationProject
                 password = value;
             }
         }
-        public string Address { get => address; set => address = value; }
+        public string Address
+        {
+            get => address;
+            set
+            {
+                if (value!="")
+                    address = value;
+                else
+                    throw new ArgumentException("Please provide your home address!");
+            }
+        }
         public DateTime BirthDate { get => birthDate; set => birthDate = value; }
-        public string MobileNumber { get => mobileNumber; set => mobileNumber = value; }
+        public string MobileNumber
+        {
+            get => mobileNumber;
+            set
+            {
+                string[] temp = value.Split('-');
+                if (temp[1].Length > 3 && temp[1].Length < 16)
+                    mobileNumber = value;
+                else
+                    throw new ArgumentException("Please provide a valid mobile number!");
+            }
+        }
         public City FromCity { get => fromCity; set => fromCity = value; }
         #endregion
 
@@ -112,10 +134,13 @@ namespace FlightReservationProject
         #region Methods
         public static User ValidateLogin(string email, string password)
         {
-            string sql = "SELECT u.full_name, u.email, u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.email ='" + email + "' AND u.password = SHA2('" + password.GetHashCode() + "',512)";
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
-
-            // VERY PRONE TO SQL INJECTIONS!!!!!!!!
+            string sql = "SELECT u.full_name, u.email, u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.email = @email AND u.password = SHA2(@password,512)";
+            
+            dbConnection con = new dbConnection();
+            MySqlCommand com = new MySqlCommand(sql, con.DbCon);
+            com.Parameters.AddWithValue("@email", email);
+            com.Parameters.AddWithValue("@password", GetUInt64Hash(SHA512.Create(),password).ToString());
+            MySql.Data.MySqlClient.MySqlDataReader results = com.ExecuteReader();
 
             if (results.Read())
             {
@@ -131,7 +156,7 @@ namespace FlightReservationProject
             }
         }
 
-        private static List<User> GetUsers()
+        public static bool IsUserRegistered(string val)
         {
             string sql = "SELECT full_name, email FROM user";
             MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
@@ -142,18 +167,36 @@ namespace FlightReservationProject
                 User user = new User(results.GetString(0), results.GetString(1));
                 users.Add(user);
             }
-            return users;
+
+            foreach (User u in users)
+            {
+                if (u.Email == val || u.Id == val)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static int Add(User user)
         {
-            
-
-            string sql = string.Format("INSERT INTO user(email, full_name, password, address, date_of_birth, mobile_number, from_city_id) VALUES ('{0}','{1}',SHA('{2}',512),'{3}','{4}','{5}','{6}')", user.Email, user.FullName, user.Password.GetHashCode(), user.Address, user.BirthDate.ToString("yyyy-MM-dd"), user.MobileNumber, user.FromCity.Id);
+            string sql = string.Format("INSERT INTO user(id, email, full_name, password, address, date_of_birth, mobile_number, from_city_id) VALUES ('{0}','{1}','{2}',SHA2('{3}',512),'{4}','{5}','{6}','{7}')", user.Id, user.Email, user.FullName, GetUInt64Hash(SHA512.Create(),user.Password).ToString(), user.Address, user.BirthDate.ToString("yyyy-MM-dd"), user.MobileNumber, user.FromCity.Id);
 
 
             return dbConnection.ExecuteNonQuery(sql);
         }
+        public static ulong GetUInt64Hash(HashAlgorithm hasher, string text)
+        {
+            using (hasher)
+            {
+                var bytes = hasher.ComputeHash(Encoding.Default.GetBytes(text));
+                Array.Resize(ref bytes, bytes.Length + bytes.Length % 8); //make multiple of 8 if hash is not, for exampel SHA1 creates 20 bytes. 
+                return Enumerable.Range(0, bytes.Length / 8) // create a counter for de number of 8 bytes in the bytearray
+                    .Select(i => BitConverter.ToUInt64(bytes, i * 8)) // combine 8 bytes at a time into a integer
+                    .Aggregate((x, y) => x ^ y); //xor the bytes together so you end up with a ulong (64-bit int)
+            }
+        }
+
         #endregion
 
     }

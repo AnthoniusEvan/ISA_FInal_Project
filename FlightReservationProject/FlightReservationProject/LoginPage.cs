@@ -64,5 +64,15 @@ namespace FlightReservationProject
             p.Show();
             this.Hide();
         }
+
+        private void cbShowPass_MouseUp(object sender, MouseEventArgs e)
+        {
+            cbShowPass.Checked = false;
+        }
+
+        private void cbShowPass_MouseDown(object sender, MouseEventArgs e)
+        {
+            cbShowPass.Checked = true;
+        }
     }
 }

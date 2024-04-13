@@ -36,7 +36,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblWrong = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -111,6 +111,8 @@
             this.cbShowPass.Text = "Show Password";
             this.cbShowPass.UseVisualStyleBackColor = false;
             this.cbShowPass.CheckedChanged += new System.EventHandler(this.cbShowPass_CheckedChanged);
+            this.cbShowPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbShowPass_MouseDown);
+            this.cbShowPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.cbShowPass_MouseUp);
             // 
             // lblPassword
             // 
@@ -129,33 +131,31 @@
             this.txtPassword.Font = new System.Drawing.Font("Poppins", 10F);
             this.txtPassword.Location = new System.Drawing.Point(205, 305);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(242, 34);
+            this.txtPassword.Size = new System.Drawing.Size(242, 37);
             this.txtPassword.TabIndex = 50;
             // 
             // txtUsername
             // 
             this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtUsername.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(205, 238);
+            this.txtUsername.Location = new System.Drawing.Point(205, 224);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(242, 33);
+            this.txtUsername.Size = new System.Drawing.Size(242, 37);
             this.txtUsername.TabIndex = 49;
             // 
-            // lblUsername
+            // lblEmail
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.BackColor = System.Drawing.Color.Snow;
-            this.lblUsername.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblUsername.Location = new System.Drawing.Point(201, 209);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(101, 28);
-            this.lblUsername.TabIndex = 48;
-            this.lblUsername.Text = "Username ";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.BackColor = System.Drawing.Color.Snow;
+            this.lblEmail.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblEmail.Location = new System.Drawing.Point(201, 195);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(59, 28);
+            this.lblEmail.TabIndex = 48;
+            this.lblEmail.Text = "Email";
             // 
             // pictureBox1
             // 
@@ -196,7 +196,7 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -219,7 +219,7 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblWrong;
     }
