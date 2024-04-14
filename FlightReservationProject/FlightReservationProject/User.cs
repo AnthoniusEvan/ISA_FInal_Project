@@ -119,8 +119,9 @@ namespace FlightReservationProject
             this.email = email;
         }
 
-        public User(string fullName, string email, string password, string address, DateTime birthDate, string mobileNumber, City fromCity)
+        public User(string id, string fullName, string email, string password, string address, DateTime birthDate, string mobileNumber, City fromCity)
         {
+            Id = id;
             FullName = fullName;
             Email = email;
             Password = password;
@@ -134,7 +135,7 @@ namespace FlightReservationProject
         #region Methods
         public static User ValidateLogin(string email, string password)
         {
-            string sql = "SELECT u.full_name, u.email, u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.email = @email AND u.password = SHA2(@password,512)";
+            string sql = "SELECT u.id, u.full_name, u.email, u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.email = @email AND u.password = SHA2(@password,512)";
             
             dbConnection con = new dbConnection();
             MySqlCommand com = new MySqlCommand(sql, con.DbCon);
@@ -144,9 +145,9 @@ namespace FlightReservationProject
 
             if (results.Read())
             {
-                Country co = new Country(results.GetInt32(8), results.GetString(9));
-                City ci = new City(results.GetInt32(6), results.GetString(7), co);
-                User user = new User(results.GetString(0), results.GetString(1), results.GetString(2), results.GetString(3), results.GetDateTime(4), results.GetString(5), ci);
+                Country co = new Country(results.GetInt32(9), results.GetString(10));
+                City ci = new City(results.GetInt32(7), results.GetString(8), co);
+                User user = new User(results.GetString(0), results.GetString(1), results.GetString(2), results.GetString(3), results.GetString(4), results.GetDateTime(5), results.GetString(6), ci);
 
                 return user;
             }

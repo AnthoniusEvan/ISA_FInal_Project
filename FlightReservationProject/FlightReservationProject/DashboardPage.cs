@@ -16,7 +16,7 @@ namespace FlightReservationProject
         {
             InitializeComponent();
         }
-
+        public User activeUser;
         private void DashboardPage_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Owner.Dispose();
@@ -24,12 +24,29 @@ namespace FlightReservationProject
 
         private void DashboardPage_Load(object sender, EventArgs e)
         {
+            LoginPage parent = (LoginPage)this.Owner;
+            activeUser = parent.user;
+            cbCityOri.DataSource = City.GetCities(activeUser.FromCity.FromCountry);
+            cbCityOri.DisplayMember = "Name";
+            cbCityOri.ValueMember = "Id";
+            foreach (City c in cbCityOri.Items)
+            {
+                if (c.Name == activeUser.FromCity.Name)
+                    cbCityOri.SelectedItem = c;
+            }
 
         }
 
         private void cbCityOri_SelectedIndexChanged(object sender, EventArgs e)
         {
             City selectedCity = (City)cbCityOri.SelectedItem;
+        }
+
+        private void pbProfile_Click(object sender, EventArgs e)
+        {
+            ProfilePage p = new ProfilePage();
+            p.Owner = this;
+            p.Show();
         }
     }
 }

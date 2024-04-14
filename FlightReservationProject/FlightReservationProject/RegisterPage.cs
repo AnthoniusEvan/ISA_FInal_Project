@@ -49,7 +49,6 @@ namespace FlightReservationProject
             cbCity.DataSource = City.GetCities(selectedCountry);
             cbCity.DisplayMember = "Name";
             cbCity.ValueMember = "Id";
-            cbCity.MaxDropDownItems = 5;
         }
 
         User newUser;

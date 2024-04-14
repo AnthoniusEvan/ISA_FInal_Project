@@ -33,10 +33,10 @@ namespace FlightReservationProject
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
         }
-
+        public User user;
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            User user = User.ValidateLogin(txtUsername.Text, txtPassword.Text);
+            user = User.ValidateLogin(txtUsername.Text, txtPassword.Text);
             if (user != null)
             {
                 DashboardPage dp = new DashboardPage();
