@@ -49,6 +49,10 @@ namespace FlightReservationProject
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -56,10 +60,6 @@ namespace FlightReservationProject
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -286,6 +286,50 @@ namespace FlightReservationProject
             this.panel1.Size = new System.Drawing.Size(696, 100);
             this.panel1.TabIndex = 26;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(118, 12);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(167, 24);
+            this.label22.TabIndex = 30;
+            this.label22.Text = "No need to print!";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(118, 72);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(78, 17);
+            this.label21.TabIndex = 29;
+            this.label21.Text = "of booking.";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(118, 55);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(334, 17);
+            this.label20.TabIndex = 28;
+            this.label20.Text = "on another device, log in with email used at the time";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(118, 38);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(317, 17);
+            this.label19.TabIndex = 27;
+            this.label19.Text = "Show e-ticekt at check-in. To see bookings made";
+            // 
             // pictureBox6
             // 
             this.pictureBox6.Image = global::FlightReservationProject.Properties.Resources.Asset_22;
@@ -356,50 +400,6 @@ namespace FlightReservationProject
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(118, 38);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(317, 17);
-            this.label19.TabIndex = 27;
-            this.label19.Text = "Show e-ticekt at check-in. To see bookings made";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(118, 55);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(334, 17);
-            this.label20.TabIndex = 28;
-            this.label20.Text = "on another device, log in with email used at the time";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(118, 72);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(78, 17);
-            this.label21.TabIndex = 29;
-            this.label21.Text = "of booking.";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(118, 12);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(167, 24);
-            this.label22.TabIndex = 30;
-            this.label22.Text = "No need to print!";
-            // 
             // PrintETicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -434,6 +434,7 @@ namespace FlightReservationProject
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PrintETicket";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PrintETicket";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
