@@ -11,8 +11,6 @@ C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProj
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\FlightReservationProject.exe.config
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\FlightReservationProject.exe
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\FlightReservationProject.pdb
-F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\MySql.Data.dll
-F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\bin\Debug\MySql.Data.xml
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.csproj.AssemblyReference.cache
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.DashboardPage.resources
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.LoginPage.resources
@@ -36,3 +34,4 @@ F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservation
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.ReservationPage.resources
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.ProfilePage.resources
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.ReservationPage.resources
+F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.PrintETicket.resources
