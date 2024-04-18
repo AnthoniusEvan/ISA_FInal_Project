@@ -65,8 +65,8 @@ namespace FlightReservationProject
             get => password;
             set
             {
-                if (value.Length < 12)
-                    throw new ArgumentException("Password length must be atleast 12 characters or longer!");
+                if (value.Length < 8)
+                    throw new ArgumentException("Password length must be atleast 8 characters or longer!");
 
           
                 if (value.All(char.IsDigit) || value.All(char.IsLetter))
@@ -147,7 +147,7 @@ namespace FlightReservationProject
             {
                 Country co = new Country(results.GetInt32(9), results.GetString(10));
                 City ci = new City(results.GetInt32(7), results.GetString(8), co);
-                User user = new User(results.GetString(0), results.GetString(1), results.GetString(2), results.GetString(3), results.GetString(4), results.GetDateTime(5), results.GetString(6), ci);
+                User user = new User(results.GetString(0), results.GetString(1), results.GetString(2), password, results.GetString(4), results.GetDateTime(5), results.GetString(6), ci);
 
                 return user;
             }
@@ -182,6 +182,13 @@ namespace FlightReservationProject
         public static int Add(User user)
         {
             string sql = string.Format("INSERT INTO user(id, email, full_name, password, address, date_of_birth, mobile_number, from_city_id) VALUES ('{0}','{1}','{2}',SHA2('{3}',512),'{4}','{5}','{6}','{7}')", user.Id, user.Email, user.FullName, GetUInt64Hash(SHA512.Create(),user.Password).ToString(), user.Address, user.BirthDate.ToString("yyyy-MM-dd"), user.MobileNumber, user.FromCity.Id);
+
+
+            return dbConnection.ExecuteNonQuery(sql);
+        }
+        public static int Update(User user)
+        {
+            string sql = string.Format("UPDATE user SET full_name = '{0}', password = SHA2('{1}',512), address = '{2}', date_of_birth = '{3}', mobile_number = '{4}', from_city_id = '{5}' WHERE id = '{6}' AND email = '{7}'", user.FullName, GetUInt64Hash(SHA512.Create(), user.Password).ToString(), user.Address, user.BirthDate.ToString("yyyy-MM-dd"), user.MobileNumber, user.FromCity.Id, user.Id, user.Email);
 
 
             return dbConnection.ExecuteNonQuery(sql);

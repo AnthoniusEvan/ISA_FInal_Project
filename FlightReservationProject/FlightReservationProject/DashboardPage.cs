@@ -25,16 +25,20 @@ namespace FlightReservationProject
         private void DashboardPage_Load(object sender, EventArgs e)
         {
             LoginPage parent = (LoginPage)this.Owner;
-            activeUser = parent.user;
-            cbCityOri.DataSource = City.GetCities(activeUser.FromCity.FromCountry);
+
+            cbCityOri.DataSource = City.GetCities(parent.user.FromCity.FromCountry);
             cbCityOri.DisplayMember = "Name";
             cbCityOri.ValueMember = "Id";
+            RefreshActiveUser(parent.user);
+        }
+        public void RefreshActiveUser(User user)
+        {
+            activeUser = user;
             foreach (City c in cbCityOri.Items)
             {
                 if (c.Name == activeUser.FromCity.Name)
                     cbCityOri.SelectedItem = c;
             }
-
         }
 
         private void cbCityOri_SelectedIndexChanged(object sender, EventArgs e)

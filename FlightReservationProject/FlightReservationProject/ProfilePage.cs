@@ -16,10 +16,11 @@ namespace FlightReservationProject
         {
             InitializeComponent();
         }
+        User u;
         private void ProfilePage_Load(object sender, EventArgs e)
         {
             DashboardPage p = (DashboardPage)this.Owner;
-            User u = p.activeUser;
+            u = p.activeUser;
             txtFullname.Text = u.FullName;
             txtID.Text = u.Id;
             dtpDob.Value = u.BirthDate;
@@ -81,6 +82,27 @@ namespace FlightReservationProject
         {
             this.Owner.Show();
             this.Close();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                User updatedUser = new User(u.Id, txtFullname.Text, u.Email, txtPassword.Text, txtAddress.Text, dtpDob.Value, lblCode.Text + "-" + txtMobileNumber.Text, (City)cbCity.SelectedItem);
+                int rowsAffected = User.Update(updatedUser);
+                if (rowsAffected > 0)
+                {
+                    DashboardPage p = (DashboardPage)this.Owner;
+                    p.RefreshActiveUser(updatedUser);
+                    MessageBox.Show("Account details updated succesfully!");
+                }
+                else
+                    MessageBox.Show("Unknown error occured! Couldn't update account details!");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
