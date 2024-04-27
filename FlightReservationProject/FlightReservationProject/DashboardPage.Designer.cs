@@ -42,15 +42,16 @@
             this.flightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CheckInOnlinetoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnFindFlight = new FlightReservationProject.CustomBtn();
             this.customBtn1 = new FlightReservationProject.CustomBtn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pbProfile = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -174,11 +175,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flightsToolStripMenuItem,
             this.aboutToolStripMenuItem,
-            this.bookinToolStripMenuItem});
+            this.bookinToolStripMenuItem,
+            this.CheckInOnlinetoolStripMenuItem1});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.menuStrip1.Size = new System.Drawing.Size(942, 34);
             this.menuStrip1.TabIndex = 44;
@@ -202,6 +203,16 @@
             this.bookinToolStripMenuItem.Name = "bookinToolStripMenuItem";
             this.bookinToolStripMenuItem.Size = new System.Drawing.Size(87, 30);
             this.bookinToolStripMenuItem.Text = "Booking";
+            this.bookinToolStripMenuItem.Click += new System.EventHandler(this.bookinToolStripMenuItem_Click);
+            // 
+            // CheckInOnlinetoolStripMenuItem1
+            // 
+            this.CheckInOnlinetoolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.CheckInOnlinetoolStripMenuItem1.Margin = new System.Windows.Forms.Padding(42, 0, 0, 0);
+            this.CheckInOnlinetoolStripMenuItem1.Name = "CheckInOnlinetoolStripMenuItem1";
+            this.CheckInOnlinetoolStripMenuItem1.Size = new System.Drawing.Size(149, 30);
+            this.CheckInOnlinetoolStripMenuItem1.Text = "Online Check-in";
+            this.CheckInOnlinetoolStripMenuItem1.Click += new System.EventHandler(this.CheckInOnlinetoolStripMenuItem1_Click);
             // 
             // btnFindFlight
             // 
@@ -273,6 +284,14 @@
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Location = new System.Drawing.Point(0, 32);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(942, 392);
+            this.panel3.TabIndex = 62;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -307,14 +326,6 @@
             this.pbProfile.TabStop = false;
             this.pbProfile.Click += new System.EventHandler(this.pbProfile_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Location = new System.Drawing.Point(0, 32);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(942, 392);
-            this.panel3.TabIndex = 62;
-            // 
             // DashboardPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -341,7 +352,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DashboardPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "v";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DashboardPage_FormClosed);
             this.Load += new System.EventHandler(this.DashboardPage_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -382,5 +392,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolStripMenuItem CheckInOnlinetoolStripMenuItem1;
     }
 }

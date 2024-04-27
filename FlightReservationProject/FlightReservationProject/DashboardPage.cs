@@ -52,5 +52,19 @@ namespace FlightReservationProject
             p.Owner = this;
             p.Show();
         }
+
+        private void CheckInOnlinetoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CheckInPage p = new CheckInPage();
+            p.Owner = this;
+            p.Show();
+        }
+
+        private void bookinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookingPage p = new BookingPage();
+            p.Owner = this;
+            p.Show();
+        }
     }
 }

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace FlightReservationProject
 {
-    public partial class ReservationPage : Form
+    public partial class PaymentForm : Form
     {
-        public ReservationPage()
+        public PaymentForm()
         {
             InitializeComponent();
-        }
-
-        private void ReservationPage_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

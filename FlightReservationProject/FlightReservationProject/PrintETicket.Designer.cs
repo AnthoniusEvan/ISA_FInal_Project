@@ -53,6 +53,10 @@ namespace FlightReservationProject
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -60,6 +64,7 @@ namespace FlightReservationProject
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblEticketNum = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -268,9 +273,9 @@ namespace FlightReservationProject
             this.label18.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label18.Location = new System.Drawing.Point(29, 346);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(82, 17);
+            this.label18.Size = new System.Drawing.Size(30, 17);
             this.label18.TabIndex = 25;
-            this.label18.Text = "passengers";
+            this.label18.Text = "No.";
             // 
             // panel1
             // 
@@ -329,6 +334,50 @@ namespace FlightReservationProject
             this.label19.Size = new System.Drawing.Size(317, 17);
             this.label19.TabIndex = 27;
             this.label19.Text = "Show e-ticekt at check-in. To see bookings made";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label23.Location = new System.Drawing.Point(118, 346);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(82, 17);
+            this.label23.TabIndex = 27;
+            this.label23.Text = "passengers";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label24.Location = new System.Drawing.Point(29, 372);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(24, 17);
+            this.label24.TabIndex = 28;
+            this.label24.Text = "1. ";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label25.Location = new System.Drawing.Point(119, 372);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(32, 17);
+            this.label25.TabIndex = 29;
+            this.label25.Text = "Mr. ";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(150, 372);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(87, 17);
+            this.label26.TabIndex = 30;
+            this.label26.Text = "Anthoniuous";
             // 
             // pictureBox6
             // 
@@ -400,12 +449,28 @@ namespace FlightReservationProject
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // lblEticketNum
+            // 
+            this.lblEticketNum.AutoSize = true;
+            this.lblEticketNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEticketNum.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblEticketNum.Location = new System.Drawing.Point(570, 37);
+            this.lblEticketNum.Name = "lblEticketNum";
+            this.lblEticketNum.Size = new System.Drawing.Size(95, 29);
+            this.lblEticketNum.TabIndex = 31;
+            this.lblEticketNum.Text = "#1234H";
+            // 
             // PrintETicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(696, 830);
+            this.Controls.Add(this.lblEticketNum);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
@@ -483,5 +548,10 @@ namespace FlightReservationProject
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lblEticketNum;
     }
 }
