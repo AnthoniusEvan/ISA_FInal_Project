@@ -12,7 +12,7 @@ namespace FlightReservationProject
         #region Data Members
         private Airport from;
         private Airport to;
-        private Class flightClass;
+        private FlightClass flightClass;
         private string ageType;
         private int fee;
         #endregion
@@ -20,13 +20,13 @@ namespace FlightReservationProject
         #region Properties
         public Airport From { get => from; set => from = value; }
         public Airport To { get => to; set => to = value; }
-        public Class FlightClass { get => flightClass; set => flightClass = value; }
+        public FlightClass FlightClass { get => flightClass; set => flightClass = value; }
         public string AgeType { get => ageType; set => ageType = value; }
         public int Fee { get => fee; set => fee = value; }
         #endregion
 
         #region Constructors
-        public TransportRate(Airport from, Airport to, Class flightClass, string ageType, int fee)
+        public TransportRate(Airport from, Airport to, FlightClass flightClass, string ageType, int fee)
         {
             From = from;
             To = to;

@@ -28,6 +28,11 @@ namespace FlightReservationProject
             FromCountry = fromCountry;
         }
 
+        public City(int id, string cityCountry)
+        {
+            Id = id;
+            Name = cityCountry;
+        }
         #endregion
 
         #region Methods
@@ -42,6 +47,35 @@ namespace FlightReservationProject
             {
                 City ci = new City(results.GetInt32(0), results.GetString(1), country);
                 cities.Add(ci);  
+            }
+            return cities;
+        }
+
+        public static List<City> GetOrigins(Country country)
+        {
+            string sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name) FROM city ci INNER JOIN country co ON ci.country_id = co.id ORDER BY co.id != '"+ country.Id +"', co.name ASC LIMIT 200";
+
+            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+            List<City> cities = new List<City>();
+
+            while (results.Read()) // some countries cause input string not in the correct format
+            {
+                City ci = new City(results.GetInt32(0), results.GetString(1));
+                cities.Add(ci);
+            }
+            return cities;
+        }
+
+        public static List<City> GetDestinations()
+        {
+            string sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name), ci.rank FROM city ci INNER JOIN country co ON ci.country_id = co.id ORDER BY ISNULL(ci.rank), ci.rank ASC, co.name ASC, ci.name ASC LIMIT 200";
+
+            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+            List<City> cities = new List<City>();
+            while (results.Read()==true)
+            {
+                City ci = new City(results.GetInt32(0), results.GetString(1));
+                cities.Add(ci);
             }
             return cities;
         }

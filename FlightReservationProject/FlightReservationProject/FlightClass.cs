@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DbLib;
 namespace FlightReservationProject
 {
-    public class Class
+    public class FlightClass
     {
         #region Data Members
         private int id;
@@ -19,7 +19,7 @@ namespace FlightReservationProject
         #endregion
 
         #region Constructors
-        public Class(int id, string name)
+        public FlightClass(int id, string name)
         {
             Id = id;
             Name = name;
@@ -27,7 +27,20 @@ namespace FlightReservationProject
         #endregion
 
         #region Methods
+        public static List<FlightClass> GetClasses()
+        {
+            string sql = "SELECT id, name FROM class";
 
+            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+            List<FlightClass> classes = new List<FlightClass>();
+
+            while (results.Read()) 
+            {
+                FlightClass c = new FlightClass(results.GetInt32(0), results.GetString(1));
+                classes.Add(c);
+            }
+            return classes;
+        }
         #endregion
     }
 }

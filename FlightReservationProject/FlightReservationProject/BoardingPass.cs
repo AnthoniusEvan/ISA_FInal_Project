@@ -10,13 +10,13 @@ namespace FlightReservationProject
     {
         #region Data Members
         private DateTime date;
-        private Class flightClass;
+        private FlightClass flightClass;
         private string gate;
         #endregion
 
         #region Properties
         public DateTime Date { get => date; set => date = value; }
-        public Class FlightClass { get => flightClass; set => flightClass = value; }
+        public FlightClass FlightClass { get => flightClass; set => flightClass = value; }
         public string Gate { get => gate; set => gate = value; }
         #endregion
 

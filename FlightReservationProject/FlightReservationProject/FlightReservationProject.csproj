@@ -69,7 +69,7 @@
       <DependentUpon>CheckInPage.cs</DependentUpon>
     </Compile>
     <Compile Include="City.cs" />
-    <Compile Include="Class.cs" />
+    <Compile Include="FlightClass.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="CustomBtn.cs">
       <SubType>Component</SubType>
@@ -265,6 +265,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Group 2 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
