@@ -25,13 +25,14 @@ namespace FlightReservationProject
         private void DashboardPage_Load(object sender, EventArgs e)
         {
             LoginPage parent = (LoginPage)this.Owner;
+            activeUser = parent.user;
 
             cbCityOri.DataSource = City.GetOrigins(parent.user.FromCity.FromCountry);
             cbCityOri.DisplayMember = "Name";
             cbCityOri.ValueMember = "Id";
             RefreshActiveUser(parent.user);
 
-            cbCityDes.DataSource = City.GetDestinations();
+            cbCityDes.DataSource = City.GetDestinations(parent.user.FromCity.FromCountry);
             cbCityDes.DisplayMember = "Name";
             cbCityDes.ValueMember = "Id";
             cbCityDes.SelectedIndex = 0;
@@ -177,21 +178,42 @@ namespace FlightReservationProject
             else passengers += ", " + baby + " Baby";
             txtPassengers.Text = passengers;
         }
-        string previousDes="";
+        //string previousDes="";
+        bool isDes = true;
         private void cbCityDes_TextUpdate(object sender, EventArgs e)
         {
             tmrSearch.Enabled=false;
-            previousDes = cbCityDes.Text;
+            //previousDes = cbCityDes.Text;
+            isDes = true;
             tmrSearch.Enabled=true;
         }
 
         private void tmrSearch_Tick(object sender, EventArgs e)
         {
-            if (previousDes == cbCityDes.Text)
+            if (isDes)
             {
-                label3.Text = previousDes;
+                if (cbCityDes.Text != "") cbCityDes.DataSource = City.GetSearchCities(cbCityDes.Text);
+                else cbCityDes.DataSource = City.GetOrigins(activeUser.FromCity.FromCountry);
+
+                cbCityDes.DisplayMember = "Name";
+                cbCityDes.ValueMember = "Id";
             }
             tmrSearch.Enabled = false;
+        }
+
+        private void btnFindFlight_Click(object sender, EventArgs e)
+        {
+            City from = (City)cbCityOri.SelectedItem;
+            City to = (City)cbCityDes.SelectedItem;
+            int adult = int.Parse(txtAdult.Text);
+            int child = int.Parse(txtChild.Text);
+            int baby = int.Parse(txtBaby.Text);
+            FlightClass flightClass = (FlightClass)cbClass.SelectedItem;
+            Reservation r = new Reservation(from, to, dtDate.Value, adult, child, baby, flightClass);
+
+            FlightPage p = new FlightPage(r);
+            p.Owner = this;
+            p.Show();
         }
     }
 }

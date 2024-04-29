@@ -29,224 +29,58 @@ namespace FlightReservationProject
         /// </summary>
         private void InitializeComponent()
         {
-            FlightReservationProject.CustomBtn customBtn13;
-            FlightReservationProject.CustomBtn customBtn10;
-            FlightReservationProject.CustomBtn customBtn7;
-            FlightReservationProject.CustomBtn customBtn4;
-            FlightReservationProject.CustomBtn customBtn2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlightPage));
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnBooking = new FlightReservationProject.CustomBtn();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblPassengers = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDes = new System.Windows.Forms.Label();
+            this.pbSwap = new System.Windows.Forms.PictureBox();
+            this.lblOri = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblClass = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnOrder = new FlightReservationProject.CustomBtn();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.customBtn1 = new FlightReservationProject.CustomBtn();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.customBtn3 = new FlightReservationProject.CustomBtn();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.customBtn5 = new FlightReservationProject.CustomBtn();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.customBtn6 = new FlightReservationProject.CustomBtn();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.customBtn8 = new FlightReservationProject.CustomBtn();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.customBtn9 = new FlightReservationProject.CustomBtn();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.customBtn11 = new FlightReservationProject.CustomBtn();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.customBtn12 = new FlightReservationProject.CustomBtn();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.customBtn14 = new FlightReservationProject.CustomBtn();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            customBtn13 = new FlightReservationProject.CustomBtn();
-            customBtn10 = new FlightReservationProject.CustomBtn();
-            customBtn7 = new FlightReservationProject.CustomBtn();
-            customBtn4 = new FlightReservationProject.CustomBtn();
-            customBtn2 = new FlightReservationProject.CustomBtn();
+            this.pnlFlights = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSwap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
-            // 
-            // customBtn13
-            // 
-            customBtn13.BackColor = System.Drawing.Color.White;
-            customBtn13.BackgroundColor = System.Drawing.Color.White;
-            customBtn13.BorderColor = System.Drawing.Color.PaleVioletRed;
-            customBtn13.BorderRadius = 20;
-            customBtn13.BorderSize = 0;
-            customBtn13.Enabled = false;
-            customBtn13.FlatAppearance.BorderSize = 0;
-            customBtn13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customBtn13.ForeColor = System.Drawing.Color.WhiteSmoke;
-            customBtn13.Location = new System.Drawing.Point(558, 16);
-            customBtn13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            customBtn13.Name = "customBtn13";
-            customBtn13.Size = new System.Drawing.Size(415, 126);
-            customBtn13.TabIndex = 69;
-            customBtn13.TextColor = System.Drawing.Color.WhiteSmoke;
-            customBtn13.UseVisualStyleBackColor = false;
-            // 
-            // customBtn10
-            // 
-            customBtn10.BackColor = System.Drawing.Color.White;
-            customBtn10.BackgroundColor = System.Drawing.Color.White;
-            customBtn10.BorderColor = System.Drawing.Color.PaleVioletRed;
-            customBtn10.BorderRadius = 20;
-            customBtn10.BorderSize = 0;
-            customBtn10.Enabled = false;
-            customBtn10.FlatAppearance.BorderSize = 0;
-            customBtn10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customBtn10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            customBtn10.Location = new System.Drawing.Point(558, 16);
-            customBtn10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            customBtn10.Name = "customBtn10";
-            customBtn10.Size = new System.Drawing.Size(415, 126);
-            customBtn10.TabIndex = 69;
-            customBtn10.TextColor = System.Drawing.Color.WhiteSmoke;
-            customBtn10.UseVisualStyleBackColor = false;
-            // 
-            // customBtn7
-            // 
-            customBtn7.BackColor = System.Drawing.Color.White;
-            customBtn7.BackgroundColor = System.Drawing.Color.White;
-            customBtn7.BorderColor = System.Drawing.Color.PaleVioletRed;
-            customBtn7.BorderRadius = 20;
-            customBtn7.BorderSize = 0;
-            customBtn7.Enabled = false;
-            customBtn7.FlatAppearance.BorderSize = 0;
-            customBtn7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customBtn7.ForeColor = System.Drawing.Color.WhiteSmoke;
-            customBtn7.Location = new System.Drawing.Point(558, 16);
-            customBtn7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            customBtn7.Name = "customBtn7";
-            customBtn7.Size = new System.Drawing.Size(415, 126);
-            customBtn7.TabIndex = 69;
-            customBtn7.TextColor = System.Drawing.Color.WhiteSmoke;
-            customBtn7.UseVisualStyleBackColor = false;
-            // 
-            // customBtn4
-            // 
-            customBtn4.BackColor = System.Drawing.Color.White;
-            customBtn4.BackgroundColor = System.Drawing.Color.White;
-            customBtn4.BorderColor = System.Drawing.Color.PaleVioletRed;
-            customBtn4.BorderRadius = 20;
-            customBtn4.BorderSize = 0;
-            customBtn4.Enabled = false;
-            customBtn4.FlatAppearance.BorderSize = 0;
-            customBtn4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customBtn4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            customBtn4.Location = new System.Drawing.Point(558, 16);
-            customBtn4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            customBtn4.Name = "customBtn4";
-            customBtn4.Size = new System.Drawing.Size(415, 126);
-            customBtn4.TabIndex = 69;
-            customBtn4.TextColor = System.Drawing.Color.WhiteSmoke;
-            customBtn4.UseVisualStyleBackColor = false;
-            // 
-            // customBtn2
-            // 
-            customBtn2.BackColor = System.Drawing.Color.White;
-            customBtn2.BackgroundColor = System.Drawing.Color.White;
-            customBtn2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            customBtn2.BorderRadius = 20;
-            customBtn2.BorderSize = 0;
-            customBtn2.Enabled = false;
-            customBtn2.FlatAppearance.BorderSize = 0;
-            customBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customBtn2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            customBtn2.Location = new System.Drawing.Point(558, 16);
-            customBtn2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            customBtn2.Name = "customBtn2";
-            customBtn2.Size = new System.Drawing.Size(415, 126);
-            customBtn2.TabIndex = 69;
-            customBtn2.TextColor = System.Drawing.Color.WhiteSmoke;
-            customBtn2.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.btnBooking);
             this.panel2.Controls.Add(this.pictureBox7);
-            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.lblPassengers);
             this.panel2.Controls.Add(this.pictureBox6);
-            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.lblDate);
             this.panel2.Controls.Add(this.pictureBox5);
             this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.pictureBox3);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lblDes);
+            this.panel2.Controls.Add(this.pbSwap);
+            this.panel2.Controls.Add(this.lblOri);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 55);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1081, 72);
+            this.panel2.Size = new System.Drawing.Size(1107, 72);
             this.panel2.TabIndex = 50;
             // 
             // btnBooking
@@ -260,7 +94,7 @@ namespace FlightReservationProject
             this.btnBooking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnBooking.ForeColor = System.Drawing.Color.White;
-            this.btnBooking.Location = new System.Drawing.Point(800, 8);
+            this.btnBooking.Location = new System.Drawing.Point(855, 8);
             this.btnBooking.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBooking.Name = "btnBooking";
             this.btnBooking.Size = new System.Drawing.Size(198, 55);
@@ -268,12 +102,13 @@ namespace FlightReservationProject
             this.btnBooking.Text = "Your booking";
             this.btnBooking.TextColor = System.Drawing.Color.White;
             this.btnBooking.UseVisualStyleBackColor = false;
+            this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
             // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.pictureBox7.Image = global::FlightReservationProject.Properties.Resources.Asset_11;
-            this.pictureBox7.Location = new System.Drawing.Point(540, 25);
+            this.pictureBox7.Location = new System.Drawing.Point(640, 23);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(17, 26);
@@ -281,21 +116,21 @@ namespace FlightReservationProject
             this.pictureBox7.TabIndex = 57;
             this.pictureBox7.TabStop = false;
             // 
-            // label4
+            // lblPassengers
             // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(567, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 30);
-            this.label4.TabIndex = 56;
-            this.label4.Text = "2 Passengers";
+            this.lblPassengers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.lblPassengers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassengers.Location = new System.Drawing.Point(667, 22);
+            this.lblPassengers.Name = "lblPassengers";
+            this.lblPassengers.Size = new System.Drawing.Size(172, 30);
+            this.lblPassengers.TabIndex = 56;
+            this.lblPassengers.Text = "2 Passengers";
             // 
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.pictureBox6.Image = global::FlightReservationProject.Properties.Resources.Asset_9;
-            this.pictureBox6.Location = new System.Drawing.Point(522, 20);
+            this.pictureBox6.Location = new System.Drawing.Point(622, 18);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(14, 35);
@@ -303,21 +138,21 @@ namespace FlightReservationProject
             this.pictureBox6.TabIndex = 55;
             this.pictureBox6.TabStop = false;
             // 
-            // label3
+            // lblDate
             // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(392, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 30);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "11 April 2024";
+            this.lblDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(453, 24);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(163, 30);
+            this.lblDate.TabIndex = 54;
+            this.lblDate.Text = "11 April 2024";
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.pictureBox5.Image = global::FlightReservationProject.Properties.Resources.Asset_10;
-            this.pictureBox5.Location = new System.Drawing.Point(359, 25);
+            this.pictureBox5.Location = new System.Drawing.Point(421, 24);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(26, 28);
@@ -329,7 +164,7 @@ namespace FlightReservationProject
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.pictureBox4.Image = global::FlightReservationProject.Properties.Resources.Asset_9;
-            this.pictureBox4.Location = new System.Drawing.Point(336, 20);
+            this.pictureBox4.Location = new System.Drawing.Point(398, 19);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(14, 35);
@@ -337,37 +172,39 @@ namespace FlightReservationProject
             this.pictureBox4.TabIndex = 52;
             this.pictureBox4.TabStop = false;
             // 
-            // label2
+            // lblDes
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(251, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 29);
-            this.label2.TabIndex = 51;
-            this.label2.Text = "Jakarta";
+            this.lblDes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.lblDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDes.Location = new System.Drawing.Point(240, 25);
+            this.lblDes.Name = "lblDes";
+            this.lblDes.Size = new System.Drawing.Size(152, 29);
+            this.lblDes.TabIndex = 51;
+            this.lblDes.Text = "Jakarta";
             // 
-            // pictureBox3
+            // pbSwap
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.pictureBox3.Image = global::FlightReservationProject.Properties.Resources.Asset_8;
-            this.pictureBox3.Location = new System.Drawing.Point(201, 24);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(26, 29);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 50;
-            this.pictureBox3.TabStop = false;
+            this.pbSwap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.pbSwap.Image = global::FlightReservationProject.Properties.Resources.Asset_8;
+            this.pbSwap.Location = new System.Drawing.Point(208, 25);
+            this.pbSwap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pbSwap.Name = "pbSwap";
+            this.pbSwap.Size = new System.Drawing.Size(26, 29);
+            this.pbSwap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbSwap.TabIndex = 50;
+            this.pbSwap.TabStop = false;
+            this.pbSwap.Click += new System.EventHandler(this.pbSwap_Click);
             // 
-            // label1
+            // lblOri
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(88, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 29);
-            this.label1.TabIndex = 48;
-            this.label1.Text = "Surabaya";
+            this.lblOri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.lblOri.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOri.Location = new System.Drawing.Point(71, 25);
+            this.lblOri.Name = "lblOri";
+            this.lblOri.Size = new System.Drawing.Size(131, 29);
+            this.lblOri.TabIndex = 48;
+            this.lblOri.Text = "Surabaya";
+            this.lblOri.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // pictureBox2
             // 
@@ -375,7 +212,7 @@ namespace FlightReservationProject
             this.pictureBox2.Location = new System.Drawing.Point(53, 8);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(740, 60);
+            this.pictureBox2.Size = new System.Drawing.Size(796, 60);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -383,13 +220,26 @@ namespace FlightReservationProject
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
+            this.panel1.Controls.Add(this.lblClass);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1081, 55);
+            this.panel1.Size = new System.Drawing.Size(1107, 55);
             this.panel1.TabIndex = 49;
+            // 
+            // lblClass
+            // 
+            this.lblClass.BackColor = System.Drawing.Color.Transparent;
+            this.lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClass.ForeColor = System.Drawing.Color.White;
+            this.lblClass.Location = new System.Drawing.Point(794, 9);
+            this.lblClass.Name = "lblClass";
+            this.lblClass.Size = new System.Drawing.Size(291, 38);
+            this.lblClass.TabIndex = 59;
+            this.lblClass.Text = "Premium Economy";
+            this.lblClass.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pictureBox1
             // 
@@ -402,777 +252,46 @@ namespace FlightReservationProject
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.label5);
+            this.panel8.Controls.Add(this.pictureBox8);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 127);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1107, 48);
+            this.panel8.TabIndex = 74;
+            // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.label5.Location = new System.Drawing.Point(99, 139);
+            this.label5.Location = new System.Drawing.Point(87, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(263, 36);
-            this.label5.TabIndex = 61;
+            this.label5.TabIndex = 63;
             this.label5.Text = "Select your departure";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnOrder);
-            this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(customBtn2);
-            this.panel3.Controls.Add(this.customBtn1);
-            this.panel3.Location = new System.Drawing.Point(0, 186);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1033, 161);
-            this.panel3.TabIndex = 59;
-            // 
-            // btnOrder
-            // 
-            this.btnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.btnOrder.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.btnOrder.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnOrder.BorderRadius = 18;
-            this.btnOrder.BorderSize = 0;
-            this.btnOrder.FlatAppearance.BorderSize = 0;
-            this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnOrder.ForeColor = System.Drawing.Color.White;
-            this.btnOrder.Location = new System.Drawing.Point(746, 44);
-            this.btnOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(198, 78);
-            this.btnOrder.TabIndex = 70;
-            this.btnOrder.Text = "Order";
-            this.btnOrder.TextColor = System.Drawing.Color.White;
-            this.btnOrder.UseVisualStyleBackColor = false;
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.White;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label14.Location = new System.Drawing.Point(594, 71);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(148, 29);
-            this.label14.TabIndex = 67;
-            this.label14.Text = "MH780";
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.White;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.label13.Location = new System.Drawing.Point(594, 100);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(116, 29);
-            this.label13.TabIndex = 66;
-            this.label13.Text = "IDR 1.999,000";
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.White;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(588, 29);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(148, 44);
-            this.label12.TabIndex = 65;
-            this.label12.Text = "Garuda ";
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label11.Location = new System.Drawing.Point(88, 100);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(205, 29);
-            this.label11.TabIndex = 64;
-            this.label11.Text = "Thu, 11 April 2024";
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label10.Location = new System.Drawing.Point(370, 100);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(205, 29);
-            this.label10.TabIndex = 63;
-            this.label10.Text = "Thu, 11 April 2024";
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(370, 64);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(143, 36);
-            this.label8.TabIndex = 62;
-            this.label8.Text = "15.30 WIB";
-            // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.White;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label9.Location = new System.Drawing.Point(371, 36);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 48);
-            this.label9.TabIndex = 61;
-            this.label9.Text = "JKT";
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(87, 64);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(142, 40);
-            this.label7.TabIndex = 59;
-            this.label7.Text = "15.30 WIB";
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label6.Location = new System.Drawing.Point(88, 36);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 51);
-            this.label6.TabIndex = 58;
-            this.label6.Text = "SBY";
-            // 
-            // customBtn1
-            // 
-            this.customBtn1.BackColor = System.Drawing.Color.White;
-            this.customBtn1.BackgroundColor = System.Drawing.Color.White;
-            this.customBtn1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customBtn1.BorderRadius = 20;
-            this.customBtn1.BorderSize = 0;
-            this.customBtn1.Enabled = false;
-            this.customBtn1.FlatAppearance.BorderSize = 0;
-            this.customBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn1.ForeColor = System.Drawing.Color.White;
-            this.customBtn1.Location = new System.Drawing.Point(53, 4);
-            this.customBtn1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn1.Name = "customBtn1";
-            this.customBtn1.Size = new System.Drawing.Size(945, 151);
-            this.customBtn1.TabIndex = 68;
-            this.customBtn1.TextColor = System.Drawing.Color.White;
-            this.customBtn1.UseVisualStyleBackColor = false;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.customBtn3);
-            this.panel4.Controls.Add(this.label15);
-            this.panel4.Controls.Add(this.label16);
-            this.panel4.Controls.Add(this.label17);
-            this.panel4.Controls.Add(this.label18);
-            this.panel4.Controls.Add(this.label19);
-            this.panel4.Controls.Add(this.label20);
-            this.panel4.Controls.Add(this.label21);
-            this.panel4.Controls.Add(this.label22);
-            this.panel4.Controls.Add(this.label23);
-            this.panel4.Controls.Add(customBtn4);
-            this.panel4.Controls.Add(this.customBtn5);
-            this.panel4.Location = new System.Drawing.Point(0, 355);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1033, 161);
-            this.panel4.TabIndex = 71;
-            // 
-            // customBtn3
-            // 
-            this.customBtn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.customBtn3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.customBtn3.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customBtn3.BorderRadius = 18;
-            this.customBtn3.BorderSize = 0;
-            this.customBtn3.FlatAppearance.BorderSize = 0;
-            this.customBtn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.customBtn3.ForeColor = System.Drawing.Color.White;
-            this.customBtn3.Location = new System.Drawing.Point(746, 44);
-            this.customBtn3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn3.Name = "customBtn3";
-            this.customBtn3.Size = new System.Drawing.Size(198, 78);
-            this.customBtn3.TabIndex = 70;
-            this.customBtn3.Text = "Order";
-            this.customBtn3.TextColor = System.Drawing.Color.White;
-            this.customBtn3.UseVisualStyleBackColor = false;
-            // 
-            // label15
-            // 
-            this.label15.BackColor = System.Drawing.Color.White;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label15.Location = new System.Drawing.Point(594, 71);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(148, 29);
-            this.label15.TabIndex = 67;
-            this.label15.Text = "MH780";
-            // 
-            // label16
-            // 
-            this.label16.BackColor = System.Drawing.Color.White;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.label16.Location = new System.Drawing.Point(594, 100);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(116, 29);
-            this.label16.TabIndex = 66;
-            this.label16.Text = "IDR 1.999,000";
-            // 
-            // label17
-            // 
-            this.label17.BackColor = System.Drawing.Color.White;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(588, 29);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(148, 44);
-            this.label17.TabIndex = 65;
-            this.label17.Text = "Garuda ";
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.Color.White;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label18.Location = new System.Drawing.Point(88, 100);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(205, 29);
-            this.label18.TabIndex = 64;
-            this.label18.Text = "Thu, 11 April 2024";
-            // 
-            // label19
-            // 
-            this.label19.BackColor = System.Drawing.Color.White;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label19.Location = new System.Drawing.Point(370, 100);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(205, 29);
-            this.label19.TabIndex = 63;
-            this.label19.Text = "Thu, 11 April 2024";
-            // 
-            // label20
-            // 
-            this.label20.BackColor = System.Drawing.Color.White;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label20.Location = new System.Drawing.Point(370, 64);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(143, 36);
-            this.label20.TabIndex = 62;
-            this.label20.Text = "15.30 WIB";
-            // 
-            // label21
-            // 
-            this.label21.BackColor = System.Drawing.Color.White;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label21.Location = new System.Drawing.Point(371, 36);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(84, 48);
-            this.label21.TabIndex = 61;
-            this.label21.Text = "JKT";
-            // 
-            // label22
-            // 
-            this.label22.BackColor = System.Drawing.Color.White;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label22.Location = new System.Drawing.Point(87, 64);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(142, 40);
-            this.label22.TabIndex = 59;
-            this.label22.Text = "15.30 WIB";
-            // 
-            // label23
-            // 
-            this.label23.BackColor = System.Drawing.Color.White;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label23.Location = new System.Drawing.Point(88, 36);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(84, 51);
-            this.label23.TabIndex = 58;
-            this.label23.Text = "SBY";
-            // 
-            // customBtn5
-            // 
-            this.customBtn5.BackColor = System.Drawing.Color.White;
-            this.customBtn5.BackgroundColor = System.Drawing.Color.White;
-            this.customBtn5.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customBtn5.BorderRadius = 20;
-            this.customBtn5.BorderSize = 0;
-            this.customBtn5.Enabled = false;
-            this.customBtn5.FlatAppearance.BorderSize = 0;
-            this.customBtn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn5.ForeColor = System.Drawing.Color.White;
-            this.customBtn5.Location = new System.Drawing.Point(53, 4);
-            this.customBtn5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn5.Name = "customBtn5";
-            this.customBtn5.Size = new System.Drawing.Size(945, 151);
-            this.customBtn5.TabIndex = 68;
-            this.customBtn5.TextColor = System.Drawing.Color.White;
-            this.customBtn5.UseVisualStyleBackColor = false;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.customBtn6);
-            this.panel5.Controls.Add(this.label24);
-            this.panel5.Controls.Add(this.label25);
-            this.panel5.Controls.Add(this.label26);
-            this.panel5.Controls.Add(this.label27);
-            this.panel5.Controls.Add(this.label28);
-            this.panel5.Controls.Add(this.label29);
-            this.panel5.Controls.Add(this.label30);
-            this.panel5.Controls.Add(this.label31);
-            this.panel5.Controls.Add(this.label32);
-            this.panel5.Controls.Add(customBtn7);
-            this.panel5.Controls.Add(this.customBtn8);
-            this.panel5.Location = new System.Drawing.Point(0, 355);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1033, 161);
-            this.panel5.TabIndex = 71;
-            // 
-            // customBtn6
-            // 
-            this.customBtn6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.customBtn6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.customBtn6.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customBtn6.BorderRadius = 18;
-            this.customBtn6.BorderSize = 0;
-            this.customBtn6.FlatAppearance.BorderSize = 0;
-            this.customBtn6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.customBtn6.ForeColor = System.Drawing.Color.White;
-            this.customBtn6.Location = new System.Drawing.Point(746, 44);
-            this.customBtn6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn6.Name = "customBtn6";
-            this.customBtn6.Size = new System.Drawing.Size(198, 78);
-            this.customBtn6.TabIndex = 70;
-            this.customBtn6.Text = "Order";
-            this.customBtn6.TextColor = System.Drawing.Color.White;
-            this.customBtn6.UseVisualStyleBackColor = false;
-            // 
-            // label24
-            // 
-            this.label24.BackColor = System.Drawing.Color.White;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label24.Location = new System.Drawing.Point(594, 71);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(148, 29);
-            this.label24.TabIndex = 67;
-            this.label24.Text = "MH780";
-            // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.Color.White;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.label25.Location = new System.Drawing.Point(594, 100);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(116, 29);
-            this.label25.TabIndex = 66;
-            this.label25.Text = "IDR 1.999,000";
-            // 
-            // label26
-            // 
-            this.label26.BackColor = System.Drawing.Color.White;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.label26.Location = new System.Drawing.Point(588, 29);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(148, 44);
-            this.label26.TabIndex = 65;
-            this.label26.Text = "Garuda ";
-            // 
-            // label27
-            // 
-            this.label27.BackColor = System.Drawing.Color.White;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label27.Location = new System.Drawing.Point(88, 100);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(205, 29);
-            this.label27.TabIndex = 64;
-            this.label27.Text = "Thu, 11 April 2024";
-            // 
-            // label28
-            // 
-            this.label28.BackColor = System.Drawing.Color.White;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label28.Location = new System.Drawing.Point(370, 100);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(205, 29);
-            this.label28.TabIndex = 63;
-            this.label28.Text = "Thu, 11 April 2024";
-            // 
-            // label29
-            // 
-            this.label29.BackColor = System.Drawing.Color.White;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label29.Location = new System.Drawing.Point(370, 64);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(143, 36);
-            this.label29.TabIndex = 62;
-            this.label29.Text = "15.30 WIB";
-            // 
-            // label30
-            // 
-            this.label30.BackColor = System.Drawing.Color.White;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label30.Location = new System.Drawing.Point(371, 36);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(84, 48);
-            this.label30.TabIndex = 61;
-            this.label30.Text = "JKT";
-            // 
-            // label31
-            // 
-            this.label31.BackColor = System.Drawing.Color.White;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label31.Location = new System.Drawing.Point(87, 64);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(142, 40);
-            this.label31.TabIndex = 59;
-            this.label31.Text = "15.30 WIB";
-            // 
-            // label32
-            // 
-            this.label32.BackColor = System.Drawing.Color.White;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label32.Location = new System.Drawing.Point(88, 36);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(84, 51);
-            this.label32.TabIndex = 58;
-            this.label32.Text = "SBY";
-            // 
-            // customBtn8
-            // 
-            this.customBtn8.BackColor = System.Drawing.Color.White;
-            this.customBtn8.BackgroundColor = System.Drawing.Color.White;
-            this.customBtn8.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customBtn8.BorderRadius = 20;
-            this.customBtn8.BorderSize = 0;
-            this.customBtn8.Enabled = false;
-            this.customBtn8.FlatAppearance.BorderSize = 0;
-            this.customBtn8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn8.ForeColor = System.Drawing.Color.White;
-            this.customBtn8.Location = new System.Drawing.Point(53, 4);
-            this.customBtn8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn8.Name = "customBtn8";
-            this.customBtn8.Size = new System.Drawing.Size(945, 151);
-            this.customBtn8.TabIndex = 68;
-            this.customBtn8.TextColor = System.Drawing.Color.White;
-            this.customBtn8.UseVisualStyleBackColor = false;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.customBtn9);
-            this.panel6.Controls.Add(this.label33);
-            this.panel6.Controls.Add(this.label34);
-            this.panel6.Controls.Add(this.label35);
-            this.panel6.Controls.Add(this.label36);
-            this.panel6.Controls.Add(this.label37);
-            this.panel6.Controls.Add(this.label38);
-            this.panel6.Controls.Add(this.label39);
-            this.panel6.Controls.Add(this.label40);
-            this.panel6.Controls.Add(this.label41);
-            this.panel6.Controls.Add(customBtn10);
-            this.panel6.Controls.Add(this.customBtn11);
-            this.panel6.Location = new System.Drawing.Point(0, 524);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1033, 161);
-            this.panel6.TabIndex = 72;
-            // 
-            // customBtn9
-            // 
-            this.customBtn9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.customBtn9.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.customBtn9.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customBtn9.BorderRadius = 18;
-            this.customBtn9.BorderSize = 0;
-            this.customBtn9.FlatAppearance.BorderSize = 0;
-            this.customBtn9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.customBtn9.ForeColor = System.Drawing.Color.White;
-            this.customBtn9.Location = new System.Drawing.Point(746, 44);
-            this.customBtn9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn9.Name = "customBtn9";
-            this.customBtn9.Size = new System.Drawing.Size(198, 78);
-            this.customBtn9.TabIndex = 70;
-            this.customBtn9.Text = "Order";
-            this.customBtn9.TextColor = System.Drawing.Color.White;
-            this.customBtn9.UseVisualStyleBackColor = false;
-            // 
-            // label33
-            // 
-            this.label33.BackColor = System.Drawing.Color.White;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label33.Location = new System.Drawing.Point(594, 71);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(148, 29);
-            this.label33.TabIndex = 67;
-            this.label33.Text = "MH780";
-            // 
-            // label34
-            // 
-            this.label34.BackColor = System.Drawing.Color.White;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.label34.Location = new System.Drawing.Point(594, 100);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(116, 29);
-            this.label34.TabIndex = 66;
-            this.label34.Text = "IDR 1.999,000";
-            // 
-            // label35
-            // 
-            this.label35.BackColor = System.Drawing.Color.White;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.label35.Location = new System.Drawing.Point(588, 29);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(148, 44);
-            this.label35.TabIndex = 65;
-            this.label35.Text = "Garuda ";
-            // 
-            // label36
-            // 
-            this.label36.BackColor = System.Drawing.Color.White;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label36.Location = new System.Drawing.Point(88, 100);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(205, 29);
-            this.label36.TabIndex = 64;
-            this.label36.Text = "Thu, 11 April 2024";
-            // 
-            // label37
-            // 
-            this.label37.BackColor = System.Drawing.Color.White;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label37.Location = new System.Drawing.Point(370, 100);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(205, 29);
-            this.label37.TabIndex = 63;
-            this.label37.Text = "Thu, 11 April 2024";
-            // 
-            // label38
-            // 
-            this.label38.BackColor = System.Drawing.Color.White;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label38.Location = new System.Drawing.Point(370, 64);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(143, 36);
-            this.label38.TabIndex = 62;
-            this.label38.Text = "15.30 WIB";
-            // 
-            // label39
-            // 
-            this.label39.BackColor = System.Drawing.Color.White;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label39.Location = new System.Drawing.Point(371, 36);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(84, 48);
-            this.label39.TabIndex = 61;
-            this.label39.Text = "JKT";
-            // 
-            // label40
-            // 
-            this.label40.BackColor = System.Drawing.Color.White;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label40.Location = new System.Drawing.Point(87, 64);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(142, 40);
-            this.label40.TabIndex = 59;
-            this.label40.Text = "15.30 WIB";
-            // 
-            // label41
-            // 
-            this.label41.BackColor = System.Drawing.Color.White;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label41.Location = new System.Drawing.Point(88, 36);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(84, 51);
-            this.label41.TabIndex = 58;
-            this.label41.Text = "SBY";
-            // 
-            // customBtn11
-            // 
-            this.customBtn11.BackColor = System.Drawing.Color.White;
-            this.customBtn11.BackgroundColor = System.Drawing.Color.White;
-            this.customBtn11.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customBtn11.BorderRadius = 20;
-            this.customBtn11.BorderSize = 0;
-            this.customBtn11.Enabled = false;
-            this.customBtn11.FlatAppearance.BorderSize = 0;
-            this.customBtn11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn11.ForeColor = System.Drawing.Color.White;
-            this.customBtn11.Location = new System.Drawing.Point(53, 4);
-            this.customBtn11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn11.Name = "customBtn11";
-            this.customBtn11.Size = new System.Drawing.Size(945, 151);
-            this.customBtn11.TabIndex = 68;
-            this.customBtn11.TextColor = System.Drawing.Color.White;
-            this.customBtn11.UseVisualStyleBackColor = false;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.customBtn12);
-            this.panel7.Controls.Add(this.label42);
-            this.panel7.Controls.Add(this.label43);
-            this.panel7.Controls.Add(this.label44);
-            this.panel7.Controls.Add(this.label45);
-            this.panel7.Controls.Add(this.label46);
-            this.panel7.Controls.Add(this.label47);
-            this.panel7.Controls.Add(this.label48);
-            this.panel7.Controls.Add(this.label49);
-            this.panel7.Controls.Add(this.label50);
-            this.panel7.Controls.Add(customBtn13);
-            this.panel7.Controls.Add(this.customBtn14);
-            this.panel7.Location = new System.Drawing.Point(0, 692);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1033, 161);
-            this.panel7.TabIndex = 73;
-            // 
-            // customBtn12
-            // 
-            this.customBtn12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.customBtn12.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.customBtn12.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customBtn12.BorderRadius = 18;
-            this.customBtn12.BorderSize = 0;
-            this.customBtn12.FlatAppearance.BorderSize = 0;
-            this.customBtn12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.customBtn12.ForeColor = System.Drawing.Color.White;
-            this.customBtn12.Location = new System.Drawing.Point(746, 44);
-            this.customBtn12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn12.Name = "customBtn12";
-            this.customBtn12.Size = new System.Drawing.Size(198, 78);
-            this.customBtn12.TabIndex = 70;
-            this.customBtn12.Text = "Order";
-            this.customBtn12.TextColor = System.Drawing.Color.White;
-            this.customBtn12.UseVisualStyleBackColor = false;
-            // 
-            // label42
-            // 
-            this.label42.BackColor = System.Drawing.Color.White;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label42.Location = new System.Drawing.Point(594, 71);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(148, 29);
-            this.label42.TabIndex = 67;
-            this.label42.Text = "MH780";
-            // 
-            // label43
-            // 
-            this.label43.BackColor = System.Drawing.Color.White;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.label43.Location = new System.Drawing.Point(594, 100);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(116, 29);
-            this.label43.TabIndex = 66;
-            this.label43.Text = "IDR 1.999,000";
-            // 
-            // label44
-            // 
-            this.label44.BackColor = System.Drawing.Color.White;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.label44.Location = new System.Drawing.Point(588, 29);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(148, 44);
-            this.label44.TabIndex = 65;
-            this.label44.Text = "Garuda ";
-            // 
-            // label45
-            // 
-            this.label45.BackColor = System.Drawing.Color.White;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label45.Location = new System.Drawing.Point(88, 100);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(205, 29);
-            this.label45.TabIndex = 64;
-            this.label45.Text = "Thu, 11 April 2024";
-            // 
-            // label46
-            // 
-            this.label46.BackColor = System.Drawing.Color.White;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label46.Location = new System.Drawing.Point(370, 100);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(205, 29);
-            this.label46.TabIndex = 63;
-            this.label46.Text = "Thu, 11 April 2024";
-            // 
-            // label47
-            // 
-            this.label47.BackColor = System.Drawing.Color.White;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label47.Location = new System.Drawing.Point(370, 64);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(143, 36);
-            this.label47.TabIndex = 62;
-            this.label47.Text = "15.30 WIB";
-            // 
-            // label48
-            // 
-            this.label48.BackColor = System.Drawing.Color.White;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label48.Location = new System.Drawing.Point(371, 36);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(84, 48);
-            this.label48.TabIndex = 61;
-            this.label48.Text = "JKT";
-            // 
-            // label49
-            // 
-            this.label49.BackColor = System.Drawing.Color.White;
-            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label49.Location = new System.Drawing.Point(87, 64);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(142, 40);
-            this.label49.TabIndex = 59;
-            this.label49.Text = "15.30 WIB";
-            // 
-            // label50
-            // 
-            this.label50.BackColor = System.Drawing.Color.White;
-            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label50.Location = new System.Drawing.Point(88, 36);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(84, 51);
-            this.label50.TabIndex = 58;
-            this.label50.Text = "SBY";
-            // 
-            // customBtn14
-            // 
-            this.customBtn14.BackColor = System.Drawing.Color.White;
-            this.customBtn14.BackgroundColor = System.Drawing.Color.White;
-            this.customBtn14.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customBtn14.BorderRadius = 20;
-            this.customBtn14.BorderSize = 0;
-            this.customBtn14.Enabled = false;
-            this.customBtn14.FlatAppearance.BorderSize = 0;
-            this.customBtn14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn14.ForeColor = System.Drawing.Color.White;
-            this.customBtn14.Location = new System.Drawing.Point(53, 4);
-            this.customBtn14.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn14.Name = "customBtn14";
-            this.customBtn14.Size = new System.Drawing.Size(945, 151);
-            this.customBtn14.TabIndex = 68;
-            this.customBtn14.TextColor = System.Drawing.Color.White;
-            this.customBtn14.UseVisualStyleBackColor = false;
             // 
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(60, 136);
+            this.pictureBox8.Location = new System.Drawing.Point(48, 9);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(33, 42);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 60;
+            this.pictureBox8.TabIndex = 62;
             this.pictureBox8.TabStop = false;
+            // 
+            // pnlFlights
+            // 
+            this.pnlFlights.AutoScroll = true;
+            this.pnlFlights.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFlights.Location = new System.Drawing.Point(0, 175);
+            this.pnlFlights.Name = "pnlFlights";
+            this.pnlFlights.Size = new System.Drawing.Size(1107, 441);
+            this.pnlFlights.TabIndex = 75;
             // 
             // FlightPage
             // 
@@ -1180,33 +299,25 @@ namespace FlightReservationProject
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1107, 616);
-            this.Controls.Add(this.panel7);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pnlFlights);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FlightPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FlightPage_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSwap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
@@ -1216,79 +327,22 @@ namespace FlightReservationProject
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblPassengers;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDes;
+        private System.Windows.Forms.PictureBox pbSwap;
+        private System.Windows.Forms.Label lblOri;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private CustomBtn btnBooking;
+        private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Panel panel3;
-        private CustomBtn btnOrder;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private CustomBtn customBtn1;
-        private System.Windows.Forms.Panel panel4;
-        private CustomBtn customBtn3;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private CustomBtn customBtn5;
-        private System.Windows.Forms.Panel panel5;
-        private CustomBtn customBtn6;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
-        private CustomBtn customBtn8;
-        private System.Windows.Forms.Panel panel6;
-        private CustomBtn customBtn9;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label41;
-        private CustomBtn customBtn11;
-        private System.Windows.Forms.Panel panel7;
-        private CustomBtn customBtn12;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label50;
-        private CustomBtn customBtn14;
+        private System.Windows.Forms.Panel pnlFlights;
+        private System.Windows.Forms.Label lblClass;
     }
 }

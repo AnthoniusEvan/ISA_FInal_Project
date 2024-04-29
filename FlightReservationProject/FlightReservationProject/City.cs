@@ -43,10 +43,23 @@ namespace FlightReservationProject
             MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
             List<City> cities = new List<City>();
 
-            while (results.Read()) // some countries cause input string not in the correct format
+            while (results.Read())
             {
                 City ci = new City(results.GetInt32(0), results.GetString(1), country);
                 cities.Add(ci);  
+            }
+            return cities;
+        }
+        public static List<City> GetSearchCities(string keyword)
+        {
+            string sql = string.Format("SELECT ci.id, CONCAT(ci.name, ', ', co.name), ci.rank FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE ci.name LIKE '%{0}%' OR co.name LIKE '%{1}%'", keyword, keyword);
+
+            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+            List<City> cities = new List<City>();
+            while (results.Read() == true)
+            {
+                City ci = new City(results.GetInt32(0), results.GetString(1));
+                cities.Add(ci);
             }
             return cities;
         }
@@ -57,25 +70,47 @@ namespace FlightReservationProject
 
             MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
             List<City> cities = new List<City>();
-
+            List<int> ids = new List<int>();
             while (results.Read()) // some countries cause input string not in the correct format
             {
                 City ci = new City(results.GetInt32(0), results.GetString(1));
                 cities.Add(ci);
+                ids.Add(results.GetInt32(0));
             }
+
+            sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name), ci.rank FROM city ci INNER JOIN country co ON ci.country_id = co.id ORDER BY ISNULL(ci.rank), ci.rank ASC, co.name ASC, ci.name ASC LIMIT 200";
+
+            results = dbConnection.ExecuteQuery(sql);
+            while (results.Read()) 
+            {
+                City ci = new City(results.GetInt32(0), results.GetString(1));
+                if (!ids.Contains(results.GetInt32(0))) cities.Add(ci);
+            }
+
             return cities;
         }
 
-        public static List<City> GetDestinations()
+        public static List<City> GetDestinations(Country originCountry)
         {
             string sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name), ci.rank FROM city ci INNER JOIN country co ON ci.country_id = co.id ORDER BY ISNULL(ci.rank), ci.rank ASC, co.name ASC, ci.name ASC LIMIT 200";
 
             MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
             List<City> cities = new List<City>();
+            List<int> ids = new List<int>();
             while (results.Read()==true)
             {
                 City ci = new City(results.GetInt32(0), results.GetString(1));
                 cities.Add(ci);
+                ids.Add(results.GetInt32(0));
+            }
+
+            sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name) FROM city ci INNER JOIN country co ON ci.country_id = co.id ORDER BY co.id != '" + originCountry.Id + "', co.name ASC LIMIT 200";
+
+            results = dbConnection.ExecuteQuery(sql);
+            while (results.Read())
+            {
+                City ci = new City(results.GetInt32(0), results.GetString(1));
+                if (!ids.Contains(results.GetInt32(0))) cities.Add(ci);
             }
             return cities;
         }

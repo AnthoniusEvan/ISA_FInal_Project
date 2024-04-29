@@ -70,6 +70,7 @@
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel3.SuspendLayout();
             this.pnlPassengerSelection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnBabyMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBabyPlus)).BeginInit();
@@ -90,7 +91,7 @@
             this.cbClass.Location = new System.Drawing.Point(450, 311);
             this.cbClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbClass.Name = "cbClass";
-            this.cbClass.Size = new System.Drawing.Size(223, 30);
+            this.cbClass.Size = new System.Drawing.Size(250, 30);
             this.cbClass.TabIndex = 56;
             // 
             // label5
@@ -109,7 +110,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(166, 281);
+            this.label4.Location = new System.Drawing.Point(95, 241);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 22);
             this.label4.TabIndex = 53;
@@ -120,7 +121,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(676, 204);
+            this.label3.Location = new System.Drawing.Point(733, 164);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 22);
             this.label3.TabIndex = 52;
@@ -142,7 +143,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(166, 204);
+            this.label1.Location = new System.Drawing.Point(96, 164);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 22);
             this.label1.TabIndex = 50;
@@ -151,7 +152,7 @@
             // txtPassengers
             // 
             this.txtPassengers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtPassengers.Location = new System.Drawing.Point(171, 311);
+            this.txtPassengers.Location = new System.Drawing.Point(100, 271);
             this.txtPassengers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPassengers.Multiline = true;
             this.txtPassengers.Name = "txtPassengers";
@@ -166,7 +167,7 @@
             this.dtDate.CustomFormat = "dd MMMM yyyy";
             this.dtDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDate.Location = new System.Drawing.Point(681, 234);
+            this.dtDate.Location = new System.Drawing.Point(737, 194);
             this.dtDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtDate.Name = "dtDate";
@@ -181,7 +182,7 @@
             this.cbCityDes.Location = new System.Drawing.Point(450, 234);
             this.cbCityDes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbCityDes.Name = "cbCityDes";
-            this.cbCityDes.Size = new System.Drawing.Size(176, 30);
+            this.cbCityDes.Size = new System.Drawing.Size(250, 30);
             this.cbCityDes.TabIndex = 47;
             this.cbCityDes.Text = "Select City";
             this.cbCityDes.TextUpdate += new System.EventHandler(this.cbCityDes_TextUpdate);
@@ -193,10 +194,10 @@
             this.cbCityOri.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCityOri.FormattingEnabled = true;
             this.cbCityOri.IntegralHeight = false;
-            this.cbCityOri.Location = new System.Drawing.Point(171, 234);
+            this.cbCityOri.Location = new System.Drawing.Point(100, 194);
             this.cbCityOri.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbCityOri.Name = "cbCityOri";
-            this.cbCityOri.Size = new System.Drawing.Size(176, 30);
+            this.cbCityOri.Size = new System.Drawing.Size(250, 30);
             this.cbCityOri.TabIndex = 46;
             this.cbCityOri.Text = "Select City";
             this.cbCityOri.SelectedIndexChanged += new System.EventHandler(this.cbCityOri_SelectedIndexChanged);
@@ -287,6 +288,13 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.btnFindFlight);
+            this.panel3.Controls.Add(this.cbCityOri);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.dtDate);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.txtPassengers);
             this.panel3.Location = new System.Drawing.Point(0, 40);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
@@ -522,7 +530,7 @@
             this.btnFindFlight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFindFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnFindFlight.ForeColor = System.Drawing.Color.White;
-            this.btnFindFlight.Location = new System.Drawing.Point(698, 298);
+            this.btnFindFlight.Location = new System.Drawing.Point(737, 256);
             this.btnFindFlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFindFlight.Name = "btnFindFlight";
             this.btnFindFlight.Size = new System.Drawing.Size(206, 50);
@@ -530,26 +538,20 @@
             this.btnFindFlight.Text = "Find me a flight now";
             this.btnFindFlight.TextColor = System.Drawing.Color.White;
             this.btnFindFlight.UseVisualStyleBackColor = false;
+            this.btnFindFlight.Click += new System.EventHandler(this.btnFindFlight_Click);
             // 
             // DashboardPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 616);
-            this.Controls.Add(this.btnFindFlight);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.cbClass);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSwap);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlPassengerSelection);
-            this.Controls.Add(this.txtPassengers);
-            this.Controls.Add(this.dtDate);
             this.Controls.Add(this.cbCityDes);
-            this.Controls.Add(this.cbCityOri);
             this.Controls.Add(this.pbProfile);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
@@ -565,6 +567,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.pnlPassengerSelection.ResumeLayout(false);
             this.pnlPassengerSelection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnBabyMin)).EndInit();

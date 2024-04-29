@@ -95,6 +95,7 @@ namespace FlightReservationProject
                     DashboardPage p = (DashboardPage)this.Owner;
                     p.RefreshActiveUser(updatedUser);
                     MessageBox.Show("Account details updated succesfully!");
+                    lblBack_Click(sender, e);
                 }
                 else
                     MessageBox.Show("Unknown error occured! Couldn't update account details!");
