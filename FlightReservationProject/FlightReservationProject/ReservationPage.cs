@@ -71,6 +71,7 @@ namespace FlightReservationProject
             UnselectControl();
             btnTransfer.BackColor = Color.LightGray;
             btnTransfer.TextColor = Color.Black;
+            lblAccNum.Text = "111209876";
             label29.Text = "1. Choose Other transaction go to";
         }
 
