@@ -48,6 +48,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnFindFlight = new FlightReservationProject.CustomBtn();
             this.pnlPassengerSelection = new System.Windows.Forms.Panel();
             this.btnDone = new FlightReservationProject.CustomBtn();
             this.btnBabyMin = new System.Windows.Forms.PictureBox();
@@ -66,7 +67,6 @@
             this.btnSwap = new System.Windows.Forms.PictureBox();
             this.pbProfile = new System.Windows.Forms.PictureBox();
             this.tmrSearch = new System.Windows.Forms.Timer(this.components);
-            this.btnFindFlight = new FlightReservationProject.CustomBtn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -200,7 +200,7 @@
             this.cbCityOri.Size = new System.Drawing.Size(250, 30);
             this.cbCityOri.TabIndex = 46;
             this.cbCityOri.Text = "Select City";
-            this.cbCityOri.SelectedIndexChanged += new System.EventHandler(this.cbCityOri_SelectedIndexChanged);
+            this.cbCityOri.TextUpdate += new System.EventHandler(this.cbCityOri_TextUpdate);
             // 
             // menuStrip1
             // 
@@ -300,6 +300,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1060, 490);
             this.panel3.TabIndex = 62;
+            // 
+            // btnFindFlight
+            // 
+            this.btnFindFlight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
+            this.btnFindFlight.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
+            this.btnFindFlight.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnFindFlight.BorderRadius = 18;
+            this.btnFindFlight.BorderSize = 0;
+            this.btnFindFlight.FlatAppearance.BorderSize = 0;
+            this.btnFindFlight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFindFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnFindFlight.ForeColor = System.Drawing.Color.White;
+            this.btnFindFlight.Location = new System.Drawing.Point(737, 256);
+            this.btnFindFlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFindFlight.Name = "btnFindFlight";
+            this.btnFindFlight.Size = new System.Drawing.Size(206, 50);
+            this.btnFindFlight.TabIndex = 58;
+            this.btnFindFlight.Text = "Find me a flight now";
+            this.btnFindFlight.TextColor = System.Drawing.Color.White;
+            this.btnFindFlight.UseVisualStyleBackColor = false;
+            this.btnFindFlight.Click += new System.EventHandler(this.btnFindFlight_Click);
             // 
             // pnlPassengerSelection
             // 
@@ -516,29 +537,8 @@
             // 
             // tmrSearch
             // 
-            this.tmrSearch.Interval = 1000;
+            this.tmrSearch.Interval = 500;
             this.tmrSearch.Tick += new System.EventHandler(this.tmrSearch_Tick);
-            // 
-            // btnFindFlight
-            // 
-            this.btnFindFlight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
-            this.btnFindFlight.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
-            this.btnFindFlight.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnFindFlight.BorderRadius = 18;
-            this.btnFindFlight.BorderSize = 0;
-            this.btnFindFlight.FlatAppearance.BorderSize = 0;
-            this.btnFindFlight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFindFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnFindFlight.ForeColor = System.Drawing.Color.White;
-            this.btnFindFlight.Location = new System.Drawing.Point(737, 256);
-            this.btnFindFlight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnFindFlight.Name = "btnFindFlight";
-            this.btnFindFlight.Size = new System.Drawing.Size(206, 50);
-            this.btnFindFlight.TabIndex = 58;
-            this.btnFindFlight.Text = "Find me a flight now";
-            this.btnFindFlight.TextColor = System.Drawing.Color.White;
-            this.btnFindFlight.UseVisualStyleBackColor = false;
-            this.btnFindFlight.Click += new System.EventHandler(this.btnFindFlight_Click);
             // 
             // DashboardPage
             // 

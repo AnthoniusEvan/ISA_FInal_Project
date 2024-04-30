@@ -177,13 +177,13 @@ namespace FlightReservationProject
         {
             if (ageTypes[currIndex] == "Adult" && txtFullname.Text != "" && txtMobileNumber.Text != "" && cbBornIn.SelectedIndex!=-1)
             {
-                Passenger p = new Passenger(txtFullname.Text, flight, order.User, "adult", cbTitle.Text, lblCode.Text + "-" + txtMobileNumber.Text, (Country)cbBornIn.SelectedItem, dtpDob.Value);
+                Passenger p = new Passenger(txtFullname.Text, flight, order.User, "Adult", cbTitle.Text, lblCode.Text + "-" + txtMobileNumber.Text, (Country)cbBornIn.SelectedItem, dtpDob.Value);
                 error = "";
                 return p;
             }
             else if (ageTypes[currIndex] != "Adult" && txtFullname.Text != "" && cbBornIn.SelectedIndex != -1) 
             {
-                Passenger p = new Passenger(txtFullname.Text, flight, order.User, "adult", cbTitle.Text, (Country)cbBornIn.SelectedItem, dtpDob.Value);
+                Passenger p = new Passenger(txtFullname.Text, flight, order.User, ageTypes[currIndex], cbTitle.Text, (Country)cbBornIn.SelectedItem, dtpDob.Value);
                 error = "";
                 return p;
             }
@@ -307,6 +307,15 @@ namespace FlightReservationProject
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            int rowsAffected = order.AddReservation(passengers.ToList());
+            if (rowsAffected > 0)
+            {
+                MessageBox.Show("Reservation Succesful!");
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong!");
+            }
 
         }
     }

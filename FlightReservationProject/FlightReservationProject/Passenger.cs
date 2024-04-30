@@ -9,6 +9,7 @@ namespace FlightReservationProject
     public class Passenger
     {
         #region Data Members
+        private string id;
         private string fullName;
         private PlaneFlight flight;
         private string seat;
@@ -32,6 +33,7 @@ namespace FlightReservationProject
         public string Email { get => email; set => email = value; }
         public Country BornIn { get => bornIn; set => bornIn = value; }
         public DateTime Dob { get => dob; set => dob = value; }
+        public string Id { get => id; set => id = value; }
         #endregion
 
         #region Constructors
@@ -56,6 +58,18 @@ namespace FlightReservationProject
             BornIn = bornIn;
             Dob = dob;
         }
+        public Passenger(string id, string title, string fullName, DateTime dob, string ageType)
+        {
+            Title = title;
+            FullName = fullName;
+            Dob = dob;
+            AgeType = ageType;
+            //BornIn = bornIn;
+        }
+        #endregion
+
+        #region Methods
+        
         #endregion
     }
 }

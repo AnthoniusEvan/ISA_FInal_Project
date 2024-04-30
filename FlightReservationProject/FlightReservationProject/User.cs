@@ -21,6 +21,7 @@ namespace FlightReservationProject
         private DateTime birthDate;
         private string mobileNumber;
         private City fromCity;
+        private List<Reservation> reservations;
         #endregion
 
         #region Properties
@@ -106,6 +107,7 @@ namespace FlightReservationProject
             }
         }
         public City FromCity { get => fromCity; set => fromCity = value; }
+        public List<Reservation> Reservations { get => reservations; private set => reservations = value; }
         #endregion
 
         #region Constructors
@@ -129,10 +131,12 @@ namespace FlightReservationProject
             BirthDate = birthDate;
             MobileNumber = mobileNumber;
             FromCity = fromCity;
+            Reservations = new List<Reservation>();
         }
         #endregion
 
         #region Methods
+        
         public static User ValidateLogin(string email, string password)
         {
             string sql = "SELECT u.id, u.full_name, u.email, u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.email = @email AND u.password = SHA2(@password,512)";
@@ -205,6 +209,25 @@ namespace FlightReservationProject
             }
         }
 
+        public List<Reservation> RetrieveReservation()
+        {
+            string sql = "SELECT r.id, r.user_id, r.user_email, r.from_city, fc.name, r.to_city, tc.name, r.adult, r.child, r.baby, r.date_depart, r.date_arrival, r.class_id, c.name, r.flight_number FROM reservation r INNER JOIN city fc ON r.from_city = fc.id INNER JOIN city tc ON r.to_city = tc.id LEFT JOIN class c ON r.class_id = c.id WHERE r.user_id = '" + Id + "' AND r.user_email = '" + Email + "'";
+
+            
+            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+            List<Reservation> reservations = new List<Reservation>();
+            while (results.Read())
+            {
+                City fc = new City(results.GetInt32(3), results.GetString(4));
+                City tc = new City(results.GetInt32(5), results.GetString(6));
+                FlightClass c = new FlightClass(results.GetInt32(12), results.GetString(13));
+                Reservation r = new Reservation(results.GetInt32(0), this, fc, tc, results.GetDateTime(10), results.GetInt32(7), results.GetInt32(8), results.GetInt32(9), c);
+                r.ChooseFlight(PlaneFlight.GetChosenFlight(results.GetString(14)));
+                reservations.Add(r);
+            }
+            if (reservations.Count > 0) return reservations;
+            else return null;
+        }
         #endregion
 
     }

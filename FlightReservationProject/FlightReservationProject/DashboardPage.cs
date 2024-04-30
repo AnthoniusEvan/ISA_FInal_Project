@@ -32,7 +32,7 @@ namespace FlightReservationProject
             cbCityOri.ValueMember = "Id";
             RefreshActiveUser(parent.user);
 
-            cbCityDes.DataSource = City.GetDestinations(parent.user.FromCity.FromCountry);
+            cbCityDes.DataSource = City.GetDestinations();
             cbCityDes.DisplayMember = "Name";
             cbCityDes.ValueMember = "Id";
             cbCityDes.SelectedIndex = 0;
@@ -52,11 +52,6 @@ namespace FlightReservationProject
                 if (c.Id == activeUser.FromCity.Id)
                     cbCityOri.SelectedValue = c.Id;
             }
-        }
-
-        private void cbCityOri_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            City selectedCity = (City)cbCityOri.SelectedItem;
         }
 
         private void pbProfile_Click(object sender, EventArgs e)
@@ -82,9 +77,11 @@ namespace FlightReservationProject
 
         private void btnSwap_Click(object sender, EventArgs e)
         {
-            int desVal = (int)cbCityDes.SelectedValue;
-            cbCityDes.SelectedValue = cbCityOri.SelectedValue;
-            cbCityOri.SelectedValue = desVal;
+            string des = cbCityDes.Text;
+            cbCityDes.Text = cbCityOri.Text;
+            cbCityOri.Text = des;
+            isDes = true; isOri = true;
+            tmrSearch_Tick(sender, e);
         }
 
         private void txtPassengers_Click(object sender, EventArgs e)
@@ -179,26 +176,54 @@ namespace FlightReservationProject
             txtPassengers.Text = passengers;
         }
         //string previousDes="";
-        bool isDes = true;
+        bool isDes = false;
+        bool isOri = false;
         private void cbCityDes_TextUpdate(object sender, EventArgs e)
         {
             tmrSearch.Enabled=false;
-            //previousDes = cbCityDes.Text;
             isDes = true;
             tmrSearch.Enabled=true;
         }
 
         private void tmrSearch_Tick(object sender, EventArgs e)
         {
+            tmrSearch.Enabled = false;
             if (isDes)
             {
+                if (cbCityDes.FindStringExact(cbCityDes.Text) != -1)
+                {
+                    tmrSearch.Enabled = false;
+                    return;
+                }
+
                 if (cbCityDes.Text != "") cbCityDes.DataSource = City.GetSearchCities(cbCityDes.Text);
-                else cbCityDes.DataSource = City.GetOrigins(activeUser.FromCity.FromCountry);
+                else cbCityDes.DataSource = City.GetDestinations();
 
                 cbCityDes.DisplayMember = "Name";
                 cbCityDes.ValueMember = "Id";
+
+                cbCityDes.SelectAll();
+                cbCityDes.DroppedDown = true;
+                isDes = false;
             }
-            tmrSearch.Enabled = false;
+            if (isOri)
+            {
+                if (cbCityOri.FindStringExact(cbCityOri.Text) != -1)
+                {
+                    tmrSearch.Enabled = false;
+                    return;
+                }
+                if (cbCityOri.Text != "") cbCityOri.DataSource = City.GetSearchCities(cbCityOri.Text);
+                else cbCityOri.DataSource = City.GetOrigins(activeUser.FromCity.FromCountry);
+
+                cbCityOri.DisplayMember = "Name";
+                cbCityOri.ValueMember = "Id";
+
+                cbCityOri.SelectAll();
+                cbCityOri.DroppedDown = true;
+                isOri = false;
+            }
+
         }
 
         private void btnFindFlight_Click(object sender, EventArgs e)
@@ -214,6 +239,13 @@ namespace FlightReservationProject
             FlightPage p = new FlightPage(r);
             p.Owner = this;
             p.Show();
+        }
+
+        private void cbCityOri_TextUpdate(object sender, EventArgs e)
+        {
+            tmrSearch.Enabled = false;
+            isOri = true;
+            tmrSearch.Enabled = true;
         }
     }
 }

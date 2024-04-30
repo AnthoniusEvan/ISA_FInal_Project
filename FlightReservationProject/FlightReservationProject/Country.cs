@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbLib;
+using MySql.Data.MySqlClient;
+
 namespace FlightReservationProject
 {
     public class Country
@@ -35,18 +37,42 @@ namespace FlightReservationProject
         #endregion
 
         #region Methods
+        //public static List<Country> GetCountries()
+        //{
+        //    string sql = "SELECT id, name, dialing_code FROM country";
+        //    MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+        //    List<Country> countries = new List<Country>();
+
+        //    while (results.Read())
+        //    {
+        //        Country c = new Country(results.GetInt32(0), results.GetString(1), results.GetString(2));
+        //        countries.Add(c);
+        //    }
+        //    return countries;
+        //}
+
         public static List<Country> GetCountries()
         {
             string sql = "SELECT id, name, dialing_code FROM country";
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
-            List<Country> countries = new List<Country>();
 
-            while (results.Read())
+            List<Country> countries = new List<Country>();
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                Country c = new Country(results.GetInt32(0), results.GetString(1), results.GetString(2));
-                countries.Add(c);
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Country c = new Country(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                            countries.Add(c);
+                        }
+                        return countries;
+                    }
+                }
             }
-            return countries;
+            
         }
         #endregion
     }

@@ -31,12 +31,20 @@ namespace FlightReservationProject
             lblPassengers.Text =  total + " Passenger";
             if (total > 1) lblPassengers.Text += "s";
             lblClass.Text = order.FlightClass.Name;
-            planeFlights = new List<PlaneFlight>();
 
-            GenerateRandomFlights(order);
+            planeFlights = PlaneFlight.GetFlights(order);
+
+            if (planeFlights==null) GenerateRandomFlights(order);
+            else
+            {
+                foreach (PlaneFlight p in planeFlights) {
+                    CreateFlights(p, p.FlightNumber);
+                }
+            }
         }
         private void GenerateRandomFlights(Reservation order)
         {
+            planeFlights = new List<PlaneFlight>();
             Random rnd = new Random();
             for (int i = 0; i < rnd.Next(3,24); i++)
             {
@@ -62,6 +70,7 @@ namespace FlightReservationProject
                 planeFlights.Add(p);
                 CreateFlights(p, flightNumber);
             }
+            PlaneFlight.AddFlights(planeFlights);
         }
         private void CreateFlights(PlaneFlight flight, string flightNumber)
         {
@@ -258,6 +267,8 @@ namespace FlightReservationProject
                     break;
                 }
             }
+            order.ChooseFlight(spf);
+            order.DateDepart = spf.Depart;
             ReservationPage p = new ReservationPage(spf, order);
             p.Owner = this;
             p.Show();
@@ -281,7 +292,17 @@ namespace FlightReservationProject
             lblOri.Text = des;
 
             pnlFlights.Controls.Clear();
-            GenerateRandomFlights(order);
+
+            planeFlights = PlaneFlight.GetFlights(order);
+
+            if (planeFlights == null) GenerateRandomFlights(order);
+            else
+            {
+                foreach (PlaneFlight p in planeFlights)
+                {
+                    CreateFlights(p, p.FlightNumber);
+                }
+            }
         }
     }
 }

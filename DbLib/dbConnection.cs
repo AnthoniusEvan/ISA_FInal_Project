@@ -49,12 +49,31 @@ namespace DbLib
         ~dbConnection()
         {
             DbCon.Close();
+            DbCon.Dispose();
+            Dispose();
         }
         #endregion
 
         #region Methods
         public void Dispose()
         {
+
+        }
+        public static string GetConnectionString()
+        {
+            Configuration configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            ConfigurationSectionGroup userSettings = configFile.SectionGroups["userSettings"];
+
+            var settingSection = userSettings.Sections["FlightReservationProject.db"] as ClientSettingsSection;
+
+            string DbServer = settingSection.Settings.Get("DbServer").Value.ValueXml.InnerText;
+            string DbName = settingSection.Settings.Get("DbName").Value.ValueXml.InnerText;
+            string DbUsername = settingSection.Settings.Get("DbUsername").Value.ValueXml.InnerText;
+            //string DbPassword = settingSection.Settings.Get("DbPassword").Value.ValueXml.InnerText;
+            string DbPassword = configFile.AppSettings.Settings["DbPassword"].Value;
+
+            return "server=" + DbServer + ";database=" + DbName + ";uid=" + DbUsername + ";password=" + DbPassword;
         }
         public void Connect()
         {
