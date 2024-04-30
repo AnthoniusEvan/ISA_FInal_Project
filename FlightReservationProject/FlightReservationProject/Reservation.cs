@@ -9,6 +9,7 @@ namespace FlightReservationProject
     public class Reservation
     {
         #region Data Members
+        private User user;
         private City fromCity;
         private City toCity;
         private DateTime dateDepart;
@@ -28,11 +29,13 @@ namespace FlightReservationProject
         public int Baby { get => baby; set => baby = value; }
         public FlightClass FlightClass { get => flightClass; set => flightClass = value; }
         public List<Passenger> ListOfPassengers { get => listOfPassengers; set => listOfPassengers = value; }
+        public User User { get => user; set => user = value; }
         #endregion
 
         #region Constructors
-        public Reservation(City from, City to, DateTime dateDepart, int adult, int child, int baby, FlightClass flightClass)
+        public Reservation(User user, City from, City to, DateTime dateDepart, int adult, int child, int baby, FlightClass flightClass)
         {
+            User = user;
             FromCity = from;
             ToCity = to;
             DateDepart = dateDepart;
