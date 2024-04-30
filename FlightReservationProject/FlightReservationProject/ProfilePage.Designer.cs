@@ -53,19 +53,20 @@ namespace FlightReservationProject
             this.label37 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBack
             // 
             this.lblBack.AutoSize = true;
-            this.lblBack.BackColor = System.Drawing.Color.White;
+            this.lblBack.BackColor = System.Drawing.Color.Transparent;
             this.lblBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBack.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(187)))), ((int)(((byte)(184)))));
-            this.lblBack.Location = new System.Drawing.Point(89, 538);
+            this.lblBack.ForeColor = System.Drawing.Color.White;
+            this.lblBack.Location = new System.Drawing.Point(79, 430);
             this.lblBack.Name = "lblBack";
-            this.lblBack.Size = new System.Drawing.Size(66, 28);
+            this.lblBack.Size = new System.Drawing.Size(59, 25);
             this.lblBack.TabIndex = 158;
             this.lblBack.Text = "< Back";
             this.lblBack.Click += new System.EventHandler(this.lblBack_Click);
@@ -74,17 +75,16 @@ namespace FlightReservationProject
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
             this.btnUpdate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
-            this.btnUpdate.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnUpdate.BorderColor = System.Drawing.Color.Transparent;
             this.btnUpdate.BorderRadius = 20;
             this.btnUpdate.BorderSize = 0;
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(711, 518);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnUpdate.Location = new System.Drawing.Point(632, 414);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(267, 64);
+            this.btnUpdate.Size = new System.Drawing.Size(237, 51);
             this.btnUpdate.TabIndex = 157;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.TextColor = System.Drawing.Color.White;
@@ -99,11 +99,11 @@ namespace FlightReservationProject
             this.cbCountry.Font = new System.Drawing.Font("Poppins", 10F);
             this.cbCountry.FormattingEnabled = true;
             this.cbCountry.IntegralHeight = false;
-            this.cbCountry.Location = new System.Drawing.Point(356, 245);
+            this.cbCountry.Location = new System.Drawing.Point(316, 196);
             this.cbCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbCountry.MaxDropDownItems = 5;
             this.cbCountry.Name = "cbCountry";
-            this.cbCountry.Size = new System.Drawing.Size(299, 44);
+            this.cbCountry.Size = new System.Drawing.Size(266, 38);
             this.cbCountry.TabIndex = 153;
             this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.cbCountry_SelectedIndexChanged);
             // 
@@ -115,20 +115,20 @@ namespace FlightReservationProject
             this.cbCity.Font = new System.Drawing.Font("Poppins", 10F);
             this.cbCity.FormattingEnabled = true;
             this.cbCity.IntegralHeight = false;
-            this.cbCity.Location = new System.Drawing.Point(678, 245);
+            this.cbCity.Location = new System.Drawing.Point(603, 196);
             this.cbCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbCity.Name = "cbCity";
-            this.cbCity.Size = new System.Drawing.Size(299, 44);
+            this.cbCity.Size = new System.Drawing.Size(266, 38);
             this.cbCity.TabIndex = 154;
             // 
             // dtpDob
             // 
             this.dtpDob.Font = new System.Drawing.Font("Poppins", 11F);
             this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDob.Location = new System.Drawing.Point(90, 245);
+            this.dtpDob.Location = new System.Drawing.Point(80, 196);
             this.dtpDob.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDob.Name = "dtpDob";
-            this.dtpDob.Size = new System.Drawing.Size(238, 40);
+            this.dtpDob.Size = new System.Drawing.Size(212, 35);
             this.dtpDob.TabIndex = 152;
             // 
             // label27
@@ -136,9 +136,9 @@ namespace FlightReservationProject
             this.label27.AutoSize = true;
             this.label27.BackColor = System.Drawing.Color.White;
             this.label27.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label27.Location = new System.Drawing.Point(350, 215);
+            this.label27.Location = new System.Drawing.Point(311, 172);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(79, 28);
+            this.label27.Size = new System.Drawing.Size(71, 25);
             this.label27.TabIndex = 146;
             this.label27.Text = "Country";
             // 
@@ -147,9 +147,9 @@ namespace FlightReservationProject
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.White;
             this.label28.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label28.Location = new System.Drawing.Point(673, 215);
+            this.label28.Location = new System.Drawing.Point(598, 172);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(45, 28);
+            this.label28.Size = new System.Drawing.Size(42, 25);
             this.label28.TabIndex = 149;
             this.label28.Text = "City";
             // 
@@ -158,9 +158,9 @@ namespace FlightReservationProject
             this.label29.AutoSize = true;
             this.label29.BackColor = System.Drawing.Color.White;
             this.label29.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label29.Location = new System.Drawing.Point(86, 215);
+            this.label29.Location = new System.Drawing.Point(76, 172);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(113, 28);
+            this.label29.Size = new System.Drawing.Size(101, 25);
             this.label29.TabIndex = 151;
             this.label29.Text = "Date of Birth";
             // 
@@ -169,9 +169,9 @@ namespace FlightReservationProject
             this.label30.AutoSize = true;
             this.label30.BackColor = System.Drawing.Color.White;
             this.label30.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label30.Location = new System.Drawing.Point(89, 301);
+            this.label30.Location = new System.Drawing.Point(79, 241);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(81, 28);
+            this.label30.Size = new System.Drawing.Size(73, 25);
             this.label30.TabIndex = 155;
             this.label30.Text = "Address";
             // 
@@ -180,9 +180,9 @@ namespace FlightReservationProject
             this.label31.AutoSize = true;
             this.label31.BackColor = System.Drawing.Color.White;
             this.label31.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label31.Location = new System.Drawing.Point(539, 114);
+            this.label31.Location = new System.Drawing.Point(479, 91);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(70, 28);
+            this.label31.Size = new System.Drawing.Size(63, 25);
             this.label31.TabIndex = 150;
             this.label31.Text = "ID / NIK";
             // 
@@ -191,11 +191,10 @@ namespace FlightReservationProject
             this.txtID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtID.Enabled = false;
             this.txtID.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtID.Location = new System.Drawing.Point(542, 144);
-            this.txtID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtID.Location = new System.Drawing.Point(482, 115);
             this.txtID.Multiline = true;
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(435, 46);
+            this.txtID.Size = new System.Drawing.Size(387, 38);
             this.txtID.TabIndex = 148;
             this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtID_KeyPress);
             // 
@@ -203,11 +202,10 @@ namespace FlightReservationProject
             // 
             this.txtFullname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtFullname.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtFullname.Location = new System.Drawing.Point(90, 144);
-            this.txtFullname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFullname.Location = new System.Drawing.Point(80, 115);
             this.txtFullname.Multiline = true;
             this.txtFullname.Name = "txtFullname";
-            this.txtFullname.Size = new System.Drawing.Size(435, 46);
+            this.txtFullname.Size = new System.Drawing.Size(387, 38);
             this.txtFullname.TabIndex = 147;
             // 
             // label32
@@ -215,9 +213,9 @@ namespace FlightReservationProject
             this.label32.AutoSize = true;
             this.label32.BackColor = System.Drawing.Color.White;
             this.label32.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label32.Location = new System.Drawing.Point(87, 115);
+            this.label32.Location = new System.Drawing.Point(77, 92);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(95, 28);
+            this.label32.Size = new System.Drawing.Size(85, 25);
             this.label32.TabIndex = 145;
             this.label32.Text = "Full Name";
             // 
@@ -225,34 +223,31 @@ namespace FlightReservationProject
             // 
             this.txtAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtAddress.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtAddress.Location = new System.Drawing.Point(91, 332);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAddress.Location = new System.Drawing.Point(81, 266);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(476, 46);
+            this.txtAddress.Size = new System.Drawing.Size(424, 38);
             this.txtAddress.TabIndex = 156;
             // 
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtPassword.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtPassword.Location = new System.Drawing.Point(542, 418);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPassword.Location = new System.Drawing.Point(482, 334);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(435, 46);
+            this.txtPassword.Size = new System.Drawing.Size(387, 38);
             this.txtPassword.TabIndex = 140;
             // 
             // txtMobileNumber
             // 
             this.txtMobileNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtMobileNumber.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtMobileNumber.Location = new System.Drawing.Point(658, 332);
-            this.txtMobileNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtMobileNumber.Location = new System.Drawing.Point(585, 266);
             this.txtMobileNumber.Multiline = true;
             this.txtMobileNumber.Name = "txtMobileNumber";
-            this.txtMobileNumber.Size = new System.Drawing.Size(319, 46);
+            this.txtMobileNumber.Size = new System.Drawing.Size(284, 38);
             this.txtMobileNumber.TabIndex = 143;
             this.txtMobileNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMobileNumber_KeyPress);
             // 
@@ -261,9 +256,9 @@ namespace FlightReservationProject
             this.label33.AutoSize = true;
             this.label33.BackColor = System.Drawing.Color.White;
             this.label33.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label33.Location = new System.Drawing.Point(593, 301);
+            this.label33.Location = new System.Drawing.Point(527, 241);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(139, 28);
+            this.label33.Size = new System.Drawing.Size(124, 25);
             this.label33.TabIndex = 142;
             this.label33.Text = "Mobile Number";
             // 
@@ -274,9 +269,9 @@ namespace FlightReservationProject
             this.lblCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCode.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCode.Location = new System.Drawing.Point(598, 340);
+            this.lblCode.Location = new System.Drawing.Point(532, 272);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(54, 38);
+            this.lblCode.Size = new System.Drawing.Size(47, 32);
             this.lblCode.TabIndex = 144;
             this.lblCode.Text = "+62";
             // 
@@ -285,9 +280,9 @@ namespace FlightReservationProject
             this.label35.AutoSize = true;
             this.label35.BackColor = System.Drawing.Color.White;
             this.label35.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label35.Location = new System.Drawing.Point(539, 389);
+            this.label35.Location = new System.Drawing.Point(479, 311);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(93, 28);
+            this.label35.Size = new System.Drawing.Size(84, 25);
             this.label35.TabIndex = 141;
             this.label35.Text = "Password";
             // 
@@ -296,9 +291,9 @@ namespace FlightReservationProject
             this.label36.AutoSize = true;
             this.label36.BackColor = System.Drawing.Color.White;
             this.label36.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label36.Location = new System.Drawing.Point(89, 389);
+            this.label36.Location = new System.Drawing.Point(79, 311);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(59, 28);
+            this.label36.Size = new System.Drawing.Size(53, 25);
             this.label36.TabIndex = 138;
             this.label36.Text = "Email";
             // 
@@ -307,20 +302,20 @@ namespace FlightReservationProject
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Poppins", 12F);
-            this.txtEmail.Location = new System.Drawing.Point(90, 418);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtEmail.Location = new System.Drawing.Point(80, 334);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(408, 46);
+            this.txtEmail.Size = new System.Drawing.Size(363, 38);
             this.txtEmail.TabIndex = 139;
             // 
             // label37
             // 
             this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.White;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(50, 19);
+            this.label37.Location = new System.Drawing.Point(44, 15);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(68, 22);
+            this.label37.Size = new System.Drawing.Size(57, 18);
             this.label37.TabIndex = 137;
             this.label37.Text = "Profile";
             // 
@@ -328,27 +323,36 @@ namespace FlightReservationProject
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox2.Image = global::FlightReservationProject.Properties.Resources.user;
-            this.pictureBox2.Location = new System.Drawing.Point(15, 15);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(13, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(29, 28);
+            this.pictureBox2.Size = new System.Drawing.Size(26, 22);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 136;
             this.pictureBox2.TabStop = false;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(1, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1059, 615);
+            this.panel2.Size = new System.Drawing.Size(942, 47);
             this.panel2.TabIndex = 159;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(64, 75);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(829, 329);
+            this.panel1.TabIndex = 160;
             // 
             // ProfilePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1060, 616);
+            this.BackgroundImage = global::FlightReservationProject.Properties.Resources.Asset_29;
+            this.ClientSize = new System.Drawing.Size(942, 493);
             this.Controls.Add(this.lblBack);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.cbCountry);
@@ -373,8 +377,8 @@ namespace FlightReservationProject
             this.Controls.Add(this.label37);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProfilePage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProfilePage";
@@ -411,5 +415,6 @@ namespace FlightReservationProject
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

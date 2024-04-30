@@ -65,6 +65,9 @@ namespace FlightReservationProject
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.pnlPrintBoardingPass = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -85,9 +88,7 @@ namespace FlightReservationProject
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.startingPanel.SuspendLayout();
@@ -98,6 +99,7 @@ namespace FlightReservationProject
             this.pnlPrintBoardingPass.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -509,6 +511,40 @@ namespace FlightReservationProject
             this.pnlPrintBoardingPass.Size = new System.Drawing.Size(781, 327);
             this.pnlPrintBoardingPass.TabIndex = 171;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label25.Location = new System.Drawing.Point(239, 230);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(82, 18);
+            this.label25.TabIndex = 173;
+            this.label25.Text = "Checked In";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label27.Location = new System.Drawing.Point(29, 230);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(37, 18);
+            this.label27.TabIndex = 172;
+            this.label27.Text = "Budi";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(664, 228);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 25);
+            this.button3.TabIndex = 171;
+            this.button3.Text = "Print";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::FlightReservationProject.Properties.Resources.Asset_20;
@@ -722,39 +758,15 @@ namespace FlightReservationProject
             this.label35.TabIndex = 155;
             this.label35.Text = "Economy";
             // 
-            // button3
+            // pictureBox5
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(664, 228);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 25);
-            this.button3.TabIndex = 171;
-            this.button3.Text = "Print";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label25.Location = new System.Drawing.Point(239, 230);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(82, 18);
-            this.label25.TabIndex = 173;
-            this.label25.Text = "Checked In";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label27.Location = new System.Drawing.Point(29, 230);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(37, 18);
-            this.label27.TabIndex = 172;
-            this.label27.Text = "Budi";
+            this.pictureBox5.Image = global::FlightReservationProject.Properties.Resources.Asset_29;
+            this.pictureBox5.Location = new System.Drawing.Point(0, 43);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(949, 465);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 172;
+            this.pictureBox5.TabStop = false;
             // 
             // CheckInPage
             // 
@@ -762,9 +774,10 @@ namespace FlightReservationProject
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 493);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.startingPanel);
             this.Controls.Add(this.pnlPrintBoardingPass);
             this.Controls.Add(this.pnlCheckin);
-            this.Controls.Add(this.startingPanel);
+            this.Controls.Add(this.pictureBox5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CheckInPage";
             this.ShowIcon = false;
@@ -785,6 +798,7 @@ namespace FlightReservationProject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -850,5 +864,6 @@ namespace FlightReservationProject
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

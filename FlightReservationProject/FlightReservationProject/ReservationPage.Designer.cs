@@ -30,10 +30,12 @@ namespace FlightReservationProject
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblFill = new System.Windows.Forms.Label();
             this.dtpDob = new System.Windows.Forms.DateTimePicker();
+            this.lblException = new System.Windows.Forms.Label();
+            this.lblFill = new System.Windows.Forms.Label();
             this.cbBornIn = new System.Windows.Forms.ComboBox();
             this.lblBack = new System.Windows.Forms.Label();
             this.lblNext = new System.Windows.Forms.Label();
@@ -56,6 +58,7 @@ namespace FlightReservationProject
             this.lblTo = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblTimeArrival = new System.Windows.Forms.Label();
             this.btnPayment = new System.Windows.Forms.Button();
             this.pnlInformation = new System.Windows.Forms.Panel();
@@ -64,6 +67,7 @@ namespace FlightReservationProject
             this.btnConfirm = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.CopyIcon = new System.Windows.Forms.PictureBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -73,6 +77,7 @@ namespace FlightReservationProject
             this.customBtn3 = new FlightReservationProject.CustomBtn();
             this.btnOnlineBank = new FlightReservationProject.CustomBtn();
             this.btnTransfer = new FlightReservationProject.CustomBtn();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label27 = new System.Windows.Forms.Label();
             this.lblBabyPrice = new System.Windows.Forms.Label();
             this.lblBaby = new System.Windows.Forms.Label();
@@ -92,19 +97,14 @@ namespace FlightReservationProject
             this.lblClassPayment = new System.Windows.Forms.Label();
             this.lblFlightNum = new System.Windows.Forms.Label();
             this.lblAirlineName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.CopyIcon = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.lblException = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlInformation.SuspendLayout();
             this.pnlDetail.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CopyIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -119,6 +119,17 @@ namespace FlightReservationProject
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(942, 44);
             this.panel1.TabIndex = 50;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
+            this.pictureBox1.Location = new System.Drawing.Point(22, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -155,18 +166,6 @@ namespace FlightReservationProject
             this.panel2.Size = new System.Drawing.Size(406, 394);
             this.panel2.TabIndex = 52;
             // 
-            // lblFill
-            // 
-            this.lblFill.AutoSize = true;
-            this.lblFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFill.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.lblFill.Location = new System.Drawing.Point(115, 367);
-            this.lblFill.Name = "lblFill";
-            this.lblFill.Size = new System.Drawing.Size(164, 13);
-            this.lblFill.TabIndex = 159;
-            this.lblFill.Text = "Fill with account information";
-            this.lblFill.Click += new System.EventHandler(this.lblFill_Click);
-            // 
             // dtpDob
             // 
             this.dtpDob.Font = new System.Drawing.Font("Poppins", 10F);
@@ -178,6 +177,29 @@ namespace FlightReservationProject
             this.dtpDob.Size = new System.Drawing.Size(338, 32);
             this.dtpDob.TabIndex = 158;
             this.dtpDob.Value = new System.DateTime(2012, 4, 30, 0, 0, 0, 0);
+            // 
+            // lblException
+            // 
+            this.lblException.AutoSize = true;
+            this.lblException.ForeColor = System.Drawing.Color.Red;
+            this.lblException.Location = new System.Drawing.Point(34, 280);
+            this.lblException.Name = "lblException";
+            this.lblException.Size = new System.Drawing.Size(226, 17);
+            this.lblException.TabIndex = 160;
+            this.lblException.Text = "Age of child must be between 2-12";
+            this.lblException.Visible = false;
+            // 
+            // lblFill
+            // 
+            this.lblFill.AutoSize = true;
+            this.lblFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFill.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
+            this.lblFill.Location = new System.Drawing.Point(115, 367);
+            this.lblFill.Name = "lblFill";
+            this.lblFill.Size = new System.Drawing.Size(164, 13);
+            this.lblFill.TabIndex = 159;
+            this.lblFill.Text = "Fill with account information";
+            this.lblFill.Click += new System.EventHandler(this.lblFill_Click);
             // 
             // cbBornIn
             // 
@@ -429,6 +451,16 @@ namespace FlightReservationProject
             this.panel3.Size = new System.Drawing.Size(406, 332);
             this.panel3.TabIndex = 155;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::FlightReservationProject.Properties.Resources.Asset_14;
+            this.pictureBox2.Location = new System.Drawing.Point(29, 165);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 122);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 80;
+            this.pictureBox2.TabStop = false;
+            // 
             // lblTimeArrival
             // 
             this.lblTimeArrival.AutoSize = true;
@@ -549,6 +581,17 @@ namespace FlightReservationProject
             this.lblMessage.TabIndex = 105;
             this.lblMessage.UseCompatibleTextRendering = true;
             // 
+            // CopyIcon
+            // 
+            this.CopyIcon.Image = global::FlightReservationProject.Properties.Resources.copyIcon;
+            this.CopyIcon.Location = new System.Drawing.Point(759, 92);
+            this.CopyIcon.Name = "CopyIcon";
+            this.CopyIcon.Size = new System.Drawing.Size(28, 24);
+            this.CopyIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CopyIcon.TabIndex = 104;
+            this.CopyIcon.TabStop = false;
+            this.CopyIcon.Click += new System.EventHandler(this.CopyIcon_Click);
+            // 
             // label32
             // 
             this.label32.AutoSize = true;
@@ -667,6 +710,16 @@ namespace FlightReservationProject
             this.btnTransfer.TextColor = System.Drawing.Color.DimGray;
             this.btnTransfer.UseVisualStyleBackColor = false;
             this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::FlightReservationProject.Properties.Resources.Asset_26;
+            this.pictureBox3.Location = new System.Drawing.Point(392, 34);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(431, 252);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
             // 
             // label27
             // 
@@ -868,59 +921,6 @@ namespace FlightReservationProject
             this.lblAirlineName.TabIndex = 74;
             this.lblAirlineName.Text = "Garuda";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::FlightReservationProject.Properties.Resources.Asset_14;
-            this.pictureBox2.Location = new System.Drawing.Point(29, 165);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 122);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 80;
-            this.pictureBox2.TabStop = false;
-            // 
-            // CopyIcon
-            // 
-            this.CopyIcon.Image = global::FlightReservationProject.Properties.Resources.copyIcon;
-            this.CopyIcon.Location = new System.Drawing.Point(759, 92);
-            this.CopyIcon.Name = "CopyIcon";
-            this.CopyIcon.Size = new System.Drawing.Size(28, 24);
-            this.CopyIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CopyIcon.TabIndex = 104;
-            this.CopyIcon.TabStop = false;
-            this.CopyIcon.Click += new System.EventHandler(this.CopyIcon_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::FlightReservationProject.Properties.Resources.Asset_26;
-            this.pictureBox3.Location = new System.Drawing.Point(392, 34);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(431, 252);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
-            // lblException
-            // 
-            this.lblException.AutoSize = true;
-            this.lblException.ForeColor = System.Drawing.Color.Red;
-            this.lblException.Location = new System.Drawing.Point(34, 280);
-            this.lblException.Name = "lblException";
-            this.lblException.Size = new System.Drawing.Size(226, 17);
-            this.lblException.TabIndex = 160;
-            this.lblException.Text = "Age of child must be between 2-12";
-            this.lblException.Visible = false;
-            // 
             // ReservationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -932,21 +932,20 @@ namespace FlightReservationProject
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ReservationPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ReservationPage";
             this.Load += new System.EventHandler(this.ReservationPage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlInformation.ResumeLayout(false);
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CopyIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
