@@ -29,62 +29,62 @@ namespace FlightReservationProject
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblOrigin = new System.Windows.Forms.Label();
+            this.lblDestination = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblDepartureTime = new System.Windows.Forms.Label();
+            this.lblFlightNum = new System.Windows.Forms.Label();
+            this.lblBag = new System.Windows.Forms.Label();
+            this.lblGate = new System.Windows.Forms.Label();
+            this.lblSeat = new System.Windows.Forms.Label();
+            this.lblClass = new System.Windows.Forms.Label();
+            this.lblBoardingTime = new System.Windows.Forms.Label();
+            this.lblTo = new System.Windows.Forms.Label();
+            this.lblFrom = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(54, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Anthon Evan";
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(54, 120);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(99, 25);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "Anthon Evan";
             // 
-            // label2
+            // lblOrigin
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(54, 204);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Surabaya";
+            this.lblOrigin.AutoSize = true;
+            this.lblOrigin.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrigin.Location = new System.Drawing.Point(54, 204);
+            this.lblOrigin.Name = "lblOrigin";
+            this.lblOrigin.Size = new System.Drawing.Size(78, 25);
+            this.lblOrigin.TabIndex = 2;
+            this.lblOrigin.Text = "Surabaya";
             // 
-            // label3
+            // lblDestination
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(187, 204);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 25);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Jakarta";
+            this.lblDestination.AutoSize = true;
+            this.lblDestination.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDestination.Location = new System.Drawing.Point(187, 204);
+            this.lblDestination.Name = "lblDestination";
+            this.lblDestination.Size = new System.Drawing.Size(63, 25);
+            this.lblDestination.TabIndex = 3;
+            this.lblDestination.Text = "Jakarta";
             // 
-            // label4
+            // lblDate
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(325, 204);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 25);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "11 April 2024";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(325, 204);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(91, 25);
+            this.lblDate.TabIndex = 4;
+            this.lblDate.Text = "11 April 2024";
             // 
             // pictureBox1
             // 
@@ -96,95 +96,95 @@ namespace FlightReservationProject
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label5
+            // lblDepartureTime
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(455, 204);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 25);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "11.30";
+            this.lblDepartureTime.AutoSize = true;
+            this.lblDepartureTime.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepartureTime.Location = new System.Drawing.Point(455, 204);
+            this.lblDepartureTime.Name = "lblDepartureTime";
+            this.lblDepartureTime.Size = new System.Drawing.Size(40, 25);
+            this.lblDepartureTime.TabIndex = 5;
+            this.lblDepartureTime.Text = "11.30";
             // 
-            // label6
+            // lblFlightNum
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(455, 120);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 25);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "JT-210";
+            this.lblFlightNum.AutoSize = true;
+            this.lblFlightNum.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFlightNum.Location = new System.Drawing.Point(455, 120);
+            this.lblFlightNum.Name = "lblFlightNum";
+            this.lblFlightNum.Size = new System.Drawing.Size(56, 25);
+            this.lblFlightNum.TabIndex = 6;
+            this.lblFlightNum.Text = "JT-210";
             // 
-            // label7
+            // lblBag
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(325, 120);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 25);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "2";
+            this.lblBag.AutoSize = true;
+            this.lblBag.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBag.Location = new System.Drawing.Point(325, 120);
+            this.lblBag.Name = "lblBag";
+            this.lblBag.Size = new System.Drawing.Size(20, 25);
+            this.lblBag.TabIndex = 7;
+            this.lblBag.Text = "2";
             // 
-            // label8
+            // lblGate
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(58, 297);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 25);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "E 9";
+            this.lblGate.AutoSize = true;
+            this.lblGate.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGate.Location = new System.Drawing.Point(58, 297);
+            this.lblGate.Name = "lblGate";
+            this.lblGate.Size = new System.Drawing.Size(32, 25);
+            this.lblGate.TabIndex = 8;
+            this.lblGate.Text = "E 9";
             // 
-            // label9
+            // lblSeat
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(187, 297);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(33, 25);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "12A";
+            this.lblSeat.AutoSize = true;
+            this.lblSeat.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeat.Location = new System.Drawing.Point(187, 297);
+            this.lblSeat.Name = "lblSeat";
+            this.lblSeat.Size = new System.Drawing.Size(33, 25);
+            this.lblSeat.TabIndex = 9;
+            this.lblSeat.Text = "12A";
             // 
-            // label10
+            // lblClass
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(325, 297);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 25);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Economy";
+            this.lblClass.AutoSize = true;
+            this.lblClass.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClass.Location = new System.Drawing.Point(325, 297);
+            this.lblClass.Name = "lblClass";
+            this.lblClass.Size = new System.Drawing.Size(77, 25);
+            this.lblClass.TabIndex = 10;
+            this.lblClass.Text = "Economy";
             // 
-            // label11
+            // lblBoardingTime
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(455, 297);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(45, 25);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "10.30";
+            this.lblBoardingTime.AutoSize = true;
+            this.lblBoardingTime.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBoardingTime.Location = new System.Drawing.Point(455, 297);
+            this.lblBoardingTime.Name = "lblBoardingTime";
+            this.lblBoardingTime.Size = new System.Drawing.Size(45, 25);
+            this.lblBoardingTime.TabIndex = 11;
+            this.lblBoardingTime.Text = "10.30";
             // 
-            // label12
+            // lblTo
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(811, 117);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(63, 25);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Jakarta";
+            this.lblTo.AutoSize = true;
+            this.lblTo.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTo.Location = new System.Drawing.Point(811, 117);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Size = new System.Drawing.Size(63, 25);
+            this.lblTo.TabIndex = 13;
+            this.lblTo.Text = "Jakarta";
             // 
-            // label13
+            // lblFrom
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(612, 117);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(78, 25);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Surabaya";
+            this.lblFrom.AutoSize = true;
+            this.lblFrom.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrom.Location = new System.Drawing.Point(612, 117);
+            this.lblFrom.Name = "lblFrom";
+            this.lblFrom.Size = new System.Drawing.Size(78, 25);
+            this.lblFrom.TabIndex = 12;
+            this.lblFrom.Text = "Surabaya";
             // 
             // PrintBoardingPass
             // 
@@ -192,19 +192,19 @@ namespace FlightReservationProject
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(924, 450);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTo);
+            this.Controls.Add(this.lblFrom);
+            this.Controls.Add(this.lblBoardingTime);
+            this.Controls.Add(this.lblClass);
+            this.Controls.Add(this.lblSeat);
+            this.Controls.Add(this.lblGate);
+            this.Controls.Add(this.lblBag);
+            this.Controls.Add(this.lblFlightNum);
+            this.Controls.Add(this.lblDepartureTime);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.lblDestination);
+            this.Controls.Add(this.lblOrigin);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PrintBoardingPass";
@@ -219,18 +219,18 @@ namespace FlightReservationProject
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblOrigin;
+        private System.Windows.Forms.Label lblDestination;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblDepartureTime;
+        private System.Windows.Forms.Label lblFlightNum;
+        private System.Windows.Forms.Label lblBag;
+        private System.Windows.Forms.Label lblGate;
+        private System.Windows.Forms.Label lblSeat;
+        private System.Windows.Forms.Label lblClass;
+        private System.Windows.Forms.Label lblBoardingTime;
+        private System.Windows.Forms.Label lblTo;
+        private System.Windows.Forms.Label lblFrom;
     }
 }

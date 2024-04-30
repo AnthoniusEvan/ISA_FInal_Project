@@ -173,6 +173,46 @@ namespace FlightReservationProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Asset_23 {
+            get {
+                object obj = ResourceManager.GetObject("Asset 23", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Asset_24 {
+            get {
+                object obj = ResourceManager.GetObject("Asset 24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Asset_25 {
+            get {
+                object obj = ResourceManager.GetObject("Asset 25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Asset_26 {
+            get {
+                object obj = ResourceManager.GetObject("Asset 26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Asset_4 {
             get {
                 object obj = ResourceManager.GetObject("Asset 4", resourceCulture);
@@ -206,6 +246,16 @@ namespace FlightReservationProject.Properties {
         internal static System.Drawing.Bitmap Asset_9 {
             get {
                 object obj = ResourceManager.GetObject("Asset 9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap copyIcon {
+            get {
+                object obj = ResourceManager.GetObject("copyIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

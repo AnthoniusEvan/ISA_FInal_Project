@@ -16,5 +16,12 @@ namespace FlightReservationProject
         {
             InitializeComponent();
         }
+
+        private void btnEticket_Click(object sender, EventArgs e)
+        {
+            PrintETicket p = new PrintETicket();
+            p.Owner = this;
+            p.Show();
+        }
     }
 }

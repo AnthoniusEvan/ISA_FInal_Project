@@ -30,8 +30,11 @@ namespace FlightReservationProject
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblBookingNum = new System.Windows.Forms.Label();
+            this.btnEticket = new FlightReservationProject.CustomBtn();
             this.label8 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -41,12 +44,10 @@ namespace FlightReservationProject
             this.lblClass = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.btnEticket = new FlightReservationProject.CustomBtn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblBookingNum = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -59,6 +60,16 @@ namespace FlightReservationProject
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(942, 44);
             this.panel1.TabIndex = 51;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
+            this.pictureBox1.Location = new System.Drawing.Point(22, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -74,6 +85,7 @@ namespace FlightReservationProject
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.lblBookingNum);
             this.panel3.Controls.Add(this.btnEticket);
             this.panel3.Controls.Add(this.label8);
@@ -85,10 +97,42 @@ namespace FlightReservationProject
             this.panel3.Controls.Add(this.lblClass);
             this.panel3.Controls.Add(this.label21);
             this.panel3.Controls.Add(this.label22);
-            this.panel3.Location = new System.Drawing.Point(22, 62);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 44);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(887, 132);
+            this.panel3.Size = new System.Drawing.Size(942, 132);
             this.panel3.TabIndex = 156;
+            // 
+            // lblBookingNum
+            // 
+            this.lblBookingNum.AutoSize = true;
+            this.lblBookingNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookingNum.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblBookingNum.Location = new System.Drawing.Point(854, 19);
+            this.lblBookingNum.Name = "lblBookingNum";
+            this.lblBookingNum.Size = new System.Drawing.Size(61, 18);
+            this.lblBookingNum.TabIndex = 85;
+            this.lblBookingNum.Text = "#AVDJ2";
+            // 
+            // btnEticket
+            // 
+            this.btnEticket.AutoSize = true;
+            this.btnEticket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
+            this.btnEticket.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
+            this.btnEticket.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEticket.BorderRadius = 18;
+            this.btnEticket.BorderSize = 0;
+            this.btnEticket.FlatAppearance.BorderSize = 0;
+            this.btnEticket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEticket.ForeColor = System.Drawing.Color.White;
+            this.btnEticket.Location = new System.Drawing.Point(765, 56);
+            this.btnEticket.Name = "btnEticket";
+            this.btnEticket.Size = new System.Drawing.Size(150, 40);
+            this.btnEticket.TabIndex = 84;
+            this.btnEticket.Text = "E-Ticket";
+            this.btnEticket.TextColor = System.Drawing.Color.White;
+            this.btnEticket.UseVisualStyleBackColor = false;
+            this.btnEticket.Click += new System.EventHandler(this.btnEticket_Click);
             // 
             // label8
             // 
@@ -104,7 +148,7 @@ namespace FlightReservationProject
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(301, 56);
+            this.label16.Location = new System.Drawing.Point(373, 56);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(57, 18);
             this.label16.TabIndex = 82;
@@ -114,7 +158,7 @@ namespace FlightReservationProject
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(159, 56);
+            this.label17.Location = new System.Drawing.Point(231, 56);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(70, 18);
             this.label17.TabIndex = 81;
@@ -124,7 +168,7 @@ namespace FlightReservationProject
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(300, 73);
+            this.label18.Location = new System.Drawing.Point(372, 73);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(55, 20);
             this.label18.TabIndex = 79;
@@ -134,7 +178,7 @@ namespace FlightReservationProject
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(158, 74);
+            this.label19.Location = new System.Drawing.Point(230, 74);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(55, 20);
             this.label19.TabIndex = 78;
@@ -181,45 +225,15 @@ namespace FlightReservationProject
             this.label22.TabIndex = 74;
             this.label22.Text = "Garuda";
             // 
-            // btnEticket
+            // label2
             // 
-            this.btnEticket.AutoSize = true;
-            this.btnEticket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
-            this.btnEticket.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
-            this.btnEticket.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEticket.BorderRadius = 18;
-            this.btnEticket.BorderSize = 0;
-            this.btnEticket.FlatAppearance.BorderSize = 0;
-            this.btnEticket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEticket.ForeColor = System.Drawing.Color.White;
-            this.btnEticket.Location = new System.Drawing.Point(689, 56);
-            this.btnEticket.Name = "btnEticket";
-            this.btnEticket.Size = new System.Drawing.Size(150, 40);
-            this.btnEticket.TabIndex = 84;
-            this.btnEticket.Text = "E-Ticket";
-            this.btnEticket.TextColor = System.Drawing.Color.White;
-            this.btnEticket.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblBookingNum
-            // 
-            this.lblBookingNum.AutoSize = true;
-            this.lblBookingNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBookingNum.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblBookingNum.Location = new System.Drawing.Point(778, 19);
-            this.lblBookingNum.Name = "lblBookingNum";
-            this.lblBookingNum.Size = new System.Drawing.Size(61, 18);
-            this.lblBookingNum.TabIndex = 85;
-            this.lblBookingNum.Text = "#AVDJ2";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(329, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 18);
+            this.label2.TabIndex = 86;
+            this.label2.Text = "-";
             // 
             // BookingPage
             // 
@@ -234,9 +248,9 @@ namespace FlightReservationProject
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,5 +272,6 @@ namespace FlightReservationProject
         private System.Windows.Forms.Label label22;
         private CustomBtn btnEticket;
         private System.Windows.Forms.Label lblBookingNum;
+        private System.Windows.Forms.Label label2;
     }
 }
