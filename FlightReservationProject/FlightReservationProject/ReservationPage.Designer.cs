@@ -96,6 +96,7 @@ namespace FlightReservationProject
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.CopyIcon = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.lblException = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -133,8 +134,9 @@ namespace FlightReservationProject
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.lblFill);
             this.panel2.Controls.Add(this.dtpDob);
+            this.panel2.Controls.Add(this.lblException);
+            this.panel2.Controls.Add(this.lblFill);
             this.panel2.Controls.Add(this.cbBornIn);
             this.panel2.Controls.Add(this.lblBack);
             this.panel2.Controls.Add(this.lblNext);
@@ -265,7 +267,7 @@ namespace FlightReservationProject
             // 
             this.txtMobileNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtMobileNumber.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtMobileNumber.Location = new System.Drawing.Point(90, 315);
+            this.txtMobileNumber.Location = new System.Drawing.Point(90, 320);
             this.txtMobileNumber.Name = "txtMobileNumber";
             this.txtMobileNumber.Size = new System.Drawing.Size(284, 32);
             this.txtMobileNumber.TabIndex = 145;
@@ -277,7 +279,7 @@ namespace FlightReservationProject
             this.lblCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCode.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCode.Location = new System.Drawing.Point(36, 314);
+            this.lblCode.Location = new System.Drawing.Point(36, 319);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(47, 32);
             this.lblCode.TabIndex = 146;
@@ -295,7 +297,7 @@ namespace FlightReservationProject
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.AutoSize = true;
-            this.lblPhoneNumber.Location = new System.Drawing.Point(33, 292);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(33, 297);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(103, 17);
             this.lblPhoneNumber.TabIndex = 57;
@@ -868,7 +870,7 @@ namespace FlightReservationProject
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
             this.pictureBox1.Location = new System.Drawing.Point(22, 7);
             this.pictureBox1.Name = "pictureBox1";
@@ -907,6 +909,17 @@ namespace FlightReservationProject
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            // 
+            // lblException
+            // 
+            this.lblException.AutoSize = true;
+            this.lblException.ForeColor = System.Drawing.Color.Red;
+            this.lblException.Location = new System.Drawing.Point(34, 280);
+            this.lblException.Name = "lblException";
+            this.lblException.Size = new System.Drawing.Size(226, 17);
+            this.lblException.TabIndex = 160;
+            this.lblException.Text = "Age of child must be between 2-12";
+            this.lblException.Visible = false;
             // 
             // ReservationPage
             // 
@@ -1009,5 +1022,6 @@ namespace FlightReservationProject
         private System.Windows.Forms.ComboBox cbBornIn;
         private System.Windows.Forms.DateTimePicker dtpDob;
         private System.Windows.Forms.Label lblFill;
+        private System.Windows.Forms.Label lblException;
     }
 }

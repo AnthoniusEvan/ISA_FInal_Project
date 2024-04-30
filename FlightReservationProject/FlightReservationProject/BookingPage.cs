@@ -56,7 +56,7 @@ namespace FlightReservationProject
             // 
             // pnlBooking
             // 
-            pnlBooking.BackColor = System.Drawing.Color.White;
+            pnlBooking.BackColor = System.Drawing.Color.WhiteSmoke;
             pnlBooking.Controls.Add(label2);
             pnlBooking.Controls.Add(lblBookingNum);
             pnlBooking.Controls.Add(btnEticket);
@@ -75,6 +75,7 @@ namespace FlightReservationProject
             pnlBooking.Name = "pnlBooking";
             pnlBooking.Size = new System.Drawing.Size(707, 107);
             pnlBooking.TabIndex = 156;
+            pnlBooking.BorderStyle = BorderStyle.FixedSingle;
             // 
             // label2
             // 
