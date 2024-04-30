@@ -51,6 +51,10 @@ namespace FlightReservationProject
             Airline = airline;
             Price = price;
         }
+        public PlaneFlight()
+        {
+
+        }
         #endregion
 
         #region Methods
@@ -66,6 +70,8 @@ namespace FlightReservationProject
             }
             return result+1;
         }
+
+       
         #endregion
     }
 }

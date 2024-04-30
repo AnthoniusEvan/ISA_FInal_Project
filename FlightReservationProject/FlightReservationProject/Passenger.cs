@@ -46,6 +46,16 @@ namespace FlightReservationProject
             BornIn = bornIn;
             Dob = dob;
         }
+        public Passenger(string fullName, PlaneFlight flight, User user, string ageType, string title, Country bornIn, DateTime dob)
+        {
+            FullName = fullName;
+            Flight = flight;
+            User = user;
+            AgeType = ageType;
+            Title = title;
+            BornIn = bornIn;
+            Dob = dob;
+        }
         #endregion
     }
 }

@@ -40,6 +40,7 @@ namespace FlightReservationProject
             lblTimeArrival.Text = flight.Arrival.ToString("HH:mm");
             lblDate.Text = flight.Depart.ToString("dddd, dd MMMM yyyy");
 
+            if (order.getTotalPassengers() == 1) lblNext.Visible = false;
             passengers = new Passenger[order.getTotalPassengers()];
             ageTypes = new string[order.getTotalPassengers()];
 
@@ -61,6 +62,8 @@ namespace FlightReservationProject
             cbBornIn.ValueMember = "Id";
             cbBornIn.SelectedIndex = -1;
             currIndex = 0;
+
+            pnlInformation.BringToFront();
         }
 
         private void btnTransfer_Click(object sender, EventArgs e)
@@ -101,37 +104,68 @@ namespace FlightReservationProject
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            pnlInformation.Visible = false;
+            int index = 0;
+            if (order.getTotalPassengers() > 1)
+                index = order.getTotalPassengers()-1;
 
-            lblDepartureDate.Text = order.DateDepart.ToString("dddd, dd MMMM yyyy");
-            lblAirlineName.Text = flight.Airline;
-            lblFlightNum.Text = flight.FlightNumber;
-            lblClassPayment.Text = order.FlightClass.Name;
-            lblOri.Text = flight.FromCity.Name;
-            lblDes.Text = flight.ToCity.Name;
-            lblTimeFrom.Text = flight.Depart.ToString("HH:mm");
-            lblTimeTo.Text = flight.Arrival.ToString("HH:mm");
-            lblAdult.Text = order.Adult + "x Adult";
-            if (order.Adult > 1) lblAdult.Text += "s";
+            string error = "";
+            Passenger pass = SavePassengerInformation(out error);
+            if (error == "")
+                passengers[index] = pass;
+            else
+            {
+                MessageBox.Show(error, "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            bool canContinue = true;
+            foreach (Passenger p in passengers)
+            {
+                if (p == null) canContinue = false;
+            }
 
-            if (order.Child > 1) lblChild.Text = order.Child + "x Children";
-            else if (order.Child == 1) lblChild.Text = "1x Child";
-            else lblChild.Text = "";
+            if (canContinue)
+            {
+                pnlInformation.Visible = false;
 
-            if (order.Baby > 1) lblBaby.Text = order.Baby + "x Babies";
-            else if (order.Baby == 1) lblBaby.Text = "1x Baby";
-            else lblBaby.Text = "";
+                lblDepartureDate.Text = order.DateDepart.ToString("dddd, dd MMMM yyyy");
+                lblAirlineName.Text = flight.Airline;
+                lblFlightNum.Text = flight.FlightNumber;
+                lblClassPayment.Text = order.FlightClass.Name;
+                lblOri.Text = flight.FromCity.Name;
+                lblDes.Text = flight.ToCity.Name;
+                lblTimeFrom.Text = flight.Depart.ToString("HH:mm");
+                lblTimeTo.Text = flight.Arrival.ToString("HH:mm");
+                lblAdult.Text = order.Adult + "x Adult";
+                if (order.Adult > 1) lblAdult.Text += "s";
 
-            int adultPrice = flight.Price * order.Adult;
-            int childPrice = (int)(flight.Price * 0.8 * order.Child);
-            int babyPrice = (int)(flight.Price * 0.5 * order.Baby);
-            lblAdultPrice.Text = "IDR " + adultPrice.ToString("C2");
-            lblChildPrice.Text = "IDR " + childPrice.ToString("C2");
-            lblBabyPrice.Text = "IDR " + babyPrice.ToString("C2");
+                if (order.Child > 1) lblChild.Text = order.Child + "x Children";
+                else if (order.Child == 1) lblChild.Text = "1x Child";
+                else lblChild.Text = "";
 
-            int total = adultPrice + childPrice + babyPrice;
-            lblTotal.Text = "IDR " + total.ToString("C2");
-            pnlDetail.Visible = true;
+                if (order.Baby > 1) lblBaby.Text = order.Baby + "x Babies";
+                else if (order.Baby == 1) lblBaby.Text = "1x Baby";
+                else lblBaby.Text = "";
+
+                int adultPrice = flight.Price * order.Adult;
+                int childPrice = (int)(flight.Price * 0.8 * order.Child);
+                int babyPrice = (int)(flight.Price * 0.5 * order.Baby);
+
+
+                lblAdultPrice.Text = "IDR " + adultPrice.ToString("C2");
+                if (childPrice != 0) lblChildPrice.Text = "IDR " + childPrice.ToString("C2");
+                else lblChildPrice.Text = "";
+                if (babyPrice != 0) lblBabyPrice.Text = "IDR " + babyPrice.ToString("C2");
+                else lblBabyPrice.Text = "";
+
+                int total = adultPrice + childPrice + babyPrice;
+                lblTotal.Text = "IDR " + total.ToString("C2");
+                pnlDetail.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Please finish filling up the passenger's details!", "Required Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void lblBackToInfo_Click(object sender, EventArgs e)
@@ -139,28 +173,61 @@ namespace FlightReservationProject
             pnlInformation.Visible = true;
             pnlDetail.Visible = false;
         }
-        private Passenger SavePassengerInformation()
+        private Passenger SavePassengerInformation(out string error)
         {
-            if (txtFullname.Text != "" && cbTitle.Text != "" && txtMobileNumber.Text != "")
+            if (ageTypes[currIndex] == "Adult" && txtFullname.Text != "" && txtMobileNumber.Text != "" && cbBornIn.SelectedIndex!=-1)
             {
                 Passenger p = new Passenger(txtFullname.Text, flight, order.User, "adult", cbTitle.Text, lblCode.Text + "-" + txtMobileNumber.Text, (Country)cbBornIn.SelectedItem, dtpDob.Value);
+                error = "";
                 return p;
             }
-            else return null;
+            else if (ageTypes[currIndex] != "Adult" && txtFullname.Text != "" && cbBornIn.SelectedIndex != -1) 
+            {
+                Passenger p = new Passenger(txtFullname.Text, flight, order.User, "adult", cbTitle.Text, (Country)cbBornIn.SelectedItem, dtpDob.Value);
+                error = "";
+                return p;
+            }
+            else {
+                if (txtFullname.Text == "") error = "Please fill in the passenger's name!";
+                else if (cbBornIn.SelectedIndex == -1) error = "Please select the passenger's nationality!";
+                else if (ageTypes[currIndex] == "Adult" && txtMobileNumber.Text == "") error = "Pleaser provide the mobile number owned by " + txtFullname.Text + "!";
+                else error = "An error occured!";
+                return null;
+            }
         }
         private void lblNext_Click(object sender, EventArgs e)
         {
-            passengers[currIndex] = SavePassengerInformation();
-            
+            string error="";
+            passengers[currIndex] = SavePassengerInformation(out error);
+            if (error!="")
+            {
+                MessageBox.Show(error, "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (currIndex<ageTypes.Length-1)currIndex += 1;
             UpdatePassengerField();
         }
         private void UpdatePassengerField()
         {
             string info = "";
-            if (ageTypes[currIndex] == "Adult") info = "Enter " + ageTypes[currIndex] + " " + (currIndex+1) + " Information";
-            else if (ageTypes[currIndex] == "Child") info = "Enter " + ageTypes[currIndex] + " " + (currIndex+1 - order.Adult) + " Information";
-            else if (ageTypes[currIndex] == "Baby") info = "Enter " + ageTypes[currIndex] + " " + (currIndex+1 - order.Adult - order.Child) + " Information";
+            if (ageTypes[currIndex] == "Adult")
+            {
+                info = "Enter " + ageTypes[currIndex] + " " + (currIndex + 1) + " Information";
+                dtpDob.MinDate = new DateTime(DateTime.Now.Year - 120, DateTime.Now.Month, DateTime.Now.Day);
+                dtpDob.MaxDate = new DateTime(DateTime.Now.Year - 12, DateTime.Now.Month, DateTime.Now.Day);
+            }
+            else if (ageTypes[currIndex] == "Child")
+            {
+                info = "Enter " + ageTypes[currIndex] + " " + (currIndex + 1 - order.Adult) + " Information";
+                dtpDob.MinDate = new DateTime(DateTime.Now.Year - 12, DateTime.Now.Month, DateTime.Now.Day);
+                dtpDob.MaxDate = new DateTime(DateTime.Now.Year - 2, DateTime.Now.Month, DateTime.Now.Day);
+            }
+            else if (ageTypes[currIndex] == "Baby")
+            {
+                info = "Enter " + ageTypes[currIndex] + " " + (currIndex + 1 - order.Adult - order.Child) + " Information";
+                dtpDob.MinDate = new DateTime(DateTime.Now.Year - 2, DateTime.Now.Month, DateTime.Now.Day);
+                dtpDob.MaxDate = DateTime.Now;
+            }
 
             lblInformation.Text = info;
             if (ageTypes[currIndex]=="Adult")
@@ -192,21 +259,26 @@ namespace FlightReservationProject
                 txtFullname.Text = currPass.FullName;
                 cbBornIn.SelectedValue = currPass.BornIn.Id;
                 dtpDob.Value = currPass.Dob;
-                if (currPass.PhoneNumber != "") txtMobileNumber.Text = currPass.PhoneNumber.Split('-')[1];
+                if (ageTypes[currIndex]=="Adult"&&currPass.PhoneNumber != "") txtMobileNumber.Text = currPass.PhoneNumber.Split('-')[1];
             }
             else
             {
                 cbTitle.Text= "";
                 cbTitle.SelectedIndex = -1;
                 txtFullname.Text = "";
-                dtpDob.Value = DateTime.Now;
+                dtpDob.Value = dtpDob.MaxDate;
                 txtMobileNumber.Text = "";
             }
         }
         private void lblBack_Click(object sender, EventArgs e)
         {
-            passengers[currIndex] = SavePassengerInformation();
-
+            string error = "";
+            passengers[currIndex] = SavePassengerInformation(out error);
+            if (error != "")
+            {
+                MessageBox.Show(error, "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (currIndex>0) currIndex -= 1;
             UpdatePassengerField();
         }
@@ -231,6 +303,11 @@ namespace FlightReservationProject
             lblCode.Text = "+" + ((Country)cbBornIn.SelectedItem).DialingCode;
             txtMobileNumber.Left = lblCode.Right + 5;
             txtMobileNumber.Width = txtFullname.Right - txtMobileNumber.Left;
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -33,6 +33,9 @@ namespace FlightReservationProject
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblFill = new System.Windows.Forms.Label();
+            this.dtpDob = new System.Windows.Forms.DateTimePicker();
+            this.cbBornIn = new System.Windows.Forms.ComboBox();
             this.lblBack = new System.Windows.Forms.Label();
             this.lblNext = new System.Windows.Forms.Label();
             this.lblInformation = new System.Windows.Forms.Label();
@@ -60,7 +63,7 @@ namespace FlightReservationProject
             this.pnlInformation = new System.Windows.Forms.Panel();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.lblBackToInfo = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
             this.CopyIcon = new System.Windows.Forms.PictureBox();
@@ -90,9 +93,6 @@ namespace FlightReservationProject
             this.lblClassPayment = new System.Windows.Forms.Label();
             this.lblFlightNum = new System.Windows.Forms.Label();
             this.lblAirlineName = new System.Windows.Forms.Label();
-            this.cbBornIn = new System.Windows.Forms.ComboBox();
-            this.dtpDob = new System.Windows.Forms.DateTimePicker();
-            this.lblFill = new System.Windows.Forms.Label();
             this.customBtn3 = new FlightReservationProject.CustomBtn();
             this.btnOnlineBank = new FlightReservationProject.CustomBtn();
             this.btnTransfer = new FlightReservationProject.CustomBtn();
@@ -122,12 +122,13 @@ namespace FlightReservationProject
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
             this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
             this.pictureBox1.Location = new System.Drawing.Point(25, 9);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 38);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -166,6 +167,49 @@ namespace FlightReservationProject
             this.panel2.Size = new System.Drawing.Size(457, 492);
             this.panel2.TabIndex = 52;
             // 
+            // lblFill
+            // 
+            this.lblFill.AutoSize = true;
+            this.lblFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFill.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
+            this.lblFill.Location = new System.Drawing.Point(129, 459);
+            this.lblFill.Name = "lblFill";
+            this.lblFill.Size = new System.Drawing.Size(188, 15);
+            this.lblFill.TabIndex = 159;
+            this.lblFill.Text = "Fill with account information";
+            this.lblFill.Click += new System.EventHandler(this.lblFill_Click);
+            // 
+            // dtpDob
+            // 
+            this.dtpDob.Font = new System.Drawing.Font("Poppins", 10F);
+            this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDob.Location = new System.Drawing.Point(40, 311);
+            this.dtpDob.MaxDate = new System.DateTime(2012, 4, 30, 0, 0, 0, 0);
+            this.dtpDob.Name = "dtpDob";
+            this.dtpDob.Size = new System.Drawing.Size(380, 37);
+            this.dtpDob.TabIndex = 158;
+            this.dtpDob.Value = new System.DateTime(2012, 4, 30, 0, 0, 0, 0);
+            // 
+            // cbBornIn
+            // 
+            this.cbBornIn.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbBornIn.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbBornIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
+            this.cbBornIn.Font = new System.Drawing.Font("Poppins", 10F);
+            this.cbBornIn.FormattingEnabled = true;
+            this.cbBornIn.IntegralHeight = false;
+            this.cbBornIn.Items.AddRange(new object[] {
+            "Mr",
+            "Mrs",
+            "Ms"});
+            this.cbBornIn.Location = new System.Drawing.Point(40, 234);
+            this.cbBornIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbBornIn.MaxDropDownItems = 5;
+            this.cbBornIn.Name = "cbBornIn";
+            this.cbBornIn.Size = new System.Drawing.Size(380, 44);
+            this.cbBornIn.TabIndex = 157;
+            this.cbBornIn.SelectedIndexChanged += new System.EventHandler(this.cbBornIn_SelectedIndexChanged);
+            // 
             // lblBack
             // 
             this.lblBack.AutoSize = true;
@@ -194,13 +238,13 @@ namespace FlightReservationProject
             // lblInformation
             // 
             this.lblInformation.AutoSize = true;
-            this.lblInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInformation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.lblInformation.Location = new System.Drawing.Point(134, 21);
+            this.lblInformation.Location = new System.Drawing.Point(108, 19);
             this.lblInformation.Name = "lblInformation";
-            this.lblInformation.Size = new System.Drawing.Size(210, 20);
+            this.lblInformation.Size = new System.Drawing.Size(250, 25);
             this.lblInformation.TabIndex = 3;
-            this.lblInformation.Text = "Enter Adult 1 information";
+            this.lblInformation.Text = "Enter Adult 1 Information";
             // 
             // cbTitle
             // 
@@ -448,7 +492,7 @@ namespace FlightReservationProject
             // pnlDetail
             // 
             this.pnlDetail.Controls.Add(this.lblBackToInfo);
-            this.pnlDetail.Controls.Add(this.button1);
+            this.pnlDetail.Controls.Add(this.btnConfirm);
             this.pnlDetail.Controls.Add(this.panel7);
             this.pnlDetail.Location = new System.Drawing.Point(0, 54);
             this.pnlDetail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -470,18 +514,19 @@ namespace FlightReservationProject
             this.lblBackToInfo.Text = "< Back";
             this.lblBackToInfo.Click += new System.EventHandler(this.lblBackToInfo_Click);
             // 
-            // button1
+            // btnConfirm
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(694, 468);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(320, 58);
-            this.button1.TabIndex = 156;
-            this.button1.Text = "Confirm Payment";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.Location = new System.Drawing.Point(694, 468);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(320, 58);
+            this.btnConfirm.TabIndex = 156;
+            this.btnConfirm.Text = "Confirm Payment";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // panel7
             // 
@@ -817,47 +862,6 @@ namespace FlightReservationProject
             this.lblAirlineName.TabIndex = 74;
             this.lblAirlineName.Text = "Garuda";
             // 
-            // cbBornIn
-            // 
-            this.cbBornIn.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbBornIn.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbBornIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
-            this.cbBornIn.Font = new System.Drawing.Font("Poppins", 10F);
-            this.cbBornIn.FormattingEnabled = true;
-            this.cbBornIn.IntegralHeight = false;
-            this.cbBornIn.Items.AddRange(new object[] {
-            "Mr",
-            "Mrs",
-            "Ms"});
-            this.cbBornIn.Location = new System.Drawing.Point(40, 234);
-            this.cbBornIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbBornIn.MaxDropDownItems = 5;
-            this.cbBornIn.Name = "cbBornIn";
-            this.cbBornIn.Size = new System.Drawing.Size(380, 44);
-            this.cbBornIn.TabIndex = 157;
-            this.cbBornIn.SelectedIndexChanged += new System.EventHandler(this.cbBornIn_SelectedIndexChanged);
-            // 
-            // dtpDob
-            // 
-            this.dtpDob.Font = new System.Drawing.Font("Poppins", 10F);
-            this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDob.Location = new System.Drawing.Point(40, 311);
-            this.dtpDob.Name = "dtpDob";
-            this.dtpDob.Size = new System.Drawing.Size(380, 37);
-            this.dtpDob.TabIndex = 158;
-            // 
-            // lblFill
-            // 
-            this.lblFill.AutoSize = true;
-            this.lblFill.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFill.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.lblFill.Location = new System.Drawing.Point(129, 459);
-            this.lblFill.Name = "lblFill";
-            this.lblFill.Size = new System.Drawing.Size(188, 15);
-            this.lblFill.TabIndex = 159;
-            this.lblFill.Text = "Fill with account information";
-            this.lblFill.Click += new System.EventHandler(this.lblFill_Click);
-            // 
             // customBtn3
             // 
             this.customBtn3.BackColor = System.Drawing.Color.White;
@@ -985,7 +989,7 @@ namespace FlightReservationProject
         private System.Windows.Forms.Label lblNext;
         private System.Windows.Forms.Panel pnlInformation;
         private System.Windows.Forms.Panel pnlDetail;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label9;

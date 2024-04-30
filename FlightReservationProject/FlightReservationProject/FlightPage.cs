@@ -38,11 +38,17 @@ namespace FlightReservationProject
         private void GenerateRandomFlights(Reservation order)
         {
             Random rnd = new Random();
-            for (int i = 0; i < rnd.Next(3,15); i++)
+            for (int i = 0; i < rnd.Next(3,24); i++)
             {
                 List<string> airlines = new List<string>() { "Garuda", "Lion Air", "Wings Air", "Citilink", "Batik Air", "Scoot" };
                 string airline = airlines[rnd.Next(6)];
-                string flightNumber = airline.Substring(0, 2).ToUpper()+PlaneFlight.GetFlightNumber(airline.Substring(0, 2)).ToString("D4");
+
+                int count = 0;
+                foreach(PlaneFlight pf in planeFlights)
+                {
+                    if (pf.FlightNumber.StartsWith(airline.Substring(0, 2).ToUpper())) count += 1;
+                }
+                string flightNumber = airline.Substring(0, 2).ToUpper()+(PlaneFlight.GetFlightNumber(airline.Substring(0, 2))+count).ToString("D4");
                 DateTime depart = new DateTime(order.DateDepart.Year, order.DateDepart.Month, order.DateDepart.Day, rnd.Next(24), rnd.Next(0,12)*5, 0);
                 int duration = rnd.Next(2, 10) * 30;
                 DateTime arrival = depart.AddMinutes(duration);
@@ -54,10 +60,10 @@ namespace FlightReservationProject
                 int price = rnd.Next(200000,600000) * multiplier;
                 PlaneFlight p = new PlaneFlight(flightNumber, order.FromCity, order.ToCity, depart, arrival, airline, price);
                 planeFlights.Add(p);
-                CreateFlights(p, i);
+                CreateFlights(p, flightNumber);
             }
         }
-        private void CreateFlights(PlaneFlight flight, int order)
+        private void CreateFlights(PlaneFlight flight, string flightNumber)
         {
             Panel pnlFlight = new Panel();
             CustomBtn btnOrder = new CustomBtn();
@@ -112,7 +118,7 @@ namespace FlightReservationProject
             btnOrder.TextColor = System.Drawing.Color.White;
             btnOrder.UseVisualStyleBackColor = false;
             btnOrder.Click += new System.EventHandler(btnOrder_Click);
-            btnOrder.Tag = order;
+            btnOrder.Tag = flightNumber;
             //
             // pnlFlight
             // 
@@ -243,7 +249,16 @@ namespace FlightReservationProject
         private void btnOrder_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
-            ReservationPage p = new ReservationPage(planeFlights[int.Parse(b.Tag.ToString())], order);
+            PlaneFlight spf=new PlaneFlight();
+            foreach(PlaneFlight pf in planeFlights)
+            {
+                if (pf.FlightNumber == b.Tag.ToString())
+                {
+                    spf = pf;
+                    break;
+                }
+            }
+            ReservationPage p = new ReservationPage(spf, order);
             p.Owner = this;
             p.Show();
         }
