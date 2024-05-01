@@ -235,7 +235,7 @@ namespace FlightReservationProject
             int child = int.Parse(txtChild.Text);
             int baby = int.Parse(txtBaby.Text);
             FlightClass flightClass = (FlightClass)cbClass.SelectedItem;
-            Reservation r = new Reservation(activeUser, from, to, dtDate.Value, adult, child, baby, flightClass);
+            Reservation r = new Reservation(activeUser, from, to, dtDate.Value, adult, child, baby, flightClass, aes);
 
             FlightPage p = new FlightPage(r);
             p.Owner = this;

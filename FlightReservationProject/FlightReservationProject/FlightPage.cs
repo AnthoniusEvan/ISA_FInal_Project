@@ -20,11 +20,12 @@ namespace FlightReservationProject
             InitializeComponent();
         }
         public AES aes;
+        public User activeUser;
         private void FlightPage_Load(object sender, EventArgs e)
         {
             DashboardPage dp = (DashboardPage)this.Owner;
             this.aes = dp.aes;
-
+            this.activeUser = dp.activeUser;
             order.FromCity.Name = order.FromCity.Name.Split(',')[0];
             order.ToCity.Name = order.ToCity.Name.Split(',')[0];
             lblOri.Text = order.FromCity.Name;

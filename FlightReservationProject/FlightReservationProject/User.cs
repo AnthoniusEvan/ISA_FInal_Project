@@ -236,13 +236,13 @@ namespace FlightReservationProject
 
             return dbConnection.ExecuteNonQuery(sql);
         }
-        public static int Update(User user, AES aes)
+        public static int Update(User user, string password, AES aes)
         {
             string sql = string.Format("UPDATE user SET full_name = '{0}', address = '{1}', date_of_birth = '{2}', mobile_number = '{3}', from_city_id = '{4}' WHERE id = SHA2('{5}',512) AND email = SHA2('{6}',512)", aes.Encrypt(user.FullName), aes.Encrypt(user.Address), user.BirthDate.ToString("yyyy-MM-dd"), aes.Encrypt(user.MobileNumber), user.FromCity.Id, GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());
 
-            if (user.Password != "")
+            if (password != "")
             {
-                sql += string.Format(";UPDATE user SET password = SHA2('{0}',512) WHERE id = SHA2('{1}',512) AND email = SHA2('{2}',512)",GetUInt64Hash(SHA512.Create(), user.Password).ToString(), GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());
+                sql += string.Format(";UPDATE user SET password = SHA2('{0}',512) WHERE id = SHA2('{1}',512) AND email = SHA2('{2}',512)",GetUInt64Hash(SHA512.Create(), password).ToString(), GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());
             }
 
             return dbConnection.ExecuteNonQuery(sql);
@@ -259,9 +259,9 @@ namespace FlightReservationProject
             }
         }
 
-        public List<Reservation> RetrieveReservation()
+        public List<Reservation> RetrieveReservation(AES aes)
         {
-            string sql = "SELECT r.id, r.user_id, r.user_email, r.from_city, fc.name, r.to_city, tc.name, r.adult, r.child, r.baby, r.date_depart, r.date_arrival, r.class_id, c.name, r.flight_number, r.ticket_num FROM reservation r INNER JOIN city fc ON r.from_city = fc.id INNER JOIN city tc ON r.to_city = tc.id LEFT JOIN class c ON r.class_id = c.id WHERE r.user_id = '" + Id + "' AND r.user_email = '" + Email + "'";
+            string sql = "SELECT r.id, r.user_email, r.from_city, fc.name, r.to_city, tc.name, r.adult, r.child, r.baby, r.date_depart, r.date_arrival, r.class_id, c.name, r.flight_number, r.ticket_num FROM reservation r INNER JOIN city fc ON r.from_city = fc.id INNER JOIN city tc ON r.to_city = tc.id LEFT JOIN class c ON r.class_id = c.id WHERE r.user_email = SHA2('" + GetUInt64Hash(SHA512.Create(), Email).ToString() + "',512)";
 
 
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
@@ -274,11 +274,11 @@ namespace FlightReservationProject
                         List<Reservation> reservations = new List<Reservation>();
                         while (results.Read())
                         {
-                            City fc = new City(results.GetInt32(3), results.GetString(4));
-                            City tc = new City(results.GetInt32(5), results.GetString(6));
-                            FlightClass c = new FlightClass(results.GetInt32(12), results.GetString(13));
-                            Reservation r = new Reservation(results.GetInt32(0), this, fc, tc, results.GetDateTime(10), results.GetInt32(7), results.GetInt32(8), results.GetInt32(9), c, results.GetString(15));
-                            r.ChooseFlight(PlaneFlight.GetChosenFlight(results.GetString(14)));
+                            City fc = new City(results.GetInt32(2), results.GetString(3));
+                            City tc = new City(results.GetInt32(4), results.GetString(5));
+                            FlightClass c = new FlightClass(results.GetInt32(11), results.GetString(12));
+                            Reservation r = new Reservation(results.GetInt32(0), this, fc, tc, results.GetDateTime(9), results.GetInt32(6), results.GetInt32(7), results.GetInt32(8), c, aes.Decrypt(results.GetString(14)));
+                            r.ChooseFlight(PlaneFlight.GetChosenFlight(results.GetString(13)));
                             reservations.Add(r);
                         }
                         if (reservations.Count > 0) return reservations;
@@ -291,7 +291,7 @@ namespace FlightReservationProject
 
         public Reservation CheckIn(string ticketNum, string full_name, AES aes)
         {
-            string sql = "SELECT r.id, r.user_id, r.user_email, r.from_city, fc.name, r.to_city, tc.name, r.adult, r.child, r.baby, r.date_depart, r.date_arrival, r.class_id, c.name, r.flight_number, r.ticket_num FROM reservation r INNER JOIN city fc ON r.from_city = fc.id INNER JOIN city tc ON r.to_city = tc.id LEFT JOIN class c ON r.class_id = c.id WHERE r.user_id = SHA2(@id,512) AND r.user_email = SHA2(@email,512) AND r.ticket_num = @ticketNum";
+            string sql = "SELECT r.id, r.user_email, r.from_city, fc.name, r.to_city, tc.name, r.adult, r.child, r.baby, r.date_depart, r.date_arrival, r.class_id, c.name, r.flight_number, r.ticket_num FROM reservation r INNER JOIN city fc ON r.from_city = fc.id INNER JOIN city tc ON r.to_city = tc.id LEFT JOIN class c ON r.class_id = c.id WHERE r.user_email = SHA2(@email,512) AND r.ticket_num = @ticketNum";
 
             Reservation reservation=new Reservation();
 
@@ -299,7 +299,6 @@ namespace FlightReservationProject
             {
                 using (MySqlCommand com = new MySqlCommand(sql, connection))
                 {
-                    com.Parameters.AddWithValue("@id", GetUInt64Hash(SHA512.Create(), Id).ToString());
                     com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), Email).ToString());
                     com.Parameters.AddWithValue("@ticketNum",aes.Encrypt(ticketNum));
                     connection.Open();
@@ -307,11 +306,11 @@ namespace FlightReservationProject
                     {
                         if (results.Read())
                         {
-                            City fc = new City(results.GetInt32(3), results.GetString(4));
-                            City tc = new City(results.GetInt32(5), results.GetString(6));
-                            FlightClass c = new FlightClass(results.GetInt32(12), results.GetString(13));
-                            reservation = new Reservation(results.GetInt32(0), this, fc, tc, results.GetDateTime(10), results.GetInt32(7), results.GetInt32(8), results.GetInt32(9), c, aes.Decrypt(results.GetString(15)));
-                            reservation.ChooseFlight(PlaneFlight.GetChosenFlight(results.GetString(14)));
+                            City fc = new City(results.GetInt32(2), results.GetString(3));
+                            City tc = new City(results.GetInt32(4), results.GetString(5));
+                            FlightClass c = new FlightClass(results.GetInt32(11), results.GetString(12));
+                            reservation = new Reservation(results.GetInt32(0), this, fc, tc, results.GetDateTime(9), results.GetInt32(6), results.GetInt32(7), results.GetInt32(8), c, aes.Decrypt(results.GetString(14)));
+                            reservation.ChooseFlight(PlaneFlight.GetChosenFlight(results.GetString(13)));
                         }
                     }
                 }

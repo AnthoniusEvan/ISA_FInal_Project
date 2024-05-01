@@ -57,10 +57,12 @@ namespace FlightReservationProject
                 lblDate.Text = ticket.DateDepart.ToString("dddd, dd MMMM yyyy");
                 
                 checkedIn = new bool[ticket.ListOfPassengers.Count];
+                int i = 0;
                 foreach(Passenger p in ticket.ListOfPassengers)
                 {
                     p.Seat = BoardingPass.GenerateRandomSeat();
-                    DisplayPassenger(p);
+                    DisplayPassenger(p, i);
+                    i++;
                 }
                 pnlCheckin.BringToFront();
             }
@@ -80,7 +82,7 @@ namespace FlightReservationProject
                 checkedIn[(int)(cb.Tag)] = false;
             }
         }
-        private void DisplayPassenger(Passenger p)
+        private void DisplayPassenger(Passenger p, int index)
         {
             Label lblName = new Label();
             CheckBox cbCheckedIn = new CheckBox();
@@ -124,9 +126,9 @@ namespace FlightReservationProject
             cbCheckedIn.TabIndex = 171;
             cbCheckedIn.Text = "Not Checked In";
             cbCheckedIn.UseVisualStyleBackColor = true;
-            cbCheckedIn.Tag = int.Parse(p.Id) - 1;
+            cbCheckedIn.Tag = index;
             cbCheckedIn.CheckedChanged += new System.EventHandler(cbCheckedIn_CheckedChanged);
-            if (Passenger.IsCheckedIn(p.Id, ticket.FlightChosen.FlightNumber))
+            if (Passenger.IsCheckedIn(p.Id, ticket.FlightChosen.FlightNumber, aes))
             {
                 cbCheckedIn.Checked = true;
                 cbCheckedIn.Enabled = false;
@@ -200,7 +202,7 @@ namespace FlightReservationProject
 
         private void DisplayCheckedIn(Passenger p)
         {
-            if (Passenger.IsCheckedIn(p.Id, ticket.FlightChosen.FlightNumber))
+            if (Passenger.IsCheckedIn(p.Id, ticket.FlightChosen.FlightNumber, aes))
             {
                 return;
             }

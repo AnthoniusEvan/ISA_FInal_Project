@@ -16,14 +16,14 @@ namespace FlightReservationProject
         AES aes;
         public PrintETicket(Reservation ticket)
         {
-            BookingPage p = (BookingPage)this.Owner;
-            this.aes = p.aes;
             this.ticket = ticket;
             InitializeComponent();
         }
 
         private void PrintETicket_Load(object sender, EventArgs e)
         {
+            BookingPage p = (BookingPage)this.Owner;
+            this.aes = p.aes;
             lblAirline.Text = ticket.FlightChosen.Airline;
             lblFlightNum.Text = ticket.FlightChosen.FlightNumber;
             lblClass.Text = ticket.FlightClass.Name;

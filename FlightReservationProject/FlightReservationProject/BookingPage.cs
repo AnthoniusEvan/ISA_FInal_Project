@@ -33,10 +33,26 @@ namespace FlightReservationProject
         public AES aes;
         private void BookingPage_Load(object sender, EventArgs e)
         {
-            DashboardPage p = (DashboardPage)this.Owner;
-            activeUser = p.activeUser;
-            this.aes = p.aes;
-            reservations = activeUser.RetrieveReservation();
+            if (this.Owner.GetType() == typeof(DashboardPage))
+            {
+                DashboardPage p = (DashboardPage)this.Owner;
+                this.aes = p.aes;
+                activeUser = p.activeUser;
+            }
+            else if (this.Owner.GetType() == typeof(FlightPage))
+            {
+                FlightPage p = (FlightPage)this.Owner;
+                this.aes = p.aes;
+                activeUser = p.activeUser;
+            }
+            else
+            {
+                ReservationPage p = (ReservationPage)this.Owner;
+                this.aes = p.aes;
+                activeUser = p.activeUser;
+            }
+
+            reservations = activeUser.RetrieveReservation(aes);
             foreach (Reservation r in reservations)
             {
                 CreateBooking(r);

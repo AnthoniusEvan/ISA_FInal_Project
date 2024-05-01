@@ -16,23 +16,14 @@ namespace FlightReservationProject
         {
             InitializeComponent();
         }
-
         private void btnEticket_Click(object sender, EventArgs e)
         {
             BookingPage bookingPage = new BookingPage();
             bookingPage.Owner = this.Owner;
             bookingPage.Show();
 
-            DashboardPage p = (DashboardPage)this.Owner;
-            if (p != null)
-            {
-                User activeUser = p.activeUser;
-                foreach (Reservation reservation in activeUser.RetrieveReservation())
-                {
-                    bookingPage.CreateBooking(reservation);
-                }
-            }
-            this.Close();
+            bookingPage.Owner = null;
+            this.Owner.Owner.Close();
         }
 
         private void backHome_Click(object sender, EventArgs e)
@@ -44,10 +35,9 @@ namespace FlightReservationProject
             }
             this.Close();
         }
-
         private void ConfirmarionPage_Load(object sender, EventArgs e)
         {
-
+            ReservationPage p = (ReservationPage)this.Owner;
         }
     }
 }

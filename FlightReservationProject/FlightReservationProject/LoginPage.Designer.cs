@@ -105,7 +105,7 @@
             this.cbShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowPass.Font = new System.Drawing.Font("Poppins", 7F);
-            this.cbShowPass.Location = new System.Drawing.Point(309, 363);
+            this.cbShowPass.Location = new System.Drawing.Point(310, 385);
             this.cbShowPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbShowPass.Name = "cbShowPass";
             this.cbShowPass.Size = new System.Drawing.Size(139, 29);
@@ -121,7 +121,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.BackColor = System.Drawing.Color.White;
             this.lblPassword.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblPassword.Location = new System.Drawing.Point(200, 288);
+            this.lblPassword.Location = new System.Drawing.Point(201, 310);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(93, 28);
             this.lblPassword.TabIndex = 10;
@@ -131,7 +131,7 @@
             // 
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtPassword.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtPassword.Location = new System.Drawing.Point(204, 318);
+            this.txtPassword.Location = new System.Drawing.Point(205, 340);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
@@ -142,7 +142,7 @@
             // 
             this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtUsername.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(204, 237);
+            this.txtUsername.Location = new System.Drawing.Point(205, 259);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(242, 37);
@@ -153,7 +153,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.BackColor = System.Drawing.Color.White;
             this.lblEmail.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblEmail.Location = new System.Drawing.Point(200, 208);
+            this.lblEmail.Location = new System.Drawing.Point(201, 230);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(59, 28);
             this.lblEmail.TabIndex = 9;
@@ -188,7 +188,7 @@
             // 
             this.txtId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtId.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(205, 162);
+            this.txtId.Location = new System.Drawing.Point(206, 180);
             this.txtId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(242, 37);
@@ -199,7 +199,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Poppins", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(201, 133);
+            this.label2.Location = new System.Drawing.Point(202, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 28);
             this.label2.TabIndex = 8;

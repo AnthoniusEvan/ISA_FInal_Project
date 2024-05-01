@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using DbLib;
@@ -60,7 +61,7 @@ namespace FlightReservationProject
         }
 
         // Used to export data
-        public Reservation(User user, City from, City to, DateTime dateDepart, int adult, int child, int baby, FlightClass flightClass)
+        public Reservation(User user, City from, City to, DateTime dateDepart, int adult, int child, int baby, FlightClass flightClass, AES aes)
         {
             User = user;
             FromCity = from;
@@ -71,7 +72,7 @@ namespace FlightReservationProject
             Baby = baby;
             FlightClass = flightClass;
             ListOfPassengers = new List<Passenger>();
-            Id = GenerateId();
+            Id = GenerateId(aes);
         }
         public Reservation()
         {
@@ -118,7 +119,7 @@ namespace FlightReservationProject
         }
         private int GenerateId(AES aes)
         {
-            string sql = "SELECT COUNT(r.id), u.id, u.email FROM reservation r INNER JOIN user u ON r.user_email = u.email WHERE u.email = '" + aes.Decrypt(User.Email) +"'";
+            string sql = "SELECT COUNT(r.id), u.id, u.email FROM reservation r INNER JOIN user u ON r.user_email = u.email WHERE u.email = SHA2('" + User.GetUInt64Hash(SHA512.Create(), User.Email).ToString() + "',512)";
 
             MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
             int count = 0;
@@ -132,7 +133,7 @@ namespace FlightReservationProject
         {
             if (TicketNum == null) return 0;
 
-            string sql = string.Format("INSERT INTO reservation(id, user_email, from_city, to_city, adult, child, baby, date_depart, date_arrival, flight_number, class_id, ticket_num) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}', '{11}')", Id, User.Email, FromCity.Id, ToCity.Id, Adult, Child, Baby, DateDepart.ToString("yyyy-MM-dd HH:mm:00"), DateArrival.ToString("yyyy-MM-dd HH:mm:00"), FlightChosen.FlightNumber, FlightClass.Id, aes.Encrypt(TicketNum));
+            string sql = string.Format("INSERT INTO reservation(id, user_email, from_city, to_city, adult, child, baby, date_depart, date_arrival, flight_number, class_id, ticket_num) VALUES('{0}',SHA2('{1}',512),'{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}', '{11}')", Id, User.GetUInt64Hash(SHA512.Create(), User.Email).ToString(), FromCity.Id, ToCity.Id, Adult, Child, Baby, DateDepart.ToString("yyyy-MM-dd HH:mm:00"), DateArrival.ToString("yyyy-MM-dd HH:mm:00"), FlightChosen.FlightNumber, FlightClass.Id, aes.Encrypt(TicketNum));
 
             int rowsAffected = dbConnection.ExecuteNonQuery(sql);
 
@@ -144,7 +145,7 @@ namespace FlightReservationProject
         {
             ListOfPassengers = passengers;
 
-            string sql = "SELECT COUNT(p.id), r.id, u.email FROM passenger p INNER JOIN reservation r ON p.reservation_id = r.id INNER JOIN user u ON r.user_email = u.email WHERE u.email = '" + aes.Decrypt(User.Email) + "' AND r.id = '" + Id + "'";
+            string sql = "SELECT COUNT(p.id), r.id, u.email FROM passenger p INNER JOIN reservation r ON p.reservation_id = r.id INNER JOIN user u ON r.user_email = u.email WHERE u.email = SHA2('" + User.GetUInt64Hash(SHA512.Create(), User.Email).ToString() + "',512) AND r.id = '" + Id + "'";
             int count = 0;
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
@@ -166,7 +167,7 @@ namespace FlightReservationProject
             {
                 Passenger p = passengers[i];
 
-                sql = string.Format("INSERT INTO passenger(id, title, full_name, dob, age_type, born_in, reservation_id, reservation_user_email) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",count + 1 + i, p.Title, aes.Encrypt(p.FullName), p.Dob.ToString("yyyy-MM-dd"), p.AgeType, p.BornIn.Id, Id, User.Email);
+                sql = string.Format("INSERT INTO passenger(id, title, full_name, dob, age_type, born_in, reservation_id, reservation_user_email) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}',SHA2('{7}',512))",count + 1 + i, p.Title, aes.Encrypt(p.FullName), p.Dob.ToString("yyyy-MM-dd"), p.AgeType, p.BornIn.Id, Id, User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
 
                 rowsAffected += dbConnection.ExecuteNonQuery(sql);
             }
@@ -175,7 +176,7 @@ namespace FlightReservationProject
 
         public List<Passenger> GetPassengers(AES aes)
         {
-            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.reservation_user_id, p.born_in, u.email, p.reservation_id FROM passenger p INNER JOIN user u ON p.reservation_user_email = u.email WHERE u.email = '" + aes.Decrypt(User.Email) + "' AND p.reservation_id = '" + Id + "'";
+            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.born_in, u.email, p.reservation_id FROM passenger p INNER JOIN user u ON p.reservation_user_email = u.email WHERE u.email = SHA2('" + User.GetUInt64Hash(SHA512.Create(), User.Email).ToString() + "',512) AND p.reservation_id = '" + Id + "'";
             
             List<Passenger> passengers = new List<Passenger>();
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))

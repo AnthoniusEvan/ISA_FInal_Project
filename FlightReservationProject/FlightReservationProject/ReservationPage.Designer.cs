@@ -175,11 +175,11 @@ namespace FlightReservationProject
             this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDob.Location = new System.Drawing.Point(40, 311);
             this.dtpDob.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtpDob.MaxDate = new System.DateTime(2012, 4, 30, 0, 0, 0, 0);
+            this.dtpDob.MaxDate = new System.DateTime(2024, 5, 1, 0, 0, 0, 0);
             this.dtpDob.Name = "dtpDob";
             this.dtpDob.Size = new System.Drawing.Size(380, 37);
             this.dtpDob.TabIndex = 158;
-            this.dtpDob.Value = new System.DateTime(2012, 4, 30, 0, 0, 0, 0);
+            this.dtpDob.Value = new System.DateTime(2024, 5, 1, 0, 0, 0, 0);
             // 
             // lblException
             // 

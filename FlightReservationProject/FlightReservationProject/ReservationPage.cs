@@ -18,6 +18,7 @@ namespace FlightReservationProject
         Passenger[] passengers;
         string[] ageTypes;
         int currIndex;
+        public User activeUser;
         public ReservationPage(PlaneFlight flight, Reservation order)
         {
             this.order = order;
@@ -33,6 +34,7 @@ namespace FlightReservationProject
         {
             FlightPage p = (FlightPage)this.Owner;
             this.aes = p.aes;
+            activeUser = p.activeUser;
             lblAirline.Text = flight.Airline;
             lblFlightCode.Text = flight.FlightNumber;
             lblClass.Text = order.FlightClass.Name;
@@ -213,23 +215,18 @@ namespace FlightReservationProject
         private void UpdatePassengerField()
         {
             string info = "";
+            
             if (ageTypes[currIndex] == "Adult")
             {
                 info = "Enter " + ageTypes[currIndex] + " " + (currIndex + 1) + " Information";
-                dtpDob.MinDate = new DateTime(DateTime.Now.Year - 120, DateTime.Now.Month, DateTime.Now.Day);
-                dtpDob.MaxDate = new DateTime(DateTime.Now.Year - 12, DateTime.Now.Month, DateTime.Now.Day);
             }
             else if (ageTypes[currIndex] == "Child")
             {
                 info = "Enter " + ageTypes[currIndex] + " " + (currIndex + 1 - order.Adult) + " Information";
-                dtpDob.MinDate = new DateTime(DateTime.Now.Year - 12, DateTime.Now.Month, DateTime.Now.Day);
-                dtpDob.MaxDate = new DateTime(DateTime.Now.Year - 2, DateTime.Now.Month, DateTime.Now.Day);
             }
             else if (ageTypes[currIndex] == "Baby")
             {
                 info = "Enter " + ageTypes[currIndex] + " " + (currIndex + 1 - order.Adult - order.Child) + " Information";
-                dtpDob.MinDate = new DateTime(DateTime.Now.Year - 2, DateTime.Now.Month, DateTime.Now.Day);
-                dtpDob.MaxDate = DateTime.Now;
             }
 
             lblInformation.Text = info;

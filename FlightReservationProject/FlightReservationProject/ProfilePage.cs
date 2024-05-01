@@ -90,8 +90,8 @@ namespace FlightReservationProject
         {
             try
             {
-                User updatedUser = new User(u.Id, txtFullname.Text, u.Email, txtPassword.Text, txtAddress.Text, dtpDob.Value, lblCode.Text + "-" + txtMobileNumber.Text, (City)cbCity.SelectedItem);
-                int rowsAffected = User.Update(updatedUser,aes);
+                User updatedUser = new User(u.Id, txtFullname.Text, u.Email, txtAddress.Text, dtpDob.Value, lblCode.Text + "-" + txtMobileNumber.Text, (City)cbCity.SelectedItem);
+                int rowsAffected = User.Update(updatedUser,txtPassword.Text, aes);
                 if (rowsAffected > 0)
                 {
                     DashboardPage p = (DashboardPage)this.Owner;
