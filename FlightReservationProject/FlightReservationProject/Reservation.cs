@@ -116,9 +116,9 @@ namespace FlightReservationProject
             dateArrival = flight.Arrival;
             if (TicketNum==null)GenerateTicketNum();
         }
-        private int GenerateId()
+        private int GenerateId(AES aes)
         {
-            string sql = "SELECT COUNT(r.id), u.id, u.email FROM reservation r INNER JOIN user u ON r.user_id = u.id WHERE u.id = '"+User.Id+"' AND u.email = '" + User.Email +"'";
+            string sql = "SELECT COUNT(r.id), u.id, u.email FROM reservation r INNER JOIN user u ON r.user_email = u.email WHERE u.email = '" + aes.Decrypt(User.Email) +"'";
 
             MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
             int count = 0;
@@ -128,23 +128,23 @@ namespace FlightReservationProject
             }
             return count + 1;
         }
-        public int AddReservation(List<Passenger> passengers)
+        public int AddReservation(List<Passenger> passengers, AES aes)
         {
             if (TicketNum == null) return 0;
 
-            string sql = string.Format("INSERT INTO reservation(id, user_id, user_email, from_city, to_city, adult, child, baby, date_depart, date_arrival, flight_number, class_id, ticket_num) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}', '{11}', '{12}')", Id, User.Id, User.Email, FromCity.Id, ToCity.Id, Adult, Child, Baby, DateDepart.ToString("yyyy-MM-dd HH:mm:00"), DateArrival.ToString("yyyy-MM-dd HH:mm:00"), FlightChosen.FlightNumber, FlightClass.Id, TicketNum);
+            string sql = string.Format("INSERT INTO reservation(id, user_email, from_city, to_city, adult, child, baby, date_depart, date_arrival, flight_number, class_id, ticket_num) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}', '{11}')", Id, User.Email, FromCity.Id, ToCity.Id, Adult, Child, Baby, DateDepart.ToString("yyyy-MM-dd HH:mm:00"), DateArrival.ToString("yyyy-MM-dd HH:mm:00"), FlightChosen.FlightNumber, FlightClass.Id, aes.Encrypt(TicketNum));
 
             int rowsAffected = dbConnection.ExecuteNonQuery(sql);
 
-            rowsAffected+=AddPassengers(passengers);
+            rowsAffected+=AddPassengers(passengers, aes);
             return rowsAffected;
         }
 
-        private int AddPassengers(List<Passenger> passengers)
+        private int AddPassengers(List<Passenger> passengers, AES aes)
         {
             ListOfPassengers = passengers;
 
-            string sql = "SELECT COUNT(p.id), r.id, u.id, u.email FROM passenger p INNER JOIN reservation r ON p.reservation_id = r.id INNER JOIN user u ON r.user_id = u.id WHERE u.id = '" + User.Id + "' AND u.email = '" + User.Email + "' AND r.id = '" + Id + "'";
+            string sql = "SELECT COUNT(p.id), r.id, u.email FROM passenger p INNER JOIN reservation r ON p.reservation_id = r.id INNER JOIN user u ON r.user_email = u.email WHERE u.email = '" + aes.Decrypt(User.Email) + "' AND r.id = '" + Id + "'";
             int count = 0;
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
@@ -174,9 +174,9 @@ namespace FlightReservationProject
             return rowsAffected;
         }
 
-        public List<Passenger> GetPassengers()
+        public List<Passenger> GetPassengers(AES aes)
         {
-            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.reservation_user_id, p.born_in, u.email, p.reservation_id FROM passenger p INNER JOIN user u ON p.reservation_user_id = u.id WHERE u.id = '" + User.Id + "' AND u.email = '" + User.Email + "' AND p.reservation_id = '" + Id + "'";
+            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.reservation_user_id, p.born_in, u.email, p.reservation_id FROM passenger p INNER JOIN user u ON p.reservation_user_email = u.email WHERE u.email = '" + aes.Decrypt(User.Email) + "' AND p.reservation_id = '" + Id + "'";
             
             List<Passenger> passengers = new List<Passenger>();
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
