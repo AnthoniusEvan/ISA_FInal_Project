@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace FlightReservationProject
         User activeUser;
         Reservation ticket;
         bool[] checkedIn;
+        private PrintDocument printDocument = new PrintDocument();
         public CheckInPage()
         {
             InitializeComponent();
@@ -247,9 +249,46 @@ namespace FlightReservationProject
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
+            
             PrintBoardingPass p = new PrintBoardingPass();
-            p.Owner = this;
+            //Passenger passenger = new Passenger();
+            ticket = activeUser.CheckIn(txtTicketNum.Text, txtFullname.Text);
+            //p.lblName.Text = passenger.FullName;
+            p.airplane.Text = ticket.FlightChosen.Airline;
+            p.lblFlightNum.Text = ticket.FlightChosen.FlightNumber;
+            p.lblOrigin.Text = ticket.FromCity.Name;
+            p.lblDestination.Text = ticket.ToCity.Name;
+            p.lblDepartureTime.Text = ticket.DateDepart.ToString("HH:mm");
+            DateTime boardingTime = ticket.DateDepart.AddMinutes(-30);
+            p.lblBoardingTime.Text = boardingTime.ToString("HH:mm"); ;
+            p.lblClass.Text = ticket.FlightClass.Name;
+            p.lblDate.Text = ticket.DateDepart.ToString("dd MMMM yyyy");
+            p.lblFrom.Text = ticket.FromCity.Name;
+            p.lblTo.Text = ticket.ToCity.Name;
+            p.flightNum.Text = ticket.FlightChosen.FlightNumber;
+            p.date.Text = ticket.DateDepart.ToString("dd MMMM yyyy");
+            p.arrival.Text = ticket.DateArrival.ToString("HH:mm");
+            p.boardingTime.Text = boardingTime.ToString("HH:mm"); ;
             p.Show();
+            p.Visible = false;
+            PrintForm(p);
+        }
+        private void PrintForm(Form form)
+        {
+            using (PrintDialog printDialog = new PrintDialog())
+            {
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument.PrinterSettings = printDialog.PrinterSettings;
+                    Bitmap bitmap = new Bitmap(form.Width, form.Height);
+                    form.DrawToBitmap(bitmap, new Rectangle(0, 0, form.Width, form.Height));
+                    printDocument.PrintPage += (s, ev) =>
+                    {
+                        ev.Graphics.DrawImage(bitmap, Point.Empty);
+                    };
+                    printDocument.Print();
+                }
+            }
         }
     }
 }

@@ -70,7 +70,7 @@ namespace FlightReservationProject
         #endregion
 
         #region Methods
-        
+
         #endregion
     }
 }

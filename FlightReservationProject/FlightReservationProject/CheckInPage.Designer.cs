@@ -29,11 +29,14 @@ namespace FlightReservationProject
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckInPage));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.startingPanel = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnToCheckin = new System.Windows.Forms.Button();
             this.txtTicketNum = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,55 +60,27 @@ namespace FlightReservationProject
             this.lblArriv = new System.Windows.Forms.Label();
             this.lblDepart = new System.Windows.Forms.Label();
             this.pnlPrintBoardingPass = new System.Windows.Forms.Panel();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.lblBack = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnlCheckedIns = new System.Windows.Forms.Panel();
             this.pnlCheckedIn = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblBack = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.startingPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.pnlCheckin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.line)).BeginInit();
             this.pnlTicket.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.pnlPrintBoardingPass.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnlCheckedIns.SuspendLayout();
             this.pnlCheckedIn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -115,18 +90,16 @@ namespace FlightReservationProject
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1060, 55);
+            this.panel1.Size = new System.Drawing.Size(942, 44);
             this.panel1.TabIndex = 52;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
-            this.pictureBox1.Location = new System.Drawing.Point(25, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 38);
+            this.pictureBox1.Size = new System.Drawing.Size(30, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -136,9 +109,9 @@ namespace FlightReservationProject
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.label1.Location = new System.Drawing.Point(480, 14);
+            this.label1.Location = new System.Drawing.Point(427, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 25);
+            this.label1.Size = new System.Drawing.Size(82, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Check In";
             // 
@@ -146,9 +119,9 @@ namespace FlightReservationProject
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(169, 98);
+            this.label8.Location = new System.Drawing.Point(150, 58);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(362, 18);
+            this.label8.Size = new System.Drawing.Size(300, 15);
             this.label8.TabIndex = 84;
             this.label8.Text = "Start Check-in with your full name and e-ticket number";
             // 
@@ -156,9 +129,9 @@ namespace FlightReservationProject
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(169, 166);
+            this.label2.Location = new System.Drawing.Point(150, 133);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 18);
+            this.label2.Size = new System.Drawing.Size(64, 15);
             this.label2.TabIndex = 86;
             this.label2.Text = "Full Name";
             // 
@@ -172,19 +145,17 @@ namespace FlightReservationProject
             this.startingPanel.Controls.Add(this.label3);
             this.startingPanel.Controls.Add(this.txtFullname);
             this.startingPanel.Controls.Add(this.label2);
-            this.startingPanel.Location = new System.Drawing.Point(92, 112);
-            this.startingPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.startingPanel.Location = new System.Drawing.Point(82, 90);
             this.startingPanel.Name = "startingPanel";
-            this.startingPanel.Size = new System.Drawing.Size(879, 409);
+            this.startingPanel.Size = new System.Drawing.Size(781, 327);
             this.startingPanel.TabIndex = 87;
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::FlightReservationProject.Properties.Resources.Asset_20;
-            this.pictureBox4.Location = new System.Drawing.Point(172, 122);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox4.Location = new System.Drawing.Point(153, 82);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(540, 4);
+            this.pictureBox4.Size = new System.Drawing.Size(427, 2);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 153;
             this.pictureBox4.TabStop = false;
@@ -194,10 +165,9 @@ namespace FlightReservationProject
             this.btnToCheckin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
             this.btnToCheckin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToCheckin.ForeColor = System.Drawing.Color.White;
-            this.btnToCheckin.Location = new System.Drawing.Point(422, 285);
-            this.btnToCheckin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnToCheckin.Location = new System.Drawing.Point(375, 228);
             this.btnToCheckin.Name = "btnToCheckin";
-            this.btnToCheckin.Size = new System.Drawing.Size(295, 54);
+            this.btnToCheckin.Size = new System.Drawing.Size(262, 43);
             this.btnToCheckin.TabIndex = 152;
             this.btnToCheckin.Text = "Continue";
             this.btnToCheckin.UseVisualStyleBackColor = false;
@@ -207,19 +177,18 @@ namespace FlightReservationProject
             // 
             this.txtTicketNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtTicketNum.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtTicketNum.Location = new System.Drawing.Point(338, 216);
-            this.txtTicketNum.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTicketNum.Location = new System.Drawing.Point(300, 173);
             this.txtTicketNum.Name = "txtTicketNum";
-            this.txtTicketNum.Size = new System.Drawing.Size(379, 37);
+            this.txtTicketNum.Size = new System.Drawing.Size(337, 32);
             this.txtTicketNum.TabIndex = 151;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(169, 228);
+            this.label3.Location = new System.Drawing.Point(150, 182);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 18);
+            this.label3.Size = new System.Drawing.Size(93, 15);
             this.label3.TabIndex = 150;
             this.label3.Text = "E-ticket number";
             // 
@@ -227,10 +196,9 @@ namespace FlightReservationProject
             // 
             this.txtFullname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.txtFullname.Font = new System.Drawing.Font("Poppins", 10F);
-            this.txtFullname.Location = new System.Drawing.Point(338, 155);
-            this.txtFullname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFullname.Location = new System.Drawing.Point(300, 124);
             this.txtFullname.Name = "txtFullname";
-            this.txtFullname.Size = new System.Drawing.Size(379, 37);
+            this.txtFullname.Size = new System.Drawing.Size(337, 32);
             this.txtFullname.TabIndex = 149;
             // 
             // pnlCheckin
@@ -245,19 +213,18 @@ namespace FlightReservationProject
             this.pnlCheckin.Controls.Add(this.lblPassName);
             this.pnlCheckin.Controls.Add(this.btnConfirm);
             this.pnlCheckin.Controls.Add(this.pnlTicket);
-            this.pnlCheckin.Location = new System.Drawing.Point(92, 112);
-            this.pnlCheckin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlCheckin.Location = new System.Drawing.Point(82, 90);
             this.pnlCheckin.Name = "pnlCheckin";
-            this.pnlCheckin.Size = new System.Drawing.Size(879, 409);
+            this.pnlCheckin.Size = new System.Drawing.Size(781, 327);
             this.pnlCheckin.TabIndex = 153;
             // 
             // lblClass
             // 
             this.lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClass.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblClass.Location = new System.Drawing.Point(620, 143);
+            this.lblClass.Location = new System.Drawing.Point(551, 114);
             this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(235, 22);
+            this.lblClass.Size = new System.Drawing.Size(209, 18);
             this.lblClass.TabIndex = 155;
             this.lblClass.Text = "Economy";
             this.lblClass.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -265,18 +232,18 @@ namespace FlightReservationProject
             // pnlPassengers
             // 
             this.pnlPassengers.AutoScroll = true;
-            this.pnlPassengers.Location = new System.Drawing.Point(35, 181);
+            this.pnlPassengers.Location = new System.Drawing.Point(31, 145);
+            this.pnlPassengers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlPassengers.Name = "pnlPassengers";
-            this.pnlPassengers.Size = new System.Drawing.Size(820, 143);
+            this.pnlPassengers.Size = new System.Drawing.Size(729, 114);
             this.pnlPassengers.TabIndex = 172;
             // 
             // line
             // 
             this.line.Image = global::FlightReservationProject.Properties.Resources.Asset_20;
-            this.line.Location = new System.Drawing.Point(35, 61);
-            this.line.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.line.Location = new System.Drawing.Point(31, 49);
             this.line.Name = "line";
-            this.line.Size = new System.Drawing.Size(820, 4);
+            this.line.Size = new System.Drawing.Size(729, 3);
             this.line.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.line.TabIndex = 170;
             this.line.TabStop = false;
@@ -285,9 +252,9 @@ namespace FlightReservationProject
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo.Location = new System.Drawing.Point(32, 38);
+            this.lblInfo.Location = new System.Drawing.Point(28, 30);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(469, 18);
+            this.lblInfo.Size = new System.Drawing.Size(390, 15);
             this.lblInfo.TabIndex = 169;
             this.lblInfo.Text = "Please check and confirm the information about passengers and flight ";
             // 
@@ -296,9 +263,9 @@ namespace FlightReservationProject
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(522, 145);
+            this.label13.Location = new System.Drawing.Point(464, 116);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 22);
+            this.label13.Size = new System.Drawing.Size(42, 18);
             this.label13.TabIndex = 166;
             this.label13.Text = "Seat";
             // 
@@ -307,9 +274,9 @@ namespace FlightReservationProject
             this.lblCheckInStatus.AutoSize = true;
             this.lblCheckInStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCheckInStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblCheckInStatus.Location = new System.Drawing.Point(269, 145);
+            this.lblCheckInStatus.Location = new System.Drawing.Point(239, 116);
             this.lblCheckInStatus.Name = "lblCheckInStatus";
-            this.lblCheckInStatus.Size = new System.Drawing.Size(152, 22);
+            this.lblCheckInStatus.Size = new System.Drawing.Size(128, 18);
             this.lblCheckInStatus.TabIndex = 164;
             this.lblCheckInStatus.Text = "Check-in Status";
             // 
@@ -318,9 +285,9 @@ namespace FlightReservationProject
             this.lblPassName.AutoSize = true;
             this.lblPassName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassName.ForeColor = System.Drawing.Color.Black;
-            this.lblPassName.Location = new System.Drawing.Point(32, 145);
+            this.lblPassName.Location = new System.Drawing.Point(28, 116);
             this.lblPassName.Name = "lblPassName";
-            this.lblPassName.Size = new System.Drawing.Size(162, 22);
+            this.lblPassName.Size = new System.Drawing.Size(137, 18);
             this.lblPassName.TabIndex = 163;
             this.lblPassName.Text = "Passenger Name";
             // 
@@ -329,10 +296,9 @@ namespace FlightReservationProject
             this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
             this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.Color.White;
-            this.btnConfirm.Location = new System.Drawing.Point(560, 339);
-            this.btnConfirm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnConfirm.Location = new System.Drawing.Point(498, 271);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(295, 54);
+            this.btnConfirm.Size = new System.Drawing.Size(262, 43);
             this.btnConfirm.TabIndex = 152;
             this.btnConfirm.Text = "Confirm check-in";
             this.btnConfirm.UseVisualStyleBackColor = false;
@@ -349,28 +315,27 @@ namespace FlightReservationProject
             this.pnlTicket.Controls.Add(this.lblFlightNum);
             this.pnlTicket.Controls.Add(this.lblArriv);
             this.pnlTicket.Controls.Add(this.lblDepart);
-            this.pnlTicket.Location = new System.Drawing.Point(35, 73);
-            this.pnlTicket.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlTicket.Location = new System.Drawing.Point(31, 58);
             this.pnlTicket.Name = "pnlTicket";
-            this.pnlTicket.Size = new System.Drawing.Size(820, 61);
+            this.pnlTicket.Size = new System.Drawing.Size(729, 49);
             this.pnlTicket.TabIndex = 162;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(428, 6);
+            this.label9.Location = new System.Drawing.Point(380, 5);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(16, 22);
+            this.label9.Size = new System.Drawing.Size(13, 18);
             this.label9.TabIndex = 163;
             this.label9.Text = "-";
             // 
             // lblDate
             // 
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(548, 21);
+            this.lblDate.Location = new System.Drawing.Point(487, 17);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(255, 22);
+            this.lblDate.Size = new System.Drawing.Size(227, 18);
             this.lblDate.TabIndex = 163;
             this.lblDate.Text = "Friday, 12 April 2024";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -379,9 +344,9 @@ namespace FlightReservationProject
             // 
             this.lblTo.AutoSize = true;
             this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTo.Location = new System.Drawing.Point(459, 8);
+            this.lblTo.Location = new System.Drawing.Point(408, 6);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(62, 20);
+            this.lblTo.Size = new System.Drawing.Size(55, 17);
             this.lblTo.TabIndex = 164;
             this.lblTo.Text = "Jakarta";
             // 
@@ -389,9 +354,9 @@ namespace FlightReservationProject
             // 
             this.lblAirline.AutoSize = true;
             this.lblAirline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAirline.Location = new System.Drawing.Point(9, 16);
+            this.lblAirline.Location = new System.Drawing.Point(8, 13);
             this.lblAirline.Name = "lblAirline";
-            this.lblAirline.Size = new System.Drawing.Size(92, 29);
+            this.lblAirline.Size = new System.Drawing.Size(77, 25);
             this.lblAirline.TabIndex = 153;
             this.lblAirline.Text = "Garuda";
             // 
@@ -399,9 +364,9 @@ namespace FlightReservationProject
             // 
             this.lblFrom.AutoSize = true;
             this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFrom.Location = new System.Drawing.Point(331, 8);
+            this.lblFrom.Location = new System.Drawing.Point(294, 6);
             this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(77, 20);
+            this.lblFrom.Size = new System.Drawing.Size(69, 17);
             this.lblFrom.TabIndex = 163;
             this.lblFrom.Text = "Surabaya";
             // 
@@ -409,9 +374,9 @@ namespace FlightReservationProject
             // 
             this.lblFlightNum.AutoSize = true;
             this.lblFlightNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFlightNum.Location = new System.Drawing.Point(167, 20);
+            this.lblFlightNum.Location = new System.Drawing.Point(148, 16);
             this.lblFlightNum.Name = "lblFlightNum";
-            this.lblFlightNum.Size = new System.Drawing.Size(79, 25);
+            this.lblFlightNum.Size = new System.Drawing.Size(61, 20);
             this.lblFlightNum.TabIndex = 154;
             this.lblFlightNum.Text = "JT-201";
             // 
@@ -419,9 +384,9 @@ namespace FlightReservationProject
             // 
             this.lblArriv.AutoSize = true;
             this.lblArriv.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArriv.Location = new System.Drawing.Point(460, 30);
+            this.lblArriv.Location = new System.Drawing.Point(409, 24);
             this.lblArriv.Name = "lblArriv";
-            this.lblArriv.Size = new System.Drawing.Size(49, 17);
+            this.lblArriv.Size = new System.Drawing.Size(43, 15);
             this.lblArriv.TabIndex = 158;
             this.lblArriv.Text = "15:15";
             // 
@@ -429,9 +394,9 @@ namespace FlightReservationProject
             // 
             this.lblDepart.AutoSize = true;
             this.lblDepart.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDepart.Location = new System.Drawing.Point(332, 31);
+            this.lblDepart.Location = new System.Drawing.Point(295, 25);
             this.lblDepart.Name = "lblDepart";
-            this.lblDepart.Size = new System.Drawing.Size(49, 17);
+            this.lblDepart.Size = new System.Drawing.Size(43, 15);
             this.lblDepart.TabIndex = 157;
             this.lblDepart.Text = "12:50";
             // 
@@ -441,128 +406,19 @@ namespace FlightReservationProject
             this.pnlPrintBoardingPass.Controls.Add(this.pnlCheckedIns);
             this.pnlPrintBoardingPass.Controls.Add(this.label4);
             this.pnlPrintBoardingPass.Controls.Add(this.lblBack);
-            this.pnlPrintBoardingPass.Location = new System.Drawing.Point(92, 112);
-            this.pnlPrintBoardingPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlPrintBoardingPass.Location = new System.Drawing.Point(82, 90);
             this.pnlPrintBoardingPass.Name = "pnlPrintBoardingPass";
-            this.pnlPrintBoardingPass.Size = new System.Drawing.Size(879, 409);
+            this.pnlPrintBoardingPass.Size = new System.Drawing.Size(781, 327);
             this.pnlPrintBoardingPass.TabIndex = 171;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblStatus.Location = new System.Drawing.Point(233, 9);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(100, 22);
-            this.lblStatus.TabIndex = 167;
-            this.lblStatus.Text = "Checked In";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblName.Location = new System.Drawing.Point(0, 9);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(100, 22);
-            this.lblName.TabIndex = 165;
-            this.lblName.Text = "Anthonious";
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(710, 7);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(98, 29);
-            this.btnPrint.TabIndex = 152;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::FlightReservationProject.Properties.Resources.Asset_20;
-            this.pictureBox4.Location = new System.Drawing.Point(153, 98);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(480, 3);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 153;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::FlightReservationProject.Properties.Resources.Asset_20;
-            this.pictureBox3.Location = new System.Drawing.Point(31, 74);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(720, 3);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 170;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::FlightReservationProject.Properties.Resources.Asset_20;
-            this.pictureBox2.Location = new System.Drawing.Point(31, 49);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(720, 3);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 170;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::FlightReservationProject.Properties.Resources.Asset_29;
-            this.pictureBox5.Location = new System.Drawing.Point(0, 54);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(1068, 581);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 172;
-            this.pictureBox5.TabStop = false;
-            // 
-            // lblBack
-            // 
-            this.lblBack.AutoSize = true;
-            this.lblBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.lblBack.Location = new System.Drawing.Point(31, 356);
-            this.lblBack.Name = "lblBack";
-            this.lblBack.Size = new System.Drawing.Size(64, 20);
-            this.lblBack.TabIndex = 174;
-            this.lblBack.Text = "< Back";
-            this.lblBack.Click += new System.EventHandler(this.lblBack_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(32, 145);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(162, 22);
-            this.label4.TabIndex = 175;
-            this.label4.Text = "Passenger Name";
             // 
             // pnlCheckedIns
             // 
             this.pnlCheckedIns.AutoScroll = true;
             this.pnlCheckedIns.Controls.Add(this.pnlCheckedIn);
-            this.pnlCheckedIns.Location = new System.Drawing.Point(36, 170);
+            this.pnlCheckedIns.Location = new System.Drawing.Point(32, 136);
+            this.pnlCheckedIns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlCheckedIns.Name = "pnlCheckedIns";
-            this.pnlCheckedIns.Size = new System.Drawing.Size(819, 169);
+            this.pnlCheckedIns.Size = new System.Drawing.Size(728, 135);
             this.pnlCheckedIns.TabIndex = 176;
             // 
             // pnlCheckedIn
@@ -572,31 +428,109 @@ namespace FlightReservationProject
             this.pnlCheckedIn.Controls.Add(this.lblStatus);
             this.pnlCheckedIn.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCheckedIn.Location = new System.Drawing.Point(0, 0);
+            this.pnlCheckedIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlCheckedIn.Name = "pnlCheckedIn";
-            this.pnlCheckedIn.Size = new System.Drawing.Size(819, 40);
+            this.pnlCheckedIn.Size = new System.Drawing.Size(728, 32);
             this.pnlCheckedIn.TabIndex = 177;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(631, 6);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(87, 23);
+            this.btnPrint.TabIndex = 152;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblName.Location = new System.Drawing.Point(0, 7);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(82, 18);
+            this.lblName.TabIndex = 165;
+            this.lblName.Text = "Anthonious";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblStatus.Location = new System.Drawing.Point(207, 7);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(82, 18);
+            this.lblStatus.TabIndex = 167;
+            this.lblStatus.Text = "Checked In";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(28, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(137, 18);
+            this.label4.TabIndex = 175;
+            this.label4.Text = "Passenger Name";
+            // 
+            // lblBack
+            // 
+            this.lblBack.AutoSize = true;
+            this.lblBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
+            this.lblBack.Location = new System.Drawing.Point(28, 285);
+            this.lblBack.Name = "lblBack";
+            this.lblBack.Size = new System.Drawing.Size(57, 17);
+            this.lblBack.TabIndex = 174;
+            this.lblBack.Text = "< Back";
+            this.lblBack.Click += new System.EventHandler(this.lblBack_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::FlightReservationProject.Properties.Resources.Asset_29;
+            this.pictureBox5.Location = new System.Drawing.Point(0, 43);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(949, 465);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 172;
+            this.pictureBox5.TabStop = false;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // CheckInPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1060, 616);
+            this.ClientSize = new System.Drawing.Size(942, 493);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.startingPanel);
             this.Controls.Add(this.pnlCheckin);
             this.Controls.Add(this.pnlPrintBoardingPass);
-            this.Controls.Add(this.startingPanel);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.startingPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CheckInPage";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.CheckInPage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.startingPanel.ResumeLayout(false);
             this.startingPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.pnlCheckin.ResumeLayout(false);
             this.pnlCheckin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.line)).EndInit();
@@ -604,10 +538,10 @@ namespace FlightReservationProject
             this.pnlTicket.PerformLayout();
             this.pnlPrintBoardingPass.ResumeLayout(false);
             this.pnlPrintBoardingPass.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.pnlCheckedIns.ResumeLayout(false);
             this.pnlCheckedIn.ResumeLayout(false);
             this.pnlCheckedIn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -652,5 +586,7 @@ namespace FlightReservationProject
         private System.Windows.Forms.Panel pnlCheckedIns;
         private System.Windows.Forms.Panel pnlCheckedIn;
         private System.Windows.Forms.Label label4;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

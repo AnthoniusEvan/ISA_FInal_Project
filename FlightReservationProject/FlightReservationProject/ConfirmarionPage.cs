@@ -19,12 +19,30 @@ namespace FlightReservationProject
 
         private void btnEticket_Click(object sender, EventArgs e)
         {
-               
+            BookingPage bookingPage = new BookingPage();
+            bookingPage.Owner = this.Owner;
+            bookingPage.Show();
+
+            DashboardPage p = (DashboardPage)this.Owner;
+            if (p != null)
+            {
+                User activeUser = p.activeUser;
+                foreach (Reservation reservation in activeUser.RetrieveReservation())
+                {
+                    bookingPage.CreateBooking(reservation);
+                }
+            }
+            this.Close();
         }
 
         private void backHome_Click(object sender, EventArgs e)
         {
-           
+            DashboardPage dashboardPage = this.Owner as DashboardPage;
+            if (dashboardPage != null)
+            {
+                dashboardPage.Show();
+            }
+            this.Close();
         }
 
         private void ConfirmarionPage_Load(object sender, EventArgs e)

@@ -144,7 +144,8 @@ namespace FlightReservationProject
                 if (rowsAffected > 0)
                 {
                     MessageBox.Show("Succesfully created your new account!");
-
+                    LoginPage p = new LoginPage();
+                    p.Show();
                 }
                 else
                 {
