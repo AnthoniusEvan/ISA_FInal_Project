@@ -56,6 +56,12 @@
   <ItemGroup>
     <Compile Include="AES.cs" />
     <Compile Include="Airport.cs" />
+    <Compile Include="BankAccountPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankAccountPage.Designer.cs">
+      <DependentUpon>BankAccountPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="BoardingPass.cs" />
     <Compile Include="BookingPage.cs">
       <SubType>Form</SubType>
@@ -105,12 +111,6 @@
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Passenger.cs" />
-    <Compile Include="PaymentForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PaymentForm.Designer.cs">
-      <DependentUpon>PaymentForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Plane.cs" />
     <Compile Include="PlaneFlight.cs" />
     <Compile Include="PrintBoardingPass.cs">
@@ -148,6 +148,9 @@
     </Compile>
     <Compile Include="TransportRate.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="BankAccountPage.resx">
+      <DependentUpon>BankAccountPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BookingPage.resx">
       <DependentUpon>BookingPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,9 +168,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PaymentForm.resx">
-      <DependentUpon>PaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintBoardingPass.resx">
       <DependentUpon>PrintBoardingPass.cs</DependentUpon>
@@ -315,6 +315,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Asset 35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PPT_ISA Project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-removebg-preview - 2024-05-02T005020.720.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

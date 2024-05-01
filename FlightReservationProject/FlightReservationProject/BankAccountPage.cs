@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FlightReservationProject
 {
-    public partial class PaymentForm : Form
+    public partial class BankAccountPage : Form
     {
-        public PaymentForm()
+        public BankAccountPage()
         {
             InitializeComponent();
         }

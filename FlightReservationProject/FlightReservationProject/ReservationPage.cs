@@ -75,8 +75,7 @@ namespace FlightReservationProject
             UnselectControl();
             btnTransfer.BackColor = Color.LightGray;
             btnTransfer.TextColor = Color.Black;
-            lblAccNum.Text = "111209876";
-            label29.Text = "1. Choose Other transaction go to";
+            pnlTransferbank.BringToFront();
         }
 
         private void btnOnlineBank_Click(object sender, EventArgs e)
@@ -84,8 +83,7 @@ namespace FlightReservationProject
             UnselectControl();
             btnOnlineBank.BackColor = Color.LightGray;
             btnOnlineBank.TextColor = Color.Black;
-            label29.Text = "1. Choose m-Transfer go to";
-            lblAccNum.Text = "122209876";
+            pnlOnlineBanking.BringToFront();
         }
         private void UnselectControl()
         {
