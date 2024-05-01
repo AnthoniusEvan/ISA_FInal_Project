@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbLib;
+using MySql.Data.MySqlClient;
+
 namespace FlightReservationProject
 {
     public class Reservation
@@ -18,6 +20,7 @@ namespace FlightReservationProject
         private int adult;
         private int child;
         private int baby;
+        private string ticketNum;
         private FlightClass flightClass;
         private PlaneFlight flightChosen;
         private List<Passenger> listOfPassengers;
@@ -36,10 +39,12 @@ namespace FlightReservationProject
         public PlaneFlight FlightChosen { get => flightChosen; private set => flightChosen = value; }
         public DateTime DateArrival { get => dateArrival; set => dateArrival = value; }
         public int Id { get => id; set => id = value; }
+        public string TicketNum { get => ticketNum; set => ticketNum = value; }
         #endregion
 
         #region Constructors
-        public Reservation(int id, User user, City from, City to, DateTime dateDepart, int adult, int child, int baby, FlightClass flightClass)
+        // Used to import data
+        public Reservation(int id, User user, City from, City to, DateTime dateDepart, int adult, int child, int baby, FlightClass flightClass, string ticketNum)
         {
             Id = id;
             User = user;
@@ -50,8 +55,11 @@ namespace FlightReservationProject
             Child = child;
             Baby = baby;
             FlightClass = flightClass;
+            TicketNum = ticketNum;
             ListOfPassengers = new List<Passenger>();
         }
+
+        // Used to export data
         public Reservation(User user, City from, City to, DateTime dateDepart, int adult, int child, int baby, FlightClass flightClass)
         {
             User = user;
@@ -65,6 +73,10 @@ namespace FlightReservationProject
             ListOfPassengers = new List<Passenger>();
             Id = GenerateId();
         }
+        public Reservation()
+        {
+
+        }
 
         public int getTotalPassengers()
         {
@@ -72,11 +84,37 @@ namespace FlightReservationProject
         }
         #endregion
 
-        #region 
+        #region Methods
+        private void GenerateTicketNum()
+        {
+            if (FlightChosen != null)
+            {
+                int flightNum = int.Parse(FlightChosen.FlightNumber.Substring(2, FlightChosen.FlightNumber.Length - 2));
+                TicketNum = FlightChosen.FlightNumber.Substring(0, 2) + FromCity.Name[0] + ToCity.Name[0] + flightNum;
+                string sql = "SELECT COUNT(id), ticket_num FROM reservation WHERE ticket_num LIKE '" + TicketNum + "%'";
+                int count = 0;
+                using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (MySqlDataReader results = cmd.ExecuteReader())
+                        {
+                            if (results.Read())
+                            {
+                                count = results.GetInt32(0) + 1;
+                            }
+                        }
+                    }
+                }
+                TicketNum += count;
+            }
+        }
         public void ChooseFlight(PlaneFlight flight)
         {
             FlightChosen = flight;
             dateArrival = flight.Arrival;
+            if (TicketNum==null)GenerateTicketNum();
         }
         private int GenerateId()
         {
@@ -92,7 +130,9 @@ namespace FlightReservationProject
         }
         public int AddReservation(List<Passenger> passengers)
         {
-            string sql = string.Format("INSERT INTO reservation(id, user_id, user_email, from_city, to_city, adult, child, baby, date_depart, date_arrival, flight_number, class_id) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}', '{11}')", GenerateId(), User.Id, User.Email, FromCity.Id, ToCity.Id, Adult, Child, Baby, DateDepart.ToString("yyyy-MM-dd HH:mm:00"), DateArrival.ToString("yyyy-MM-dd HH:mm:00"), FlightChosen.FlightNumber, FlightClass.Id);
+            if (TicketNum == null) return 0;
+
+            string sql = string.Format("INSERT INTO reservation(id, user_id, user_email, from_city, to_city, adult, child, baby, date_depart, date_arrival, flight_number, class_id, ticket_num) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}', '{11}', '{12}')", Id, User.Id, User.Email, FromCity.Id, ToCity.Id, Adult, Child, Baby, DateDepart.ToString("yyyy-MM-dd HH:mm:00"), DateArrival.ToString("yyyy-MM-dd HH:mm:00"), FlightChosen.FlightNumber, FlightClass.Id, TicketNum);
 
             int rowsAffected = dbConnection.ExecuteNonQuery(sql);
 
@@ -126,7 +166,7 @@ namespace FlightReservationProject
 
         public List<Passenger> GetPassengers()
         {
-            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.user_id, born_in, u.email, r.id FROM passenger p INNER JOIN user u ON p.user_id = u.id INNER JOIN reservation r ON r.id = p.reservation_id WHERE p.user_id = '" + User.Id + "' AND u.email = '" + User.Email + "' AND r.id = '" + Id + "'";
+            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.reservation_user_id, p.born_in, u.email, p.reservation_id FROM passenger p INNER JOIN user u ON p.reservation_user_id = u.id WHERE u.id = '" + User.Id + "' AND u.email = '" + User.Email + "' AND p.reservation_id = '" + Id + "'";
             MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
             List<Passenger> passengers = new List<Passenger>();
             while (results.Read())
@@ -138,6 +178,7 @@ namespace FlightReservationProject
             if (passengers.Count > 0) return passengers;
             else return null;
         }
+
         #endregion
     }
 }

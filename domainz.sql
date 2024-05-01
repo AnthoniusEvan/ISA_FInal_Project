@@ -192,7 +192,7 @@ CREATE TABLE `passenger` (
 
 LOCK TABLES `passenger` WRITE;
 /*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
-INSERT INTO `passenger` VALUES ('1','Adult',NULL,'Mr','admin','2004-04-28',104,1,'101','admin@a.com'),('1','Adult',NULL,'Mr','admin','2004-04-28',104,2,'101','admin@a.com'),('1','Adult',NULL,'Mr','admin','2004-04-28',104,3,'101','admin@a.com'),('2','Child',NULL,'','Disa','2022-04-30',104,1,'101','admin@a.com'),('2','Adult',NULL,'Mrs','Cella','2003-05-01',104,2,'101','admin@a.com'),('3','Baby',NULL,'','Kalyn','2024-04-30',104,1,'101','admin@a.com'),('3','Adult',NULL,'Ms','Cello','2002-05-01',104,2,'101','admin@a.com'),('4','Child',NULL,'','Cath','2022-05-01',104,2,'101','admin@a.com'),('5','Child',NULL,'','Cory','2022-05-01',104,2,'101','admin@a.com'),('6','Baby',NULL,'','Coco','2024-05-01',104,2,'101','admin@a.com');
+INSERT INTO `passenger` VALUES ('1','Adult',NULL,'Mr','admin','2004-04-28',104,1,'101','admin@a.com'),('1','Adult',NULL,'Mr','admin','2004-04-28',104,2,'101','admin@a.com'),('1','Adult',NULL,'Mr','admin','2004-04-28',104,3,'101','admin@a.com'),('1','Adult',NULL,'Mr','admin','2004-04-28',104,4,'101','admin@a.com'),('2','Child',NULL,'','Disa','2022-04-30',104,1,'101','admin@a.com'),('2','Adult',NULL,'Mrs','Cella','2003-05-01',104,2,'101','admin@a.com'),('3','Baby',NULL,'','Kalyn','2024-04-30',104,1,'101','admin@a.com'),('3','Adult',NULL,'Ms','Cello','2002-05-01',104,2,'101','admin@a.com'),('4','Child',NULL,'','Cath','2022-05-01',104,2,'101','admin@a.com'),('5','Child',NULL,'','Cory','2022-05-01',104,2,'101','admin@a.com'),('6','Baby',NULL,'','Coco','2024-05-01',104,2,'101','admin@a.com');
 /*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,6 +311,7 @@ CREATE TABLE `reservation` (
   `date_arrival` datetime DEFAULT NULL,
   `flight_number` varchar(6) DEFAULT NULL,
   `class_id` int(11) DEFAULT NULL,
+  `ticket_num` varchar(10) NOT NULL,
   PRIMARY KEY (`id`,`user_id`,`user_email`),
   KEY `fk_reservation_city1_idx` (`to_city`),
   KEY `fk_reservation_city2_idx` (`from_city`),
@@ -331,7 +332,7 @@ CREATE TABLE `reservation` (
 
 LOCK TABLES `reservation` WRITE;
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
-INSERT INTO `reservation` VALUES (1,'101','admin@a.com',11473,11696,1,1,1,'2024-04-30 23:46:00','2024-04-30 15:20:00','BA0001',1),(2,'101','admin@a.com',11473,22147,3,2,1,'2024-03-03 00:51:00','2024-03-04 01:10:00','GA0005',4),(3,'101','admin@a.com',11473,19079,1,0,0,'2023-12-04 16:05:00','2023-12-04 20:05:00','CI0002',2);
+INSERT INTO `reservation` VALUES (1,'101','admin@a.com',11473,11696,1,1,1,'2024-04-30 23:46:00','2024-04-30 15:20:00','BA0001',1,'BASD11'),(2,'101','admin@a.com',11473,22147,3,2,1,'2024-03-03 00:51:00','2024-03-04 01:10:00','GA0005',4,'GASL51'),(3,'101','admin@a.com',11473,19079,1,0,0,'2023-12-04 16:05:00','2023-12-04 20:05:00','CI0002',2,'CISS21'),(4,'101','admin@a.com',11473,11696,1,0,0,'2024-04-30 11:20:00','2024-04-30 15:20:00','BA0001',1,'BASD12');
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,4 +414,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-01  2:08:22
+-- Dump completed on 2024-05-01 14:41:09

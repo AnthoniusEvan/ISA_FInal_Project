@@ -60,6 +60,7 @@ namespace FlightReservationProject
         }
         public Passenger(string id, string title, string fullName, DateTime dob, string ageType)
         {
+            Id = id;
             Title = title;
             FullName = fullName;
             Dob = dob;

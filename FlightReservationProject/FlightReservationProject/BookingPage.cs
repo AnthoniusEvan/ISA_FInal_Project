@@ -16,20 +16,26 @@ namespace FlightReservationProject
         {
             InitializeComponent();
         }
-
+        List<Reservation> reservations;
         private void btnEticket_Click(object sender, EventArgs e)
         {
-            
-            //PrintETicket p = new PrintETicket();
-            //p.Owner = this;
-            //p.Show();
+            Button b = (Button)sender;
+            Reservation reservation=new Reservation();
+            foreach(Reservation r in reservations)
+            {
+                if (b.Tag.ToString() == r.Id.ToString()) reservation = r;
+            }
+            PrintETicket p = new PrintETicket(reservation);
+            p.Owner = this;
+            p.Show();
         }
         User activeUser;
         private void BookingPage_Load(object sender, EventArgs e)
         {
             DashboardPage p = (DashboardPage)this.Owner;
             activeUser = p.activeUser;
-            foreach(Reservation r in activeUser.RetrieveReservation())
+            reservations = activeUser.RetrieveReservation();
+            foreach (Reservation r in reservations)
             {
                 CreateBooking(r);
             }          
@@ -89,14 +95,15 @@ namespace FlightReservationProject
             // 
             // lblBookingNum
             // 
-            lblBookingNum.AutoSize = true;
+            lblBookingNum.AutoSize = false;
+            lblBookingNum.TextAlign = ContentAlignment.TopRight;
             lblBookingNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             lblBookingNum.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            lblBookingNum.Location = new System.Drawing.Point(641, 16);
+            lblBookingNum.Location = new System.Drawing.Point(580, 16);
             lblBookingNum.Name = "lblBookingNum";
-            lblBookingNum.Size = new System.Drawing.Size(76, 22);
+            lblBookingNum.Size = new System.Drawing.Size(100, 22);
             lblBookingNum.TabIndex = 85;
-            lblBookingNum.Text = "#" + reservation.FlightChosen.FlightNumber.Substring(0,2)+reservation.FromCity.Name[0]+reservation.ToCity.Name[0]+reservation.Id;
+            lblBookingNum.Text = "#" + reservation.TicketNum;
             // 
             // btnEticket
             // 
@@ -117,6 +124,7 @@ namespace FlightReservationProject
             btnEticket.Text = "E-Ticket";
             btnEticket.TextColor = System.Drawing.Color.White;
             btnEticket.UseVisualStyleBackColor = false;
+            btnEticket.Tag = reservation.Id;
             btnEticket.Click += new System.EventHandler(btnEticket_Click);
             // 
             // label8
@@ -217,5 +225,6 @@ namespace FlightReservationProject
             pnlBookings.Controls.Add(pnlBooking);
             pnlBookings.Controls.SetChildIndex(pnlBooking, 0);
         }
+
     }
 }

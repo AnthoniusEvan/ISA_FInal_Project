@@ -31,7 +31,8 @@ namespace FlightReservationProject
         {
             Random rnd = new Random();
             Gate = (Convert.ToChar(rnd.Next(65, 91)) + rnd.Next(1,11)).ToString();
-            Seat = (rnd.Next(1, 100)+ Convert.ToChar(rnd.Next(65, 91))).ToString();
+            if (passenger.Seat == null || passenger.Seat=="") Seat = rnd.Next(1, 100).ToString() + (char)(rnd.Next(65, 91));
+            else Seat = passenger.Seat;
             FlightClass = flightClass;
             FlightNumber = flightNumber;
             Passenger = passenger;
@@ -49,6 +50,11 @@ namespace FlightReservationProject
         #endregion
 
         #region Methods
+        public static string GenerateRandomSeat()
+        {
+            Random rnd = new Random();
+            return rnd.Next(1, 100).ToString() + (char)(rnd.Next(65, 91));
+        }
         private int GenerateId()
         {
             string sql = "SELECT COUNT(id) FROM boarding_pass WHERE plane_flight_flight_number = '" + FlightNumber + "'";
