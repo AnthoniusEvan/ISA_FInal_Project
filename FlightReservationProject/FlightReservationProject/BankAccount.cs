@@ -52,8 +52,8 @@ namespace FlightReservationProject
                         while (results.Read())
                         {
                             string dateExpire = aes.Decrypt(results.GetString(2));
-                            int year = int.Parse(dateExpire.Split('-')[1]);
-                            int month = int.Parse(dateExpire.Split('-')[0]);
+                            int year = int.Parse(dateExpire.Split('/')[1]);
+                            int month = int.Parse(dateExpire.Split('/')[0]);
                             BankAccount b = new BankAccount(results.GetString(0), aes.Decrypt(results.GetString(1)), new DateTime(year, month, 1), user);
                             bankAccounts.Add(b);
                         }
@@ -73,7 +73,7 @@ namespace FlightReservationProject
                 {
                     com.Parameters.AddWithValue("@num", aes.Encrypt(Num));
                     com.Parameters.AddWithValue("@cvv", aes.Encrypt(Cvv));
-                    com.Parameters.AddWithValue("@date", aes.Encrypt(DateExpire.ToString("MM-yy")));
+                    com.Parameters.AddWithValue("@date", aes.Encrypt(DateExpire.ToString("MM/yy")));
                     com.Parameters.AddWithValue("@email", User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
                     connection.Open();
 
@@ -91,6 +91,51 @@ namespace FlightReservationProject
                     com.Parameters.AddWithValue("@token", token);
                     com.Parameters.AddWithValue("@num", aes.Encrypt(Num));
                     
+                    connection.Open();
+                    rowsAffected += com.ExecuteNonQuery();
+                }
+            }
+            return rowsAffected;
+        }
+        public int UpdateAccount(AES aes)
+        {
+            int rowsAffected = 0;
+            string sql = "UPDATE bank_account SET number=@num,cvv=@cvv,date_expire=@date WHERE user_email=SHA2(@email,512)";
+
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@num", aes.Encrypt(Num));
+                    com.Parameters.AddWithValue("@cvv", aes.Encrypt(Cvv));
+                    com.Parameters.AddWithValue("@date", aes.Encrypt(DateExpire.ToString("MM/yy")));
+                    com.Parameters.AddWithValue("@email", User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
+                    connection.Open();
+
+                    rowsAffected += com.ExecuteNonQuery();
+                }
+            }
+            sql = "DELETE FROM token WHERE bank_account_number = @num";
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@num", aes.Encrypt(Num));
+                    connection.Open();
+                    rowsAffected += com.ExecuteNonQuery();
+                }
+            }
+
+            string token = GenerateToken();
+            sql = "INSERT INTO token(token, bank_account_number) VALUES(@token,@num)";
+
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@token", token);
+                    com.Parameters.AddWithValue("@num", aes.Encrypt(Num));
+
                     connection.Open();
                     rowsAffected += com.ExecuteNonQuery();
                 }
@@ -120,7 +165,7 @@ namespace FlightReservationProject
                     {
                         if (results.Read())
                         {
-                            GenerateToken();
+                            return GenerateToken();
                         }
                     }
                 }
