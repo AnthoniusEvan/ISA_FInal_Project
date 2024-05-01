@@ -318,5 +318,20 @@ namespace FlightReservationProject
             }
 
         }
+
+        private void btnAddAcc_Click(object sender, EventArgs e)
+        {
+            BankAccountPage p = new BankAccountPage();
+            p.Owner = this;
+            p.Show();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+            BankAccountPage p = new BankAccountPage();
+            p.Owner = this;
+            p.Show();
+        }
     }
 }

@@ -587,6 +587,7 @@ namespace FlightReservationProject
             this.panel7.Controls.Add(this.lblClassPayment);
             this.panel7.Controls.Add(this.lblFlightNum);
             this.panel7.Controls.Add(this.lblAirlineName);
+            this.panel7.Controls.Add(this.pnlTransferbank);
             this.panel7.Controls.Add(this.pnlOnlineBanking);
             this.panel7.Controls.Add(this.pictureBox3);
             this.panel7.Controls.Add(this.pnlTransferbank);
@@ -1096,14 +1097,138 @@ namespace FlightReservationProject
             this.customBtn1.TextColor = System.Drawing.Color.DimGray;
             this.customBtn1.UseVisualStyleBackColor = false;
             // 
+            // panel6
+            // 
+            this.panel6.AutoScroll = true;
+            this.panel6.Controls.Add(this.panel9);
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Location = new System.Drawing.Point(6, 58);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(212, 125);
+            this.panel6.TabIndex = 105;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.btnEdit);
+            this.panel8.Controls.Add(this.lblBankNum);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(212, 37);
+            this.panel8.TabIndex = 0;
+            // 
+            // lblBankNum
+            // 
+            this.lblBankNum.AutoSize = true;
+            this.lblBankNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBankNum.Location = new System.Drawing.Point(10, 11);
+            this.lblBankNum.Name = "lblBankNum";
+            this.lblBankNum.Size = new System.Drawing.Size(128, 15);
+            this.lblBankNum.TabIndex = 106;
+            this.lblBankNum.Text = "1112 2233 4444 5555";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.pictureBox6);
+            this.panel9.Controls.Add(this.label10);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(0, 37);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(212, 37);
+            this.panel9.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(10, 11);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(128, 15);
+            this.label10.TabIndex = 106;
+            this.label10.Text = "1112 2233 4444 5555";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
+            this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
+            this.pictureBox1.Location = new System.Drawing.Point(22, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::FlightReservationProject.Properties.Resources.image_removebg_preview___2024_05_02T005020_720;
+            this.pictureBox6.Location = new System.Drawing.Point(178, 6);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(22, 23);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 107;
+            this.pictureBox6.TabStop = false;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = global::FlightReservationProject.Properties.Resources.image_removebg_preview___2024_05_02T005020_720;
+            this.btnEdit.Location = new System.Drawing.Point(178, 6);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(22, 23);
+            this.btnEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEdit.TabIndex = 107;
+            this.btnEdit.TabStop = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAddAcc
+            // 
+            this.btnAddAcc.Image = global::FlightReservationProject.Properties.Resources.PPT_ISA_Project;
+            this.btnAddAcc.Location = new System.Drawing.Point(25, 30);
+            this.btnAddAcc.Name = "btnAddAcc";
+            this.btnAddAcc.Size = new System.Drawing.Size(33, 29);
+            this.btnAddAcc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddAcc.TabIndex = 104;
+            this.btnAddAcc.TabStop = false;
+            this.btnAddAcc.Click += new System.EventHandler(this.btnAddAcc_Click);
+            // 
+            // CopyIcon
+            // 
+            this.CopyIcon.Image = global::FlightReservationProject.Properties.Resources.copyIcon;
+            this.CopyIcon.Location = new System.Drawing.Point(173, 53);
+            this.CopyIcon.Name = "CopyIcon";
+            this.CopyIcon.Size = new System.Drawing.Size(28, 24);
+            this.CopyIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CopyIcon.TabIndex = 104;
+            this.CopyIcon.TabStop = false;
+            this.CopyIcon.Click += new System.EventHandler(this.CopyIcon_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::FlightReservationProject.Properties.Resources.Asset_26;
+            this.pictureBox3.Location = new System.Drawing.Point(392, 34);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(431, 252);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::FlightReservationProject.Properties.Resources.Asset_14;
+            this.pictureBox2.Location = new System.Drawing.Point(29, 165);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 122);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 80;
+            this.pictureBox2.TabStop = false;
+            // 
             // ReservationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 616);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlInformation);
             this.Controls.Add(this.pnlDetail);
+            this.Controls.Add(this.pnlInformation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ReservationPage";
