@@ -73,6 +73,7 @@ CREATE TABLE `boarding_pass` (
 
 LOCK TABLES `boarding_pass` WRITE;
 /*!40000 ALTER TABLE `boarding_pass` DISABLE KEYS */;
+INSERT INTO `boarding_pass` VALUES (1,4,'K1','GA0005','86I','2'),(2,4,'F10','GA0005','96M','3'),(3,4,'J8','GA0005','96W','4'),(4,4,'R3','GA0005','32F','6'),(5,4,'H5','GA0005','4E','1'),(6,4,'M4','GA0005','22C','5');
 /*!40000 ALTER TABLE `boarding_pass` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -414,4 +415,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-01 14:41:09
+-- Dump completed on 2024-05-01 16:59:41
