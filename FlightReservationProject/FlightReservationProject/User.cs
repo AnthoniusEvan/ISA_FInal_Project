@@ -133,31 +133,67 @@ namespace FlightReservationProject
             FromCity = fromCity;
             Reservations = new List<Reservation>();
         }
+        public User(string id, string fullName, string email, string address, DateTime birthDate, string mobileNumber, City fromCity)
+        {
+            Id = id;
+            FullName = fullName;
+            Email = email;
+            Address = address;
+            BirthDate = birthDate;
+            MobileNumber = mobileNumber;
+            FromCity = fromCity;
+            Reservations = new List<Reservation>();
+        }
         #endregion
 
         #region Methods
-        
-        public static User ValidateLogin(string email, string password)
+
+        public static User ValidateLogin(string id, string email, string password, out AES aes)
         {
-            string sql = "SELECT u.id, u.full_name, u.email, u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.email = @email AND u.password = SHA2(@password,512)";
-            
-            dbConnection con = new dbConnection();
-            MySqlCommand com = new MySqlCommand(sql, con.DbCon);
-            com.Parameters.AddWithValue("@email", email);
-            com.Parameters.AddWithValue("@password", GetUInt64Hash(SHA512.Create(),password).ToString());
-            MySql.Data.MySqlClient.MySqlDataReader results = com.ExecuteReader();
-
-            if (results.Read())
+            string sql = "SELECT key_value, iv, user_email FROM private_key WHERE user_email = SHA2(@email, 512)";
+            aes = new AES();
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                Country co = new Country(results.GetInt32(9), results.GetString(10));
-                City ci = new City(results.GetInt32(7), results.GetString(8), co);
-                User user = new User(results.GetString(0), results.GetString(1), results.GetString(2), password, results.GetString(4), results.GetDateTime(5), results.GetString(6), ci);
-
-                return user;
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), email).ToString());
+                    connection.Open();
+                    using (MySqlDataReader results = com.ExecuteReader())
+                    {
+                        if (results.Read())
+                        {
+                            aes = new AES(results.GetString(0), results.GetString(1));
+                        }
+                    }
+                }
             }
-            else
+            
+            
+            sql = "SELECT SHA2(u.id,512), u.full_name, SHA2(u.email,512), u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.id = SHA2(@id, 512) AND u.email = SHA2(@email,512) AND u.password = SHA2(@password,512)";
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                return null;
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@id", GetUInt64Hash(SHA512.Create(), id).ToString());
+                    com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), email).ToString());
+                    com.Parameters.AddWithValue("@password", GetUInt64Hash(SHA512.Create(), password).ToString());
+                    connection.Open();
+                    using (MySqlDataReader results = com.ExecuteReader())
+                    {
+                        if (results.Read())
+                        {
+                            Country co = new Country(results.GetInt32(9), results.GetString(10));
+                            City ci = new City(results.GetInt32(7), results.GetString(8), co);
+                            User user = new User(id, aes.Decrypt(results.GetString(1)), email, aes.Decrypt(results.GetString(4)), results.GetDateTime(5), aes.Decrypt(results.GetString(6)), ci);
+
+                            return user;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
             }
         }
 
@@ -184,16 +220,30 @@ namespace FlightReservationProject
         }
 
         public static int Add(User user)
-        {
-            string sql = string.Format("INSERT INTO user(id, email, full_name, password, address, date_of_birth, mobile_number, from_city_id) VALUES ('{0}','{1}','{2}',SHA2('{3}',512),'{4}','{5}','{6}','{7}')", user.Id, user.Email, user.FullName, GetUInt64Hash(SHA512.Create(),user.Password).ToString(), user.Address, user.BirthDate.ToString("yyyy-MM-dd"), user.MobileNumber, user.FromCity.Id);
+        { 
+            string sql = string.Format("INSERT INTO user(id, email, full_name, password, address, date_of_birth, mobile_number, from_city_id) VALUES (SHA2('{0}',512),SHA2('{1}',512),'{2}',SHA2('{3}',512),'{4}','{5}','{6}','{7}')", GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString(), user.FullName, GetUInt64Hash(SHA512.Create(), user.Password).ToString(), user.Address, user.BirthDate.ToString("yyyy-MM-dd"), user.MobileNumber, user.FromCity.Id);
 
+            dbConnection.ExecuteNonQuery(sql);
+
+            byte[] iv;
+            byte[] key = AES.GenerateKey(out iv);
+            AES aes = new AES(Convert.ToBase64String(key), Convert.ToBase64String(iv));
+
+            sql = string.Format("INSERT INTO private_key(key_value, iv, user_id, user_email) VALUES('{0}','{1}',SHA2('{2}',512),SHA2('{3}',512))", Convert.ToBase64String(key), Convert.ToBase64String(iv), GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email));
+            dbConnection.ExecuteNonQuery(sql);
+
+            sql = string.Format("UPDATE user SET full_name = '{0}', address = '{1}', mobile_number = '{2}' WHERE id = SHA2('{3}',512) AND email = SHA2('{4}',512)", aes.Encrypt(user.FullName), aes.Encrypt(user.Address), aes.Encrypt(user.MobileNumber), GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());
 
             return dbConnection.ExecuteNonQuery(sql);
         }
-        public static int Update(User user)
+        public static int Update(User user, AES aes)
         {
-            string sql = string.Format("UPDATE user SET full_name = '{0}', password = SHA2('{1}',512), address = '{2}', date_of_birth = '{3}', mobile_number = '{4}', from_city_id = '{5}' WHERE id = '{6}' AND email = '{7}'", user.FullName, GetUInt64Hash(SHA512.Create(), user.Password).ToString(), user.Address, user.BirthDate.ToString("yyyy-MM-dd"), user.MobileNumber, user.FromCity.Id, user.Id, user.Email);
+            string sql = string.Format("UPDATE user SET full_name = '{0}', address = '{1}', date_of_birth = '{2}', mobile_number = '{3}', from_city_id = '{4}' WHERE id = SHA2('{5}',512) AND email = SHA2('{6}',512)", aes.Encrypt(user.FullName), aes.Encrypt(user.Address), user.BirthDate.ToString("yyyy-MM-dd"), aes.Encrypt(user.MobileNumber), user.FromCity.Id, GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());
 
+            if (user.Password != "")
+            {
+                sql += string.Format(";UPDATE user SET password = SHA2('{0}',512) WHERE id = SHA2('{1}',512) AND email = SHA2('{2}',512)",GetUInt64Hash(SHA512.Create(), user.Password).ToString(), GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());
+            }
 
             return dbConnection.ExecuteNonQuery(sql);
         }
@@ -202,10 +252,10 @@ namespace FlightReservationProject
             using (hasher)
             {
                 var bytes = hasher.ComputeHash(Encoding.Default.GetBytes(text));
-                Array.Resize(ref bytes, bytes.Length + bytes.Length % 8); //make multiple of 8 if hash is not, for exampel SHA1 creates 20 bytes. 
-                return Enumerable.Range(0, bytes.Length / 8) // create a counter for de number of 8 bytes in the bytearray
-                    .Select(i => BitConverter.ToUInt64(bytes, i * 8)) // combine 8 bytes at a time into a integer
-                    .Aggregate((x, y) => x ^ y); //xor the bytes together so you end up with a ulong (64-bit int)
+                Array.Resize(ref bytes, bytes.Length + bytes.Length % 8); 
+                return Enumerable.Range(0, bytes.Length / 8) 
+                    .Select(i => BitConverter.ToUInt64(bytes, i * 8))
+                    .Aggregate((x, y) => x ^ y);
             }
         }
 

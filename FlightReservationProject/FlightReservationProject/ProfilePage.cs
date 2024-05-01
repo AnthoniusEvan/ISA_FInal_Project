@@ -17,10 +17,12 @@ namespace FlightReservationProject
             InitializeComponent();
         }
         User u;
+        AES aes;
         private void ProfilePage_Load(object sender, EventArgs e)
         {
             DashboardPage p = (DashboardPage)this.Owner;
             u = p.activeUser;
+            this.aes = p.aes;
             txtFullname.Text = u.FullName;
             txtID.Text = u.Id;
             dtpDob.Value = u.BirthDate;
@@ -89,7 +91,7 @@ namespace FlightReservationProject
             try
             {
                 User updatedUser = new User(u.Id, txtFullname.Text, u.Email, txtPassword.Text, txtAddress.Text, dtpDob.Value, lblCode.Text + "-" + txtMobileNumber.Text, (City)cbCity.SelectedItem);
-                int rowsAffected = User.Update(updatedUser);
+                int rowsAffected = User.Update(updatedUser,aes);
                 if (rowsAffected > 0)
                 {
                     DashboardPage p = (DashboardPage)this.Owner;
@@ -104,6 +106,11 @@ namespace FlightReservationProject
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void cbPass_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.Enabled = cbPass.Checked;
         }
     }
 }

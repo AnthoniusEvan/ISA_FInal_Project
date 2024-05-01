@@ -34,9 +34,10 @@ namespace FlightReservationProject
             ConfigurationManager.RefreshSection("appSettings");
         }
         public User user;
+        public AES aes;
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            user = User.ValidateLogin(txtUsername.Text, txtPassword.Text);
+            user = User.ValidateLogin(txtId.Text, txtUsername.Text, txtPassword.Text, out aes);
             if (user != null)
             {
                 DashboardPage dp = new DashboardPage();

@@ -17,6 +17,7 @@ namespace FlightReservationProject
             InitializeComponent();
         }
         public User activeUser;
+        public AES aes;
         private void DashboardPage_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Owner.Dispose();
@@ -26,7 +27,7 @@ namespace FlightReservationProject
         {
             LoginPage parent = (LoginPage)this.Owner;
             activeUser = parent.user;
-
+            this.aes = parent.aes;
             cbCityOri.DataSource = City.GetOrigins(parent.user.FromCity.FromCountry);
             cbCityOri.DisplayMember = "Name";
             cbCityOri.ValueMember = "Id";

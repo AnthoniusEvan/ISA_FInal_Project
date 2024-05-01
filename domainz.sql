@@ -73,7 +73,6 @@ CREATE TABLE `boarding_pass` (
 
 LOCK TABLES `boarding_pass` WRITE;
 /*!40000 ALTER TABLE `boarding_pass` DISABLE KEYS */;
-INSERT INTO `boarding_pass` VALUES (1,4,'K1','GA0005','86I','2'),(2,4,'F10','GA0005','96M','3'),(3,4,'J8','GA0005','96W','4'),(4,4,'R3','GA0005','32F','6'),(5,4,'H5','GA0005','4E','1'),(6,4,'M4','GA0005','22C','5');
 /*!40000 ALTER TABLE `boarding_pass` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,8 +181,7 @@ CREATE TABLE `passenger` (
   KEY `fk_passenger_city1_idx` (`born_in`),
   KEY `fk_passenger_reservation1_idx` (`reservation_id`,`reservation_user_id`,`reservation_user_email`),
   CONSTRAINT `fk_passenger_city1` FOREIGN KEY (`born_in`) REFERENCES `city` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_passenger_passport1` FOREIGN KEY (`passport_id`) REFERENCES `passport` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_passenger_reservation1` FOREIGN KEY (`reservation_id`, `reservation_user_id`, `reservation_user_email`) REFERENCES `reservation` (`id`, `user_id`, `user_email`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_passenger_passport1` FOREIGN KEY (`passport_id`) REFERENCES `passport` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -193,7 +191,6 @@ CREATE TABLE `passenger` (
 
 LOCK TABLES `passenger` WRITE;
 /*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
-INSERT INTO `passenger` VALUES ('1','Adult',NULL,'Mr','admin','2004-04-28',104,1,'101','admin@a.com'),('1','Adult',NULL,'Mr','admin','2004-04-28',104,2,'101','admin@a.com'),('1','Adult',NULL,'Mr','admin','2004-04-28',104,3,'101','admin@a.com'),('1','Adult',NULL,'Mr','admin','2004-04-28',104,4,'101','admin@a.com'),('2','Child',NULL,'','Disa','2022-04-30',104,1,'101','admin@a.com'),('2','Adult',NULL,'Mrs','Cella','2003-05-01',104,2,'101','admin@a.com'),('3','Baby',NULL,'','Kalyn','2024-04-30',104,1,'101','admin@a.com'),('3','Adult',NULL,'Ms','Cello','2002-05-01',104,2,'101','admin@a.com'),('4','Child',NULL,'','Cath','2022-05-01',104,2,'101','admin@a.com'),('5','Child',NULL,'','Cory','2022-05-01',104,2,'101','admin@a.com'),('6','Baby',NULL,'','Coco','2024-05-01',104,2,'101','admin@a.com');
 /*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,6 +290,33 @@ INSERT INTO `plane_flight` VALUES ('BA0001',NULL,0,NULL,'2024-04-30 11:20:00','2
 UNLOCK TABLES;
 
 --
+-- Table structure for table `private_key`
+--
+
+DROP TABLE IF EXISTS `private_key`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `private_key` (
+  `key_value` varchar(256) NOT NULL,
+  `iv` varchar(128) NOT NULL,
+  `user_email` varchar(512) NOT NULL,
+  PRIMARY KEY (`key_value`,`iv`,`user_email`),
+  KEY `fk_private_key_user1_idx` (`user_email`),
+  CONSTRAINT `fk_private_key_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `private_key`
+--
+
+LOCK TABLES `private_key` WRITE;
+/*!40000 ALTER TABLE `private_key` DISABLE KEYS */;
+INSERT INTO `private_key` VALUES ('cOecIoYxXd/eO3vU/JDEtFf7hpA4GfnviazxAjhRVFs=','yCLzaarswhnStdJYb/F//w==','4e5bc90e70aa5a88bf6f238e5f0886154d27329b59187d5922e25c7fe47c3aa08fd1b2298edf2d5a455848394c6531a8ee517354977e9f2cf870829540a92aa7');
+/*!40000 ALTER TABLE `private_key` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `reservation`
 --
 
@@ -322,8 +346,7 @@ CREATE TABLE `reservation` (
   CONSTRAINT `fk_reservation_city1` FOREIGN KEY (`to_city`) REFERENCES `city` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_reservation_city2` FOREIGN KEY (`from_city`) REFERENCES `city` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_reservation_class1` FOREIGN KEY (`class_id`) REFERENCES `class` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_reservation_plane_flight1` FOREIGN KEY (`flight_number`) REFERENCES `plane_flight` (`flight_number`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_reservation_user1` FOREIGN KEY (`user_id`, `user_email`) REFERENCES `user` (`id`, `email`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_reservation_plane_flight1` FOREIGN KEY (`flight_number`) REFERENCES `plane_flight` (`flight_number`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -333,7 +356,6 @@ CREATE TABLE `reservation` (
 
 LOCK TABLES `reservation` WRITE;
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
-INSERT INTO `reservation` VALUES (1,'101','admin@a.com',11473,11696,1,1,1,'2024-04-30 23:46:00','2024-04-30 15:20:00','BA0001',1,'BASD11'),(2,'101','admin@a.com',11473,22147,3,2,1,'2024-03-03 00:51:00','2024-03-04 01:10:00','GA0005',4,'GASL51'),(3,'101','admin@a.com',11473,19079,1,0,0,'2023-12-04 16:05:00','2023-12-04 20:05:00','CI0002',2,'CISS21'),(4,'101','admin@a.com',11473,11696,1,0,0,'2024-04-30 11:20:00','2024-04-30 15:20:00','BA0001',1,'BASD12');
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -380,13 +402,13 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id` varchar(16) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `full_name` varchar(40) NOT NULL,
+  `id` varchar(512) NOT NULL,
+  `email` varchar(512) NOT NULL,
+  `full_name` varchar(256) NOT NULL,
   `password` varchar(512) NOT NULL,
-  `address` varchar(45) NOT NULL,
+  `address` varchar(256) NOT NULL,
   `date_of_birth` date NOT NULL,
-  `mobile_number` varchar(15) NOT NULL,
+  `mobile_number` varchar(256) NOT NULL,
   `from_city_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`email`),
   UNIQUE KEY `email_UNIQUE` (`email`),
@@ -402,7 +424,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('101','admin@a.com','admin','e3c9732fe09ee79e7b22d40c3cb731fa03a528319398fedb14766594475f56fbb7f312de34aa9cd252c5d62d2fcb4bf12107396f2d78cd48c3cb61492b03776b','I dont know','2004-04-28','+62-23456',11473),('160922001','evan@gmail.com','Evan','8571f0144c4f2825d95f628ba02227d37f8400afc547f95f9f8fc99fe40a9d7a5eade27e68ffbad4326b48108951ec963c2091997e4123768e66e4faa9fbc1d0','Jl jalann yuksssss','1855-07-05','+62-8785628324',11611),('160922014','cella@gmail.com','Marcella','89a9b502987e6354174019153b436d2a57956fec1c71c651aa99a3993f09743d12d5211e715f854e5ac2bac9325eb8a77155bbd2284c37bc3ced311e7956be5d','Jl cella','2004-12-02','01283193131',1);
+INSERT INTO `user` VALUES ('acc545a6011a676d63f2c1fbd2102f91015b3a235fafad4ac56be41666ab9cdfea270c540a379c559755e77e9672dba9a92783b31ed13aa1a880311220a6dabe','4e5bc90e70aa5a88bf6f238e5f0886154d27329b59187d5922e25c7fe47c3aa08fd1b2298edf2d5a455848394c6531a8ee517354977e9f2cf870829540a92aa7','QMjp03hjUyI+HGocnXq+FQ==','23f27d41551b56c6aa06c8a06569e4a62ed66e50fe697881a1d990da6edc7a967400b10ef0684e44af596cfc706d6a34d86e66d7661510022990a08618b948c6','277EfdqbLgOSjlvM9BXCiA==','2008-04-30','o0h5Nw0wEQ5u3eOQiw3dfg==',11473);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -415,4 +437,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-01 16:59:41
+-- Dump completed on 2024-05-01 20:43:57

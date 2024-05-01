@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AES.cs" />
     <Compile Include="Airport.cs" />
     <Compile Include="BoardingPass.cs" />
     <Compile Include="BookingPage.cs">
