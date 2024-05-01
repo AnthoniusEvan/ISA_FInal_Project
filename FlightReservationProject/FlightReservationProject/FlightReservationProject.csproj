@@ -323,5 +323,11 @@
   <ItemGroup>
     <None Include="Resources\image-removebg-preview - 2024-05-02T005020.720.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -124,8 +124,14 @@
   <data name="Asset 31" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Asset 31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="image-removebg-preview - 2024-05-02T005020.720" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\image-removebg-preview - 2024-05-02T005020.720.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Asset 10" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Asset 10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Asset 7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Asset 7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Asset 18" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Asset 18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,6 +181,9 @@
   <data name="icon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logo_Z" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_Z.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -189,9 +198,6 @@
   </data>
   <data name="Asset 34" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Asset 34.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PPT_ISA Project" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PPT_ISA Project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Asset 29" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Asset 29.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,16 +226,16 @@
   <data name="Asset 20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Asset 20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Asset 7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Asset 7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="login_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PPT_ISA Project" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PPT_ISA Project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Asset 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Asset 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="image-removebg-preview - 2024-05-02T005020.720" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\image-removebg-preview - 2024-05-02T005020.720.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
