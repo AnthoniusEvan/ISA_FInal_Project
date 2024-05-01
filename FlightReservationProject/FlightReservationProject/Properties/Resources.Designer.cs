@@ -363,6 +363,16 @@ namespace FlightReservationProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap image_removebg_preview___2024_05_02T005020_720 {
+            get {
+                object obj = ResourceManager.GetObject("image-removebg-preview - 2024-05-02T005020.720", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap login_2 {
             get {
                 object obj = ResourceManager.GetObject("login_2", resourceCulture);
@@ -396,6 +406,16 @@ namespace FlightReservationProject.Properties {
         internal static System.Drawing.Bitmap plus {
             get {
                 object obj = ResourceManager.GetObject("plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PPT_ISA_Project {
+            get {
+                object obj = ResourceManager.GetObject("PPT_ISA Project", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
