@@ -69,6 +69,12 @@
       <DependentUpon>CheckInPage.cs</DependentUpon>
     </Compile>
     <Compile Include="City.cs" />
+    <Compile Include="ConfirmarionPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmarionPage.Designer.cs">
+      <DependentUpon>ConfirmarionPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="FlightClass.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="CustomBtn.cs">
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CheckInPage.resx">
       <DependentUpon>CheckInPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmarionPage.resx">
+      <DependentUpon>ConfirmarionPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DashboardPage.resx">
       <DependentUpon>DashboardPage.cs</DependentUpon>
@@ -299,6 +308,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Asset 31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asset 34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asset 35.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

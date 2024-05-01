@@ -19,10 +19,7 @@ namespace FlightReservationProject
 
         private void btnEticket_Click(object sender, EventArgs e)
         {
-            
-            //PrintETicket p = new PrintETicket();
-            //p.Owner = this;
-            //p.Show();
+
         }
         User activeUser;
         private void BookingPage_Load(object sender, EventArgs e)
@@ -35,7 +32,7 @@ namespace FlightReservationProject
             }          
         }
 
-        private void CreateBooking(Reservation reservation)
+        public void CreateBooking(Reservation reservation)
         {
             Panel pnlBooking = new Panel();
             Label lblDes = new Label();
