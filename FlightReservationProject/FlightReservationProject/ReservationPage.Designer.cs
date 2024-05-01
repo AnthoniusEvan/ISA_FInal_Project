@@ -101,8 +101,8 @@ namespace FlightReservationProject
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnOnlineBank = new FlightReservationProject.CustomBtn();
             this.btnTransfer = new FlightReservationProject.CustomBtn();
-            this.customBtn3 = new FlightReservationProject.CustomBtn();
             this.customBtn1 = new FlightReservationProject.CustomBtn();
+            this.customBtn3 = new FlightReservationProject.CustomBtn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -782,7 +782,7 @@ namespace FlightReservationProject
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(10, 121);
+            this.label32.Location = new System.Drawing.Point(19, 118);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(72, 15);
             this.label32.TabIndex = 103;
@@ -792,7 +792,7 @@ namespace FlightReservationProject
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(10, 184);
+            this.label31.Location = new System.Drawing.Point(19, 181);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(142, 15);
             this.label31.TabIndex = 102;
@@ -802,7 +802,7 @@ namespace FlightReservationProject
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(24, 165);
+            this.label30.Location = new System.Drawing.Point(33, 162);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(176, 15);
             this.label30.TabIndex = 101;
@@ -822,7 +822,7 @@ namespace FlightReservationProject
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(10, 145);
+            this.label29.Location = new System.Drawing.Point(19, 142);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(155, 15);
             this.label29.TabIndex = 100;
@@ -960,25 +960,6 @@ namespace FlightReservationProject
             this.btnTransfer.UseVisualStyleBackColor = false;
             this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
             // 
-            // customBtn3
-            // 
-            this.customBtn3.BackColor = System.Drawing.Color.White;
-            this.customBtn3.BackgroundColor = System.Drawing.Color.White;
-            this.customBtn3.BorderColor = System.Drawing.Color.LightGray;
-            this.customBtn3.BorderRadius = 40;
-            this.customBtn3.BorderSize = 1;
-            this.customBtn3.Enabled = false;
-            this.customBtn3.FlatAppearance.BorderSize = 0;
-            this.customBtn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn3.ForeColor = System.Drawing.Color.DimGray;
-            this.customBtn3.Location = new System.Drawing.Point(3, 10);
-            this.customBtn3.Name = "customBtn3";
-            this.customBtn3.Size = new System.Drawing.Size(228, 209);
-            this.customBtn3.TabIndex = 97;
-            this.customBtn3.TextColor = System.Drawing.Color.DimGray;
-            this.customBtn3.UseVisualStyleBackColor = false;
-            // 
             // customBtn1
             // 
             this.customBtn1.BackColor = System.Drawing.Color.White;
@@ -997,6 +978,25 @@ namespace FlightReservationProject
             this.customBtn1.TabIndex = 97;
             this.customBtn1.TextColor = System.Drawing.Color.DimGray;
             this.customBtn1.UseVisualStyleBackColor = false;
+            // 
+            // customBtn3
+            // 
+            this.customBtn3.BackColor = System.Drawing.Color.White;
+            this.customBtn3.BackgroundColor = System.Drawing.Color.White;
+            this.customBtn3.BorderColor = System.Drawing.Color.LightGray;
+            this.customBtn3.BorderRadius = 40;
+            this.customBtn3.BorderSize = 1;
+            this.customBtn3.Enabled = false;
+            this.customBtn3.FlatAppearance.BorderSize = 0;
+            this.customBtn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customBtn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customBtn3.ForeColor = System.Drawing.Color.DimGray;
+            this.customBtn3.Location = new System.Drawing.Point(3, 10);
+            this.customBtn3.Name = "customBtn3";
+            this.customBtn3.Size = new System.Drawing.Size(228, 209);
+            this.customBtn3.TabIndex = 97;
+            this.customBtn3.TextColor = System.Drawing.Color.DimGray;
+            this.customBtn3.UseVisualStyleBackColor = false;
             // 
             // ReservationPage
             // 

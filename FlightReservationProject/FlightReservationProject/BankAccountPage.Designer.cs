@@ -64,8 +64,8 @@ namespace FlightReservationProject
             this.panel1.Controls.Add(this.txtAccNum);
             this.panel1.Controls.Add(this.line);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.pbOpen);
             this.panel1.Controls.Add(this.pbClose);
+            this.panel1.Controls.Add(this.pbOpen);
             this.panel1.Controls.Add(this.txtCVV);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -199,7 +199,7 @@ namespace FlightReservationProject
             // pbOpen
             // 
             this.pbOpen.Image = global::FlightReservationProject.Properties.Resources.open;
-            this.pbOpen.Location = new System.Drawing.Point(446, 232);
+            this.pbOpen.Location = new System.Drawing.Point(446, 235);
             this.pbOpen.Name = "pbOpen";
             this.pbOpen.Size = new System.Drawing.Size(22, 19);
             this.pbOpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -210,7 +210,7 @@ namespace FlightReservationProject
             // pbClose
             // 
             this.pbClose.Image = global::FlightReservationProject.Properties.Resources.close;
-            this.pbClose.Location = new System.Drawing.Point(446, 232);
+            this.pbClose.Location = new System.Drawing.Point(446, 235);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(22, 19);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -234,8 +234,10 @@ namespace FlightReservationProject
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 371);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "BankAccountPage";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.BankAccountPage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
