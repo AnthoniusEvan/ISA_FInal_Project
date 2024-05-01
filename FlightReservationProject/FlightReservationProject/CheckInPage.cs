@@ -39,7 +39,7 @@ namespace FlightReservationProject
                 MessageBox.Show("Please fill in the e-ticket number!");
                 return;
             }
-            ticket = activeUser.CheckIn(txtTicketNum.Text, txtFullname.Text);
+            ticket = activeUser.CheckIn(txtTicketNum.Text, txtFullname.Text, aes);
 
             if (ticket == null)
             {
@@ -175,11 +175,12 @@ namespace FlightReservationProject
             pnlPrintBoardingPass.BringToFront();
             pnlCheckin.Visible = false;
         }
-
+        AES aes;
         private void CheckInPage_Load(object sender, EventArgs e)
         {
             DashboardPage p = (DashboardPage)this.Owner;
             this.activeUser = p.activeUser;
+            this.aes = p.aes;
             startingPanel.BringToFront();
         }
 
@@ -268,15 +269,15 @@ namespace FlightReservationProject
             Button b = (Button)sender;
             int passengerId = int.Parse(b.Tag.ToString());
 
-            BoardingPass pass = BoardingPass.GetBoardingPass(ticket.ListOfPassengers[passengerId], ticket.FlightChosen.FlightNumber);
+            BoardingPass pass = BoardingPass.GetBoardingPass(ticket.ListOfPassengers[passengerId], ticket.FlightChosen.FlightNumber, aes);
             if (pass == null)
             { 
-                pass = new BoardingPass(ticket.FlightClass, ticket.FlightChosen.FlightNumber, ticket.ListOfPassengers[passengerId]);
+                pass = new BoardingPass(ticket.FlightClass, ticket.FlightChosen.FlightNumber, ticket.ListOfPassengers[passengerId], aes);
             }// automatically store in db
 
             PrintBoardingPass p = new PrintBoardingPass();
             
-            ticket = activeUser.CheckIn(txtTicketNum.Text, txtFullname.Text);
+            ticket = activeUser.CheckIn(txtTicketNum.Text, txtFullname.Text, aes);
             p.lblName.Text = ticket.ListOfPassengers[passengerId].FullName;
             p.passenger.Text = p.lblName.Text;
             p.lblSeat.Text = pass.Seat;

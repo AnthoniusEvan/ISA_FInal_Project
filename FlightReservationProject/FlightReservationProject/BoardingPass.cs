@@ -34,7 +34,7 @@ namespace FlightReservationProject
 
         }
         // Used to export data
-        public BoardingPass(FlightClass flightClass, string flightNumber, Passenger passenger)
+        public BoardingPass(FlightClass flightClass, string flightNumber, Passenger passenger, AES aes)
         {
             Random rnd = new Random();
             Gate = Convert.ToChar(rnd.Next(65, 91)) + rnd.Next(1,11).ToString();
@@ -43,7 +43,7 @@ namespace FlightReservationProject
             FlightClass = flightClass;
             FlightNumber = flightNumber;
             Passenger = passenger;
-            CreateBoardingPass();
+            CreateBoardingPass(aes);
         }
 
         // Used to import date
@@ -63,9 +63,9 @@ namespace FlightReservationProject
             Random rnd = new Random();
             return rnd.Next(1, 100).ToString() + (char)(rnd.Next(65, 91));
         }
-        private int GenerateId()
+        private int GenerateId(AES aes)
         {
-            string sql = "SELECT COUNT(id) FROM boarding_pass WHERE plane_flight_flight_number = '" + FlightNumber + "'";
+            string sql = "SELECT COUNT(id) FROM boarding_pass WHERE flight_number = '" + aes.Encrypt(FlightNumber) + "'";
 
             MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
             int count = 0;
@@ -76,14 +76,14 @@ namespace FlightReservationProject
 
             return count + 1;
         }
-        private void CreateBoardingPass()
+        private void CreateBoardingPass(AES aes)
         {
-            string sql = string.Format("INSERT INTO boarding_pass(id, class_id, gate, plane_flight_flight_number, seat_number, passenger_id) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')", GenerateId(), FlightClass.Id, Gate, FlightNumber, Seat, Passenger.Id);
+            string sql = string.Format("INSERT INTO boarding_pass(id, class_id, gate, flight_number, seat_number, passenger_id) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')", GenerateId(aes), FlightClass.Id, aes.Encrypt(Gate), aes.Encrypt(FlightNumber), aes.Encrypt(Seat), Passenger.Id);
             dbConnection.ExecuteNonQuery(sql);
         }
-        public static BoardingPass GetBoardingPass(Passenger p, string flightNumber)
+        public static BoardingPass GetBoardingPass(Passenger p, string flightNumber, AES aes)
         {
-            string sql = "SELECT b.id, b.class_id, c.name, b.gate, b.plane_flight_flight_number, b.seat_number, b.passenger_id FROM boarding_pass b INNER JOIN class c ON b.class_id = c.id WHERE b.passenger_id = '" + p.Id + "' AND b.plane_flight_flight_number = '" + flightNumber +"'";
+            string sql = "SELECT b.id, b.class_id, c.name, b.gate, b.flight_number, b.seat_number, b.passenger_id FROM boarding_pass b INNER JOIN class c ON b.class_id = c.id WHERE b.passenger_id = '" + p.Id + "' AND b.flight_number = '" + aes.Encrypt(flightNumber) +"'";
 
             BoardingPass pass=null;
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
@@ -96,7 +96,7 @@ namespace FlightReservationProject
                         if (results.Read())
                         {
                             FlightClass fc = new FlightClass(results.GetInt32(1), results.GetString(2));
-                            pass = new BoardingPass(results.GetInt32(0), fc, results.GetString(3), results.GetString(4), results.GetString(5), p);
+                            pass = new BoardingPass(results.GetInt32(0), fc, aes.Decrypt(results.GetString(3)), aes.Decrypt(results.GetString(4)), aes.Decrypt(results.GetString(5)), p);
                         }
                         return pass;
                     }

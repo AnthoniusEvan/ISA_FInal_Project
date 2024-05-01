@@ -28,9 +28,11 @@ namespace FlightReservationProject
             messageTimer.Interval = 3000;
             messageTimer.Tick += MessageTimer_Tick;
         }
-
+        public AES aes;
         private void ReservationPage_Load(object sender, EventArgs e)
         {
+            FlightPage p = (FlightPage)this.Owner;
+            this.aes = p.aes;
             lblAirline.Text = flight.Airline;
             lblFlightCode.Text = flight.FlightNumber;
             lblClass.Text = order.FlightClass.Name;
@@ -308,7 +310,7 @@ namespace FlightReservationProject
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            int rowsAffected = order.AddReservation(passengers.ToList());
+            int rowsAffected = order.AddReservation(passengers.ToList(), aes);
             if (rowsAffected > 0)
             {
                 ConfirmarionPage p = new ConfirmarionPage();

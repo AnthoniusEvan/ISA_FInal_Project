@@ -128,7 +128,7 @@ namespace FlightReservationProject
             }
             return count + 1;
         }
-        public int AddReservation(List<Passenger> passengers)
+        public int AddReservation(List<Passenger> passengers, AES aes)
         {
             if (TicketNum == null) return 0;
 
@@ -136,11 +136,11 @@ namespace FlightReservationProject
 
             int rowsAffected = dbConnection.ExecuteNonQuery(sql);
 
-            rowsAffected+=AddPassengers(passengers);
+            rowsAffected+=AddPassengers(passengers, aes);
             return rowsAffected;
         }
 
-        private int AddPassengers(List<Passenger> passengers)
+        private int AddPassengers(List<Passenger> passengers, AES aes)
         {
             ListOfPassengers = passengers;
 
@@ -161,22 +161,21 @@ namespace FlightReservationProject
                 }
             }
             
-            
             int rowsAffected = 0;
             for (int i = 0; i < passengers.Count; i++)
             {
                 Passenger p = passengers[i];
 
-                sql = string.Format("INSERT INTO passenger(id, title, full_name, dob, age_type, born_in, reservation_id, reservation_user_id, reservation_user_email) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')",count + 1 + i, p.Title, p.FullName, p.Dob.ToString("yyyy-MM-dd"), p.AgeType, p.BornIn.Id, Id, User.Id, User.Email);
+                sql = string.Format("INSERT INTO passenger(id, title, full_name, dob, age_type, born_in, reservation_id, reservation_user_email) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",count + 1 + i, p.Title, aes.Encrypt(p.FullName), p.Dob.ToString("yyyy-MM-dd"), p.AgeType, p.BornIn.Id, Id, User.Email);
 
                 rowsAffected += dbConnection.ExecuteNonQuery(sql);
             }
             return rowsAffected;
         }
 
-        public List<Passenger> GetPassengers()
+        public List<Passenger> GetPassengers(AES aes)
         {
-            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.reservation_user_id, p.born_in, u.email, p.reservation_id FROM passenger p INNER JOIN user u ON p.reservation_user_id = u.id WHERE u.id = '" + User.Id + "' AND u.email = '" + User.Email + "' AND p.reservation_id = '" + Id + "'";
+            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.born_in, u.email, p.reservation_id, p.reservation_user_email FROM passenger p INNER JOIN user u ON p.reservation_user_email = u.email WHERE u.id = '" + User.Id + "' AND u.email = '" + User.Email + "' AND p.reservation_id = '" + Id + "'";
             
             List<Passenger> passengers = new List<Passenger>();
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
@@ -188,7 +187,7 @@ namespace FlightReservationProject
                     {
                         while (results.Read())
                         {
-                            Passenger p = new Passenger(results.GetString(0), results.GetString(1), results.GetString(2), results.GetDateTime(3), results.GetString(4));
+                            Passenger p = new Passenger(results.GetString(0), results.GetString(1), aes.Decrypt(results.GetString(2)), results.GetDateTime(3), results.GetString(4));
 
                             passengers.Add(p);
                         }

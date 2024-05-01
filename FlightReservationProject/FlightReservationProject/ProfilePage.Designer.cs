@@ -30,7 +30,6 @@ namespace FlightReservationProject
         private void InitializeComponent()
         {
             this.lblBack = new System.Windows.Forms.Label();
-            this.btnUpdate = new FlightReservationProject.CustomBtn();
             this.cbCountry = new System.Windows.Forms.ComboBox();
             this.cbCity = new System.Windows.Forms.ComboBox();
             this.dtpDob = new System.Windows.Forms.DateTimePicker();
@@ -55,6 +54,7 @@ namespace FlightReservationProject
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbPass = new System.Windows.Forms.CheckBox();
+            this.btnUpdate = new FlightReservationProject.CustomBtn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -72,27 +72,6 @@ namespace FlightReservationProject
             this.lblBack.TabIndex = 158;
             this.lblBack.Text = "< Back";
             this.lblBack.Click += new System.EventHandler(this.lblBack_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
-            this.btnUpdate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
-            this.btnUpdate.BorderColor = System.Drawing.Color.Transparent;
-            this.btnUpdate.BorderRadius = 20;
-            this.btnUpdate.BorderSize = 0;
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(711, 518);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(267, 64);
-            this.btnUpdate.TabIndex = 157;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.TextColor = System.Drawing.Color.White;
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // cbCountry
             // 
@@ -364,12 +343,33 @@ namespace FlightReservationProject
             // cbPass
             // 
             this.cbPass.AutoSize = true;
-            this.cbPass.Location = new System.Drawing.Point(561, 298);
+            this.cbPass.Location = new System.Drawing.Point(576, 298);
             this.cbPass.Name = "cbPass";
             this.cbPass.Size = new System.Drawing.Size(22, 21);
             this.cbPass.TabIndex = 0;
             this.cbPass.UseVisualStyleBackColor = true;
             this.cbPass.CheckedChanged += new System.EventHandler(this.cbPass_CheckedChanged);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
+            this.btnUpdate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(135)))));
+            this.btnUpdate.BorderColor = System.Drawing.Color.Transparent;
+            this.btnUpdate.BorderRadius = 20;
+            this.btnUpdate.BorderSize = 0;
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(711, 518);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(267, 64);
+            this.btnUpdate.TabIndex = 157;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.TextColor = System.Drawing.Color.White;
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // ProfilePage
             // 

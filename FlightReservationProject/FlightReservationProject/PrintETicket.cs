@@ -13,8 +13,11 @@ namespace FlightReservationProject
     public partial class PrintETicket : Form
     {
         Reservation ticket;
+        AES aes;
         public PrintETicket(Reservation ticket)
         {
+            BookingPage p = (BookingPage)this.Owner;
+            this.aes = p.aes;
             this.ticket = ticket;
             InitializeComponent();
         }
@@ -31,7 +34,7 @@ namespace FlightReservationProject
             lblTo.Text = ticket.ToCity.Name;
             lblEticketNum.Text = "#" + ticket.TicketNum;
 
-            List<Passenger> passengers = ticket.GetPassengers();
+            List<Passenger> passengers = ticket.GetPassengers(aes);
             string num = "";
             string title = "";
             string name = "";

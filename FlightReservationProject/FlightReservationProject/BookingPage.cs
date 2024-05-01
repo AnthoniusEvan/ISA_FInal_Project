@@ -30,10 +30,12 @@ namespace FlightReservationProject
             p.Show();
         }
         User activeUser;
+        public AES aes;
         private void BookingPage_Load(object sender, EventArgs e)
         {
             DashboardPage p = (DashboardPage)this.Owner;
             activeUser = p.activeUser;
+            this.aes = p.aes;
             reservations = activeUser.RetrieveReservation();
             foreach (Reservation r in reservations)
             {
