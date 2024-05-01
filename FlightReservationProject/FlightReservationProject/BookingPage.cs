@@ -41,7 +41,7 @@ namespace FlightReservationProject
             }          
         }
 
-        private void CreateBooking(Reservation reservation)
+        public void CreateBooking(Reservation reservation)
         {
             Panel pnlBooking = new Panel();
             Label lblDes = new Label();

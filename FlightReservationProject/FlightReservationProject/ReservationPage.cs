@@ -311,7 +311,9 @@ namespace FlightReservationProject
             int rowsAffected = order.AddReservation(passengers.ToList());
             if (rowsAffected > 0)
             {
-                MessageBox.Show("Reservation Succesful!");
+                ConfirmarionPage p = new ConfirmarionPage();
+                p.Owner = this;
+                p.Show();
             }
             else
             {
