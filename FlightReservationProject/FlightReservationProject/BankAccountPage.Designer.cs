@@ -113,11 +113,11 @@ namespace FlightReservationProject
             // txtCVV
             // 
             this.txtCVV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCVV.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCVV.Location = new System.Drawing.Point(296, 282);
             this.txtCVV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCVV.Multiline = true;
             this.txtCVV.Name = "txtCVV";
-            this.txtCVV.Size = new System.Drawing.Size(239, 53);
+            this.txtCVV.Size = new System.Drawing.Size(239, 39);
             this.txtCVV.TabIndex = 179;
             // 
             // label3
@@ -134,11 +134,11 @@ namespace FlightReservationProject
             // txtExpiredDate
             // 
             this.txtExpiredDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtExpiredDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExpiredDate.Location = new System.Drawing.Point(17, 282);
             this.txtExpiredDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtExpiredDate.Multiline = true;
             this.txtExpiredDate.Name = "txtExpiredDate";
-            this.txtExpiredDate.Size = new System.Drawing.Size(222, 53);
+            this.txtExpiredDate.Size = new System.Drawing.Size(222, 39);
             this.txtExpiredDate.TabIndex = 177;
             // 
             // label2
@@ -166,11 +166,11 @@ namespace FlightReservationProject
             // txtAccNum
             // 
             this.txtAccNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAccNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAccNum.Location = new System.Drawing.Point(17, 172);
             this.txtAccNum.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtAccNum.Multiline = true;
             this.txtAccNum.Name = "txtAccNum";
-            this.txtAccNum.Size = new System.Drawing.Size(518, 53);
+            this.txtAccNum.Size = new System.Drawing.Size(518, 39);
             this.txtAccNum.TabIndex = 173;
             // 
             // line

@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="AES.cs" />
     <Compile Include="Airport.cs" />
+    <Compile Include="BankAccount.cs" />
     <Compile Include="BankAccountPage.cs">
       <SubType>Form</SubType>
     </Compile>

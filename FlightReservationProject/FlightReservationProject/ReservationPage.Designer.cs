@@ -88,6 +88,11 @@ namespace FlightReservationProject
             this.lblClassPayment = new System.Windows.Forms.Label();
             this.lblFlightNum = new System.Windows.Forms.Label();
             this.lblAirlineName = new System.Windows.Forms.Label();
+            this.pnlTransferbank = new System.Windows.Forms.Panel();
+            this.pnlAccounts = new System.Windows.Forms.Panel();
+            this.btnAddAcc = new System.Windows.Forms.PictureBox();
+            this.lblBankAcc = new System.Windows.Forms.Label();
+            this.customBtn1 = new FlightReservationProject.CustomBtn();
             this.pnlOnlineBanking = new System.Windows.Forms.Panel();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -98,17 +103,6 @@ namespace FlightReservationProject
             this.label28 = new System.Windows.Forms.Label();
             this.customBtn3 = new FlightReservationProject.CustomBtn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pnlTransferbank = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.btnEdit = new System.Windows.Forms.PictureBox();
-            this.lblBankNum = new System.Windows.Forms.Label();
-            this.btnAddAcc = new System.Windows.Forms.PictureBox();
-            this.lblBankAcc = new System.Windows.Forms.Label();
-            this.customBtn1 = new FlightReservationProject.CustomBtn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -117,16 +111,11 @@ namespace FlightReservationProject
             this.pnlInformation.SuspendLayout();
             this.pnlDetail.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.pnlTransferbank.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddAcc)).BeginInit();
             this.pnlOnlineBanking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CopyIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pnlTransferbank.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAddAcc)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -145,10 +134,10 @@ namespace FlightReservationProject
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
             this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
-            this.pictureBox1.Location = new System.Drawing.Point(25, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(22, 7);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 38);
+            this.pictureBox1.Size = new System.Drawing.Size(34, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -480,10 +469,10 @@ namespace FlightReservationProject
             // pictureBox2
             // 
             this.pictureBox2.Image = global::FlightReservationProject.Properties.Resources.Asset_14;
-            this.pictureBox2.Location = new System.Drawing.Point(33, 206);
+            this.pictureBox2.Location = new System.Drawing.Point(29, 165);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(34, 152);
+            this.pictureBox2.Size = new System.Drawing.Size(30, 122);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 80;
             this.pictureBox2.TabStop = false;
@@ -587,10 +576,9 @@ namespace FlightReservationProject
             this.panel7.Controls.Add(this.lblClassPayment);
             this.panel7.Controls.Add(this.lblFlightNum);
             this.panel7.Controls.Add(this.lblAirlineName);
-            this.panel7.Controls.Add(this.pnlTransferbank);
             this.panel7.Controls.Add(this.pnlOnlineBanking);
-            this.panel7.Controls.Add(this.pictureBox3);
             this.panel7.Controls.Add(this.pnlTransferbank);
+            this.panel7.Controls.Add(this.pictureBox3);
             this.panel7.Location = new System.Drawing.Point(66, 32);
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel7.Name = "panel7";
@@ -850,6 +838,69 @@ namespace FlightReservationProject
             this.lblAirlineName.TabIndex = 74;
             this.lblAirlineName.Text = "Garuda";
             // 
+            // pnlTransferbank
+            // 
+            this.pnlTransferbank.Controls.Add(this.pnlAccounts);
+            this.pnlTransferbank.Controls.Add(this.btnAddAcc);
+            this.pnlTransferbank.Controls.Add(this.lblBankAcc);
+            this.pnlTransferbank.Controls.Add(this.customBtn1);
+            this.pnlTransferbank.Location = new System.Drawing.Point(636, 52);
+            this.pnlTransferbank.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlTransferbank.Name = "pnlTransferbank";
+            this.pnlTransferbank.Size = new System.Drawing.Size(260, 289);
+            this.pnlTransferbank.TabIndex = 107;
+            // 
+            // pnlAccounts
+            // 
+            this.pnlAccounts.AutoScroll = true;
+            this.pnlAccounts.Location = new System.Drawing.Point(21, 67);
+            this.pnlAccounts.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlAccounts.Name = "pnlAccounts";
+            this.pnlAccounts.Size = new System.Drawing.Size(224, 179);
+            this.pnlAccounts.TabIndex = 105;
+            // 
+            // btnAddAcc
+            // 
+            this.btnAddAcc.Image = global::FlightReservationProject.Properties.Resources.PPT_ISA_Project;
+            this.btnAddAcc.Location = new System.Drawing.Point(25, 30);
+            this.btnAddAcc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddAcc.Name = "btnAddAcc";
+            this.btnAddAcc.Size = new System.Drawing.Size(33, 29);
+            this.btnAddAcc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddAcc.TabIndex = 104;
+            this.btnAddAcc.TabStop = false;
+            this.btnAddAcc.Click += new System.EventHandler(this.btnAddAcc_Click);
+            // 
+            // lblBankAcc
+            // 
+            this.lblBankAcc.AutoSize = true;
+            this.lblBankAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBankAcc.Location = new System.Drawing.Point(64, 41);
+            this.lblBankAcc.Name = "lblBankAcc";
+            this.lblBankAcc.Size = new System.Drawing.Size(163, 18);
+            this.lblBankAcc.TabIndex = 103;
+            this.lblBankAcc.Text = "Add New Bank Account";
+            // 
+            // customBtn1
+            // 
+            this.customBtn1.BackColor = System.Drawing.Color.White;
+            this.customBtn1.BackgroundColor = System.Drawing.Color.White;
+            this.customBtn1.BorderColor = System.Drawing.Color.LightGray;
+            this.customBtn1.BorderRadius = 40;
+            this.customBtn1.BorderSize = 1;
+            this.customBtn1.Enabled = false;
+            this.customBtn1.FlatAppearance.BorderSize = 0;
+            this.customBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customBtn1.ForeColor = System.Drawing.Color.DimGray;
+            this.customBtn1.Location = new System.Drawing.Point(3, 12);
+            this.customBtn1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.customBtn1.Name = "customBtn1";
+            this.customBtn1.Size = new System.Drawing.Size(242, 261);
+            this.customBtn1.TabIndex = 97;
+            this.customBtn1.TextColor = System.Drawing.Color.DimGray;
+            this.customBtn1.UseVisualStyleBackColor = false;
+            // 
             // pnlOnlineBanking
             // 
             this.pnlOnlineBanking.Controls.Add(this.label32);
@@ -889,10 +940,10 @@ namespace FlightReservationProject
             // CopyIcon
             // 
             this.CopyIcon.Image = global::FlightReservationProject.Properties.Resources.copyIcon;
-            this.CopyIcon.Location = new System.Drawing.Point(195, 66);
+            this.CopyIcon.Location = new System.Drawing.Point(173, 53);
             this.CopyIcon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CopyIcon.Name = "CopyIcon";
-            this.CopyIcon.Size = new System.Drawing.Size(32, 30);
+            this.CopyIcon.Size = new System.Drawing.Size(28, 24);
             this.CopyIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CopyIcon.TabIndex = 104;
             this.CopyIcon.TabStop = false;
@@ -961,265 +1012,13 @@ namespace FlightReservationProject
             // pictureBox3
             // 
             this.pictureBox3.Image = global::FlightReservationProject.Properties.Resources.Asset_26;
-            this.pictureBox3.Location = new System.Drawing.Point(441, 42);
+            this.pictureBox3.Location = new System.Drawing.Point(450, 48);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(485, 315);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pnlTransferbank
-            // 
-            this.pnlTransferbank.Controls.Add(this.panel6);
-            this.pnlTransferbank.Controls.Add(this.btnAddAcc);
-            this.pnlTransferbank.Controls.Add(this.lblBankAcc);
-            this.pnlTransferbank.Controls.Add(this.customBtn1);
-            this.pnlTransferbank.Location = new System.Drawing.Point(636, 52);
-            this.pnlTransferbank.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnlTransferbank.Name = "pnlTransferbank";
-            this.pnlTransferbank.Size = new System.Drawing.Size(260, 289);
-            this.pnlTransferbank.TabIndex = 107;
-            // 
-            // panel6
-            // 
-            this.panel6.AutoScroll = true;
-            this.panel6.Controls.Add(this.panel9);
-            this.panel6.Controls.Add(this.panel8);
-            this.panel6.Location = new System.Drawing.Point(7, 72);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(238, 156);
-            this.panel6.TabIndex = 105;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.pictureBox6);
-            this.panel9.Controls.Add(this.label10);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 46);
-            this.panel9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(238, 46);
-            this.panel9.TabIndex = 1;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::FlightReservationProject.Properties.Resources.image_removebg_preview___2024_05_02T005020_720;
-            this.pictureBox6.Location = new System.Drawing.Point(200, 8);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(25, 29);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 107;
-            this.pictureBox6.TabStop = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(11, 14);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(148, 18);
-            this.label10.TabIndex = 106;
-            this.label10.Text = "1112 2233 4444 5555";
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.btnEdit);
-            this.panel8.Controls.Add(this.lblBankNum);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(238, 46);
-            this.panel8.TabIndex = 0;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Image = global::FlightReservationProject.Properties.Resources.image_removebg_preview___2024_05_02T005020_720;
-            this.btnEdit.Location = new System.Drawing.Point(200, 8);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(25, 29);
-            this.btnEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnEdit.TabIndex = 107;
-            this.btnEdit.TabStop = false;
-            // 
-            // lblBankNum
-            // 
-            this.lblBankNum.AutoSize = true;
-            this.lblBankNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBankNum.Location = new System.Drawing.Point(11, 14);
-            this.lblBankNum.Name = "lblBankNum";
-            this.lblBankNum.Size = new System.Drawing.Size(148, 18);
-            this.lblBankNum.TabIndex = 106;
-            this.lblBankNum.Text = "1112 2233 4444 5555";
-            // 
-            // btnAddAcc
-            // 
-            this.btnAddAcc.Image = global::FlightReservationProject.Properties.Resources.PPT_ISA_Project;
-            this.btnAddAcc.Location = new System.Drawing.Point(28, 38);
-            this.btnAddAcc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAddAcc.Name = "btnAddAcc";
-            this.btnAddAcc.Size = new System.Drawing.Size(37, 36);
-            this.btnAddAcc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnAddAcc.TabIndex = 104;
-            this.btnAddAcc.TabStop = false;
-            // 
-            // lblBankAcc
-            // 
-            this.lblBankAcc.AutoSize = true;
-            this.lblBankAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBankAcc.Location = new System.Drawing.Point(72, 45);
-            this.lblBankAcc.Name = "lblBankAcc";
-            this.lblBankAcc.Size = new System.Drawing.Size(163, 18);
-            this.lblBankAcc.TabIndex = 103;
-            this.lblBankAcc.Text = "Add New Bank Account";
-            // 
-            // customBtn1
-            // 
-            this.customBtn1.BackColor = System.Drawing.Color.White;
-            this.customBtn1.BackgroundColor = System.Drawing.Color.White;
-            this.customBtn1.BorderColor = System.Drawing.Color.LightGray;
-            this.customBtn1.BorderRadius = 40;
-            this.customBtn1.BorderSize = 1;
-            this.customBtn1.Enabled = false;
-            this.customBtn1.FlatAppearance.BorderSize = 0;
-            this.customBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn1.ForeColor = System.Drawing.Color.DimGray;
-            this.customBtn1.Location = new System.Drawing.Point(3, 12);
-            this.customBtn1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.customBtn1.Name = "customBtn1";
-            this.customBtn1.Size = new System.Drawing.Size(242, 261);
-            this.customBtn1.TabIndex = 97;
-            this.customBtn1.TextColor = System.Drawing.Color.DimGray;
-            this.customBtn1.UseVisualStyleBackColor = false;
-            // 
-            // panel6
-            // 
-            this.panel6.AutoScroll = true;
-            this.panel6.Controls.Add(this.panel9);
-            this.panel6.Controls.Add(this.panel8);
-            this.panel6.Location = new System.Drawing.Point(6, 58);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(212, 125);
-            this.panel6.TabIndex = 105;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.btnEdit);
-            this.panel8.Controls.Add(this.lblBankNum);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(212, 37);
-            this.panel8.TabIndex = 0;
-            // 
-            // lblBankNum
-            // 
-            this.lblBankNum.AutoSize = true;
-            this.lblBankNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBankNum.Location = new System.Drawing.Point(10, 11);
-            this.lblBankNum.Name = "lblBankNum";
-            this.lblBankNum.Size = new System.Drawing.Size(128, 15);
-            this.lblBankNum.TabIndex = 106;
-            this.lblBankNum.Text = "1112 2233 4444 5555";
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.pictureBox6);
-            this.panel9.Controls.Add(this.label10);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 37);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(212, 37);
-            this.panel9.TabIndex = 1;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(10, 11);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(128, 15);
-            this.label10.TabIndex = 106;
-            this.label10.Text = "1112 2233 4444 5555";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(104)))), ((int)(((byte)(138)))));
-            this.pictureBox1.Image = global::FlightReservationProject.Properties.Resources.Asset_4;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::FlightReservationProject.Properties.Resources.image_removebg_preview___2024_05_02T005020_720;
-            this.pictureBox6.Location = new System.Drawing.Point(178, 6);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(22, 23);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 107;
-            this.pictureBox6.TabStop = false;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Image = global::FlightReservationProject.Properties.Resources.image_removebg_preview___2024_05_02T005020_720;
-            this.btnEdit.Location = new System.Drawing.Point(178, 6);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(22, 23);
-            this.btnEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnEdit.TabIndex = 107;
-            this.btnEdit.TabStop = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnAddAcc
-            // 
-            this.btnAddAcc.Image = global::FlightReservationProject.Properties.Resources.PPT_ISA_Project;
-            this.btnAddAcc.Location = new System.Drawing.Point(25, 30);
-            this.btnAddAcc.Name = "btnAddAcc";
-            this.btnAddAcc.Size = new System.Drawing.Size(33, 29);
-            this.btnAddAcc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnAddAcc.TabIndex = 104;
-            this.btnAddAcc.TabStop = false;
-            this.btnAddAcc.Click += new System.EventHandler(this.btnAddAcc_Click);
-            // 
-            // CopyIcon
-            // 
-            this.CopyIcon.Image = global::FlightReservationProject.Properties.Resources.copyIcon;
-            this.CopyIcon.Location = new System.Drawing.Point(173, 53);
-            this.CopyIcon.Name = "CopyIcon";
-            this.CopyIcon.Size = new System.Drawing.Size(28, 24);
-            this.CopyIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CopyIcon.TabIndex = 104;
-            this.CopyIcon.TabStop = false;
-            this.CopyIcon.Click += new System.EventHandler(this.CopyIcon_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::FlightReservationProject.Properties.Resources.Asset_26;
-            this.pictureBox3.Location = new System.Drawing.Point(392, 34);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(431, 252);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::FlightReservationProject.Properties.Resources.Asset_14;
-            this.pictureBox2.Location = new System.Drawing.Point(29, 165);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 122);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 80;
-            this.pictureBox2.TabStop = false;
             // 
             // ReservationPage
             // 
@@ -1247,20 +1046,13 @@ namespace FlightReservationProject
             this.pnlDetail.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.pnlTransferbank.ResumeLayout(false);
+            this.pnlTransferbank.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddAcc)).EndInit();
             this.pnlOnlineBanking.ResumeLayout(false);
             this.pnlOnlineBanking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CopyIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pnlTransferbank.ResumeLayout(false);
-            this.pnlTransferbank.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAddAcc)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1340,12 +1132,6 @@ namespace FlightReservationProject
         private System.Windows.Forms.Label lblBankAcc;
         private CustomBtn customBtn1;
         private System.Windows.Forms.Panel pnlOnlineBanking;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.PictureBox btnEdit;
-        private System.Windows.Forms.Label lblBankNum;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel pnlAccounts;
     }
 }

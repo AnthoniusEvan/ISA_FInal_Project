@@ -12,8 +12,12 @@ namespace FlightReservationProject
 {
     public partial class BankAccountPage : Form
     {
-        public BankAccountPage()
+        bool isUpdate = false;
+        BankAccount acc;
+        public BankAccountPage(BankAccount acc, bool isUpdate)
         {
+            this.isUpdate = isUpdate;
+            this.acc = acc;
             InitializeComponent();
         }
 
@@ -23,8 +27,26 @@ namespace FlightReservationProject
             {
                 int month = int.Parse(txtExpiredDate.Text.Split('/')[0]);
                 int year = int.Parse(txtExpiredDate.Text.Split('/')[1]);
-                BankAccount b = new BankAccount(txtAccNum.Text, txtCVV.Text, new DateTime(), activeUser);
-                b.AddToDB(aes);
+                BankAccount b = new BankAccount(txtAccNum.Text, txtCVV.Text, new DateTime(year,month,1), activeUser);
+
+                int rowsAffected = 0;
+                if (isUpdate) rowsAffected = b.UpdateAccount(aes);
+                else rowsAffected = b.AddToDB(aes);
+
+                if (rowsAffected > 0)
+                {
+                    string info = "saved";
+                    if (isUpdate) info = "updated";
+                    MessageBox.Show("Succesfully " + info + " the bank account details!");
+                }
+                else
+                {
+                    MessageBox.Show("Unknown error occured!");
+                }
+                ReservationPage p = (ReservationPage)this.Owner;
+                p.btnTransfer_Click(sender, e);
+                this.Owner.Show();
+                this.Close();
             }
         }
         AES aes;
@@ -34,6 +56,24 @@ namespace FlightReservationProject
             ReservationPage p = (ReservationPage)this.Owner;
             this.aes = p.aes;
             activeUser = p.activeUser;
+
+            if (isUpdate)
+            {
+                txtAccNum.Enabled = false;
+                btnSave.Text = "UPDATE";
+                string num = acc.GetNumberFromToken(aes);
+                txtAccNum.Text = "xxxx xxxx xxx" + num.Substring(num.Length - 3); ;
+                txtCVV.Text = acc.Cvv;
+                txtExpiredDate.Text = acc.DateExpire.ToString("MM/yy");
+            }
+            else 
+            {
+                txtAccNum.Enabled = true;
+                btnSave.Text = "SAVE";
+                txtAccNum.Text = "";
+                txtCVV.Text = "";
+                txtExpiredDate.Text = "";
+            }
         }
     }
 }

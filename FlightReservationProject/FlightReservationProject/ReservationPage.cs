@@ -69,18 +69,71 @@ namespace FlightReservationProject
 
             pnlInformation.BringToFront();
         }
-
-        private void btnTransfer_Click(object sender, EventArgs e)
+        List<BankAccount> accounts;
+        public void btnTransfer_Click(object sender, EventArgs e)
         {
             UnselectControl();
             btnTransfer.BackColor = Color.LightGray;
             btnTransfer.TextColor = Color.Black;
             pnlTransferbank.BringToFront();
+
+            accounts = BankAccount.GetBankAccounts(activeUser, aes);
+            if (accounts == null) return;
+            pnlAccounts.Controls.Clear();
+            for (int i=0;i<accounts.Count;i++)
+            {
+                DisplayBankAccount(accounts[i],i);
+            }
+        }
+        private void DisplayBankAccount(BankAccount b, int index)
+        {
+            Panel pnlAcc = new Panel();
+            PictureBox btnEdit = new PictureBox();
+            Label lblBankNum = new Label();
+            // 
+            // pnlAcc
+            // 
+            pnlAcc.Controls.Add(btnEdit);
+            pnlAcc.Controls.Add(lblBankNum);
+            pnlAcc.Dock = System.Windows.Forms.DockStyle.Top;
+            pnlAcc.Location = new System.Drawing.Point(0, 0);
+            pnlAcc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            pnlAcc.Name = "pnlAcc";
+            pnlAcc.Size = new System.Drawing.Size(149, 24);
+            pnlAcc.TabIndex = 0;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Image = global::FlightReservationProject.Properties.Resources.image_removebg_preview___2024_05_02T005020_720;
+            btnEdit.Location = new System.Drawing.Point(110, 4);
+            btnEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new System.Drawing.Size(15,15);
+            btnEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            btnEdit.TabIndex = 107;
+            btnEdit.TabStop = false;
+            btnEdit.Tag = index;
+            btnEdit.Click += new System.EventHandler(btnEdit_Click);
+            // 
+            // lblBankNum
+            // 
+            lblBankNum.AutoSize = true;
+            lblBankNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            lblBankNum.Location = new System.Drawing.Point(7, 7);
+            lblBankNum.Name = "lblBankNum";
+            lblBankNum.Size = new System.Drawing.Size(148, 18);
+            lblBankNum.TabIndex = 106;
+            string num = b.GetNumberFromToken(aes);
+            lblBankNum.Text = "xxxx xxxx xxxx x" + num.Substring(num.Length-3);
+
+            pnlAccounts.Controls.Add(pnlAcc);
+            pnlAccounts.Controls.SetChildIndex(pnlAcc, 0);
         }
 
         private void btnOnlineBank_Click(object sender, EventArgs e)
         {
             UnselectControl();
+
             btnOnlineBank.BackColor = Color.LightGray;
             btnOnlineBank.TextColor = Color.Black;
             pnlOnlineBanking.BringToFront();
@@ -321,15 +374,16 @@ namespace FlightReservationProject
 
         private void btnAddAcc_Click(object sender, EventArgs e)
         {
-            BankAccountPage p = new BankAccountPage();
+            BankAccountPage p = new BankAccountPage(null, false);
             p.Owner = this;
             p.Show();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
-            BankAccountPage p = new BankAccountPage();
+            PictureBox b = (PictureBox)sender;
+            int i = int.Parse(b.Tag.ToString());
+            BankAccountPage p = new BankAccountPage(accounts[i], true);
             p.Owner = this;
             p.Show();
         }

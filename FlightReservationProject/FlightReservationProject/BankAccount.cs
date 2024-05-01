@@ -36,10 +36,32 @@ namespace FlightReservationProject
         #endregion
 
         #region Methods
+        public string GetNumberFromToken(AES aes)
+        {
+            string sql = "SELECT bank_account_number FROM token WHERE token = @token";
+
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@token",Num);
+                    connection.Open();
+
+                    using (MySqlDataReader results = com.ExecuteReader())
+                    {
+                        if (results.Read())
+                        {
+                            return aes.Decrypt(results.GetString(0));
+                        }
+                        return null;
+                    }
+                }
+            }
+        }
         public static List<BankAccount> GetBankAccounts(User user, AES aes)
         {
             string sql = " SELECT t.token, b.cvv, b.date_expire FROM bank_account b INNER JOIN token t ON b.number = t.bank_account_number WHERE b.user_email = SHA2(@email,512)";
-            List<BankAccount> bankAccounts = null;
+            List<BankAccount> bankAccounts = new List<BankAccount>();
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
                 using (MySqlCommand com = new MySqlCommand(sql, connection))
@@ -57,7 +79,8 @@ namespace FlightReservationProject
                             BankAccount b = new BankAccount(results.GetString(0), aes.Decrypt(results.GetString(1)), new DateTime(year, month, 1), user);
                             bankAccounts.Add(b);
                         }
-                        return bankAccounts;
+                        if (bankAccounts.Count == 0) return null;
+                        else return bankAccounts;
                     }
                 }
             }
@@ -100,13 +123,12 @@ namespace FlightReservationProject
         public int UpdateAccount(AES aes)
         {
             int rowsAffected = 0;
-            string sql = "UPDATE bank_account SET number=@num,cvv=@cvv,date_expire=@date WHERE user_email=SHA2(@email,512)";
+            string sql = "UPDATE bank_account SET cvv=@cvv,date_expire=@date WHERE user_email=SHA2(@email,512)";
 
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
                 using (MySqlCommand com = new MySqlCommand(sql, connection))
                 {
-                    com.Parameters.AddWithValue("@num", aes.Encrypt(Num));
                     com.Parameters.AddWithValue("@cvv", aes.Encrypt(Cvv));
                     com.Parameters.AddWithValue("@date", aes.Encrypt(DateExpire.ToString("MM/yy")));
                     com.Parameters.AddWithValue("@email", User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
@@ -115,31 +137,7 @@ namespace FlightReservationProject
                     rowsAffected += com.ExecuteNonQuery();
                 }
             }
-            sql = "DELETE FROM token WHERE bank_account_number = @num";
-            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
-            {
-                using (MySqlCommand com = new MySqlCommand(sql, connection))
-                {
-                    com.Parameters.AddWithValue("@num", aes.Encrypt(Num));
-                    connection.Open();
-                    rowsAffected += com.ExecuteNonQuery();
-                }
-            }
-
-            string token = GenerateToken();
-            sql = "INSERT INTO token(token, bank_account_number) VALUES(@token,@num)";
-
-            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
-            {
-                using (MySqlCommand com = new MySqlCommand(sql, connection))
-                {
-                    com.Parameters.AddWithValue("@token", token);
-                    com.Parameters.AddWithValue("@num", aes.Encrypt(Num));
-
-                    connection.Open();
-                    rowsAffected += com.ExecuteNonQuery();
-                }
-            }
+            
             return rowsAffected;
         }
         public string GenerateToken()
@@ -153,7 +151,7 @@ namespace FlightReservationProject
             }
 
             string res = new string(token);
-            string sql = "SELECT token FROM bank_account WHERE token = @token";
+            string sql = "SELECT token FROM token WHERE token = @token";
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
                 using (MySqlCommand com = new MySqlCommand(sql, connection))
