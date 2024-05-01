@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbLib;
+using MySql.Data.MySqlClient;
+
 namespace FlightReservationProject
 {
     public class Passenger
@@ -20,6 +22,7 @@ namespace FlightReservationProject
         private string email;
         private Country bornIn;
         private DateTime dob;
+        private bool checkedIn;
         #endregion
 
         #region Properties
@@ -34,6 +37,7 @@ namespace FlightReservationProject
         public Country BornIn { get => bornIn; set => bornIn = value; }
         public DateTime Dob { get => dob; set => dob = value; }
         public string Id { get => id; set => id = value; }
+        public bool CheckedIn { get => checkedIn; set => checkedIn = value; }
         #endregion
 
         #region Constructors
@@ -70,7 +74,25 @@ namespace FlightReservationProject
         #endregion
 
         #region Methods
-
+        public static bool IsCheckedIn(string id, string flightNum)
+        {
+            string sql = "SELECT plane_flight_flight_number, passenger_id FROM boarding_pass WHERE plane_flight_flight_number = '" + flightNum + "' AND passenger_id = '" + id + "'";
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (MySqlDataReader results = cmd.ExecuteReader())
+                    {
+                        if (results.Read())
+                        {
+                            return true;
+                        }
+                        else return false;
+                    }
+                }
+            }
+        }
         #endregion
     }
 }

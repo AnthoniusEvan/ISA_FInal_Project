@@ -45,3 +45,4 @@ C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProj
 C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.PaymentForm.resources
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.PaymentForm.resources
 F:\Documents\GitHub\ISA_FInal_Project\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.ConfirmarionPage.resources
+C:\Users\Anthonius Evan\Documents\FlightReservationProject\FlightReservationProject\FlightReservationProject\obj\Debug\FlightReservationProject.ConfirmarionPage.resources

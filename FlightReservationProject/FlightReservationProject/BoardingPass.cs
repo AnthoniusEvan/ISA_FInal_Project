@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbLib;
+using MySql.Data.MySqlClient;
+
 namespace FlightReservationProject
 {
     public class BoardingPass
@@ -27,10 +29,15 @@ namespace FlightReservationProject
         #endregion
 
         #region Constructors
+        public BoardingPass()
+        {
+
+        }
+        // Used to export data
         public BoardingPass(FlightClass flightClass, string flightNumber, Passenger passenger)
         {
             Random rnd = new Random();
-            Gate = (Convert.ToChar(rnd.Next(65, 91)) + rnd.Next(1,11)).ToString();
+            Gate = Convert.ToChar(rnd.Next(65, 91)) + rnd.Next(1,11).ToString();
             if (passenger.Seat == null || passenger.Seat=="") Seat = rnd.Next(1, 100).ToString() + (char)(rnd.Next(65, 91));
             else Seat = passenger.Seat;
             FlightClass = flightClass;
@@ -39,6 +46,7 @@ namespace FlightReservationProject
             CreateBoardingPass();
         }
 
+        // Used to import date
         public BoardingPass(int id, FlightClass flightClass, string gate, string flight_number, string seat, Passenger passenger)
         {
             Id = id;
@@ -73,20 +81,27 @@ namespace FlightReservationProject
             string sql = string.Format("INSERT INTO boarding_pass(id, class_id, gate, plane_flight_flight_number, seat_number, passenger_id) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')", GenerateId(), FlightClass.Id, Gate, FlightNumber, Seat, Passenger.Id);
             dbConnection.ExecuteNonQuery(sql);
         }
-        public static List<BoardingPass> GetBoardingPass(Passenger p)
+        public static BoardingPass GetBoardingPass(Passenger p, string flightNumber)
         {
-            string sql = "SELECT b.id, b.class_id, c.name, b.gate, b.plane_flight_flight_number, b.seat_number, b.passenger_id FROM boarding_pass b INNER JOIN class c ON b.class_id = c.id WHERE b.passenger_id = '" + p.Id + "'";
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
-            List<BoardingPass> passes = new List<BoardingPass>();
-            while (results.Read())
-            {
-                FlightClass fc = new FlightClass(results.GetInt32(1),results.GetString(2));
-                BoardingPass pass = new BoardingPass(results.GetInt32(0), fc, results.GetString(3), results.GetString(4), results.GetString(5), p);
-                passes.Add(pass);
-            }
+            string sql = "SELECT b.id, b.class_id, c.name, b.gate, b.plane_flight_flight_number, b.seat_number, b.passenger_id FROM boarding_pass b INNER JOIN class c ON b.class_id = c.id WHERE b.passenger_id = '" + p.Id + "' AND b.plane_flight_flight_number = '" + flightNumber +"'";
 
-            if (passes.Count > 0) return passes;
-            else return null;
+            BoardingPass pass=null;
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (MySqlDataReader results = cmd.ExecuteReader())
+                    {
+                        if (results.Read())
+                        {
+                            FlightClass fc = new FlightClass(results.GetInt32(1), results.GetString(2));
+                            pass = new BoardingPass(results.GetInt32(0), fc, results.GetString(3), results.GetString(4), results.GetString(5), p);
+                        }
+                        return pass;
+                    }
+                }
+            }
         }
         #endregion
     }

@@ -55,7 +55,7 @@ namespace FlightReservationProject
                 lblDepart.Text = ticket.DateDepart.ToString("HH:mm");
                 lblArriv.Text = ticket.DateArrival.ToString("HH:mm");
                 lblDate.Text = ticket.DateDepart.ToString("dddd, dd MMMM yyyy");
-
+                
                 checkedIn = new bool[ticket.ListOfPassengers.Count];
                 foreach(Passenger p in ticket.ListOfPassengers)
                 {
@@ -126,6 +126,16 @@ namespace FlightReservationProject
             cbCheckedIn.UseVisualStyleBackColor = true;
             cbCheckedIn.Tag = int.Parse(p.Id) - 1;
             cbCheckedIn.CheckedChanged += new System.EventHandler(cbCheckedIn_CheckedChanged);
+            if (Passenger.IsCheckedIn(p.Id, ticket.FlightChosen.FlightNumber))
+            {
+                cbCheckedIn.Checked = true;
+                cbCheckedIn.Enabled = false;
+            }
+            else
+            {
+                cbCheckedIn.Checked = false;
+                cbCheckedIn.Enabled = true;
+            }
             // 
             // lblSeat
             // 
@@ -189,6 +199,12 @@ namespace FlightReservationProject
 
         private void DisplayCheckedIn(Passenger p)
         {
+            if (Passenger.IsCheckedIn(p.Id, ticket.FlightChosen.FlightNumber))
+            {
+                return;
+            }
+
+
             Panel pnlCheckedIn = new Panel();
             Label lblName = new Label();
             Button btnPrint = new Button();
@@ -239,7 +255,7 @@ namespace FlightReservationProject
             btnPrint.Size = new System.Drawing.Size(65,25);
             btnPrint.TabIndex = 152;
             btnPrint.Text = "Print";
-            btnPrint.Tag = p.Id;
+            btnPrint.Tag = int.Parse(p.Id)-1;
             btnPrint.UseVisualStyleBackColor = false;
             btnPrint.Click += BtnPrint_Click;
 
@@ -249,11 +265,23 @@ namespace FlightReservationProject
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            
+            Button b = (Button)sender;
+            int passengerId = int.Parse(b.Tag.ToString());
+
+            BoardingPass pass = BoardingPass.GetBoardingPass(ticket.ListOfPassengers[passengerId], ticket.FlightChosen.FlightNumber);
+            if (pass == null)
+            { 
+                pass = new BoardingPass(ticket.FlightClass, ticket.FlightChosen.FlightNumber, ticket.ListOfPassengers[passengerId]);
+            }// automatically store in db
+
             PrintBoardingPass p = new PrintBoardingPass();
-            //Passenger passenger = new Passenger();
+            
             ticket = activeUser.CheckIn(txtTicketNum.Text, txtFullname.Text);
-            //p.lblName.Text = passenger.FullName;
+            p.lblName.Text = ticket.ListOfPassengers[passengerId].FullName;
+            p.passenger.Text = p.lblName.Text;
+            p.lblSeat.Text = pass.Seat;
+            p.seat.Text = pass.Seat;
+            p.lblGate.Text = pass.Gate;
             p.airplane.Text = ticket.FlightChosen.Airline;
             p.lblFlightNum.Text = ticket.FlightChosen.FlightNumber;
             p.lblOrigin.Text = ticket.FromCity.Name;
@@ -268,7 +296,8 @@ namespace FlightReservationProject
             p.flightNum.Text = ticket.FlightChosen.FlightNumber;
             p.date.Text = ticket.DateDepart.ToString("dd MMMM yyyy");
             p.arrival.Text = ticket.DateArrival.ToString("HH:mm");
-            p.boardingTime.Text = boardingTime.ToString("HH:mm"); ;
+            p.boardingTime.Text = boardingTime.ToString("HH:mm");
+            p.boardingPassId.Text = ticket.TicketNum + passengerId;
             p.Show();
             p.Visible = false;
             PrintForm(p);

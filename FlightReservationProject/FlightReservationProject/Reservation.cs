@@ -145,13 +145,23 @@ namespace FlightReservationProject
             ListOfPassengers = passengers;
 
             string sql = "SELECT COUNT(p.id), r.id, u.id, u.email FROM passenger p INNER JOIN reservation r ON p.reservation_id = r.id INNER JOIN user u ON r.user_id = u.id WHERE u.id = '" + User.Id + "' AND u.email = '" + User.Email + "' AND r.id = '" + Id + "'";
-
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
             int count = 0;
-            while (results.Read())
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                count = results.GetInt32(0);
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (MySqlDataReader results = cmd.ExecuteReader())
+                    {
+                        if (results.Read())
+                        {
+                            count = results.GetInt32(0);
+                        }
+                    }
+                }
             }
+            
+            
             int rowsAffected = 0;
             for (int i = 0; i < passengers.Count; i++)
             {
@@ -167,16 +177,27 @@ namespace FlightReservationProject
         public List<Passenger> GetPassengers()
         {
             string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.reservation_user_id, p.born_in, u.email, p.reservation_id FROM passenger p INNER JOIN user u ON p.reservation_user_id = u.id WHERE u.id = '" + User.Id + "' AND u.email = '" + User.Email + "' AND p.reservation_id = '" + Id + "'";
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+            
             List<Passenger> passengers = new List<Passenger>();
-            while (results.Read())
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                Passenger p = new Passenger(results.GetString(0), results.GetString(1), results.GetString(2), results.GetDateTime(3), results.GetString(4));
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (MySqlDataReader results = cmd.ExecuteReader())
+                    {
+                        while (results.Read())
+                        {
+                            Passenger p = new Passenger(results.GetString(0), results.GetString(1), results.GetString(2), results.GetDateTime(3), results.GetString(4));
 
-                passengers.Add(p);
+                            passengers.Add(p);
+                        }
+                        if (passengers.Count > 0) return passengers;
+                        else return null;
+                    }
+                }
             }
-            if (passengers.Count > 0) return passengers;
-            else return null;
+            
         }
 
         #endregion
