@@ -555,9 +555,9 @@ namespace FlightReservationProject
             this.panel7.Controls.Add(this.lblClassPayment);
             this.panel7.Controls.Add(this.lblFlightNum);
             this.panel7.Controls.Add(this.lblAirlineName);
+            this.panel7.Controls.Add(this.pnlTransferbank);
             this.panel7.Controls.Add(this.pnlOnlineBanking);
             this.panel7.Controls.Add(this.pictureBox3);
-            this.panel7.Controls.Add(this.pnlTransferbank);
             this.panel7.Location = new System.Drawing.Point(59, 26);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(842, 332);
@@ -1028,6 +1028,7 @@ namespace FlightReservationProject
             this.btnEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnEdit.TabIndex = 107;
             this.btnEdit.TabStop = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAddAcc
             // 
@@ -1038,6 +1039,7 @@ namespace FlightReservationProject
             this.btnAddAcc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnAddAcc.TabIndex = 104;
             this.btnAddAcc.TabStop = false;
+            this.btnAddAcc.Click += new System.EventHandler(this.btnAddAcc_Click);
             // 
             // CopyIcon
             // 
@@ -1076,8 +1078,8 @@ namespace FlightReservationProject
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 493);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlInformation);
             this.Controls.Add(this.pnlDetail);
+            this.Controls.Add(this.pnlInformation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ReservationPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
