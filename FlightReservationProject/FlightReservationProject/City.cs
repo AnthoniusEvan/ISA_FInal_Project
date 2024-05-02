@@ -40,7 +40,7 @@ namespace FlightReservationProject
         #region Methods
         public static List<City> GetCities(Country country)
         {
-            string sql = "SELECT ci.id, ci.name, ci.country_id, co.name FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE co.id = " + country.Id + " ORDER BY ci.name ASC";
+            string sql = "SELECT ci.id, ci.name, ci.country_id, co.name FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE co.id = @countryid ORDER BY ci.name ASC";
             
 
             List<City> cities = new List<City>();
@@ -50,6 +50,7 @@ namespace FlightReservationProject
             {
                 using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                 {
+                    cmd.Parameters.AddWithValue("@countryId", country.Id);
                     connection.Open();
                     using (MySqlDataReader results = cmd.ExecuteReader())
                     {
@@ -97,7 +98,7 @@ namespace FlightReservationProject
         }
         public static List<City> GetOrigins(Country country)
         {
-            string sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name) FROM city ci INNER JOIN country co ON ci.country_id = co.id ORDER BY co.id != '"+ country.Id +"', co.name ASC LIMIT 200";
+            string sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name) FROM city ci INNER JOIN country co ON ci.country_id = co.id ORDER BY co.id != @coName, co.name ASC LIMIT 200";
 
             List<City> cities = new List<City>();
 
@@ -105,6 +106,7 @@ namespace FlightReservationProject
             {
                 using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                 {
+                    cmd.Parameters.AddWithValue("coName", country);
                     connection.Open();
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {

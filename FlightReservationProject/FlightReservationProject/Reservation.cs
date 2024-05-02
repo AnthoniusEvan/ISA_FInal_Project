@@ -92,12 +92,13 @@ namespace FlightReservationProject
             {
                 int flightNum = int.Parse(FlightChosen.FlightNumber.Substring(2, FlightChosen.FlightNumber.Length - 2));
                 TicketNum = FlightChosen.FlightNumber.Substring(0, 2) + FromCity.Name[0] + ToCity.Name[0] + flightNum;
-                string sql = "SELECT COUNT(id), ticket_num FROM reservation WHERE ticket_num LIKE '" + TicketNum + "%'";
+                string sql = "SELECT COUNT(id), ticket_num FROM reservation WHERE ticket_num LIKE @ticketNum";
                 int count = 0;
                 using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
+                        cmd.Parameters.AddWithValue("@ticketNum", ticketNum);
                         connection.Open();
                         using (MySqlDataReader results = cmd.ExecuteReader())
                         {

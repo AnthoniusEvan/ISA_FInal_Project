@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbLib;
+using MySql.Data.MySqlClient;
+
 namespace FlightReservationProject
 {
     public class FlightClass
@@ -30,16 +32,24 @@ namespace FlightReservationProject
         public static List<FlightClass> GetClasses()
         {
             string sql = "SELECT id, name FROM class";
-
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
             List<FlightClass> classes = new List<FlightClass>();
-
-            while (results.Read()) 
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                FlightClass c = new FlightClass(results.GetInt32(0), results.GetString(1));
-                classes.Add(c);
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    
+                    connection.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            FlightClass c = new FlightClass(reader.GetInt32(0), reader.GetString(1));
+                            classes.Add(c);
+                        }
+                        return classes;
+                    }
+                }
             }
-            return classes;
         }
         #endregion
     }

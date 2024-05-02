@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbLib;
+using MySql.Data.MySqlClient;
+
 namespace FlightReservationProject
 {
     public class PlaneFlight
@@ -69,54 +71,103 @@ namespace FlightReservationProject
         #region Methods
         public static int GetFlightNumber(string code)
         {
-            string sql = "SELECT COUNT(flight_number) FROM plane_flight WHERE flight_number LIKE '" + code.ToUpper() + "%'";
+            string sql = "SELECT COUNT(flight_number) FROM plane_flight WHERE flight_number LIKE @codeTop";
 
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
-            int result = 0;
-            while (results.Read())
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                result = results.GetInt32(0);
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@codeTop", code);
+                    connection.Open();
+                    using (MySqlDataReader results = com.ExecuteReader())
+                    {
+                        int result = 0;
+                        while (results.Read())
+                        {
+                            result = results.GetInt32(0);
+                        }
+                        return result + 1;
+                    }
+                }
             }
-            return result + 1;
         }
 
         public static List<PlaneFlight> GetFlights(Reservation order)
         {
-            string sql = "SELECT flight_number, datetime_depart, datetime_arrival, airline_name, init_price, duration_in_minutes, available_seats, from_city, to_city FROM plane_flight WHERE from_city = '" + order.FromCity.Id + "' AND to_city ='"+ order.ToCity.Id+"' AND datetime_depart LIKE '" + order.DateDepart.ToString("yyyy-MM-dd")+"%'";
-
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+            string sql = "SELECT flight_number, datetime_depart, datetime_arrival, airline_name, init_price, duration_in_minutes, available_seats, from_city, to_city FROM plane_flight WHERE from_city = @fromcity AND to_city = @toCity AND datetime_depart LIKE @dateDepart";
             List<PlaneFlight> flights = new List<PlaneFlight>();
-            while (results.Read())
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                PlaneFlight p = new PlaneFlight(results.GetString(0), order.FromCity, order.ToCity, results.GetDateTime(1), results.GetDateTime(2), results.GetString(3), results.GetInt32(4));
-                flights.Add(p);
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@fromCity", order.FromCity.Id);
+                    com.Parameters.AddWithValue("@toCity", order.ToCity.Id);
+                    com.Parameters.AddWithValue("@dateDepart", order.DateDepart.ToString("yyyy-MM-dd"));
+                    connection.Open();
+
+                    using (MySqlDataReader results = com.ExecuteReader())
+                    {
+                        while (results.Read())
+                        {
+                            PlaneFlight p = new PlaneFlight(results.GetString(0), order.FromCity, order.ToCity, results.GetDateTime(1), results.GetDateTime(2), results.GetString(3), results.GetInt32(4));
+                            flights.Add(p);
+                        }
+                        if (flights.Count > 0)
+                            return flights;
+                        else return null;
+                    }
+                }
             }
-            if (flights.Count > 0)
-                return flights;
-            else return null;
+            
         }
         public static PlaneFlight GetChosenFlight(string flightNumber)
         {
-            string sql = "SELECT flight_number, datetime_depart, datetime_arrival, airline_name, init_price, duration_in_minutes, available_seats, from_city, to_city FROM plane_flight WHERE flight_number = '" + flightNumber + "'";
+            string sql = "SELECT flight_number, datetime_depart, datetime_arrival, airline_name, init_price, duration_in_minutes, available_seats, from_city, to_city FROM plane_flight WHERE flight_number = @flightNum";
 
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
-           
-            if (results.Read())
+
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                PlaneFlight p = new PlaneFlight(results.GetString(0), results.GetDateTime(1), results.GetDateTime(2), results.GetString(3), results.GetInt32(4));
-                return p;
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@flightNum", flightNumber);
+                    connection.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            PlaneFlight p = new PlaneFlight(reader.GetString(0), reader.GetDateTime(1), reader.GetDateTime(2), reader.GetString(3), reader.GetInt32(4));
+                            return p;
+                        }
+                        else return null;
+                    }
+                }
             }
-            else return null;
+
         }
         public static void AddFlights(List<PlaneFlight> flights)
         {
-            foreach (PlaneFlight p in flights) 
+            foreach (PlaneFlight p in flights)
             {
-                string sql = string.Format("INSERT INTO plane_flight(flight_number, from_city, to_city, datetime_depart, datetime_arrival, duration_in_minutes, airline_name, init_price) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", p.FlightNumber, p.FromCity.Id, p.ToCity.Id, p.Depart.ToString("yyyy-MM-dd HH:mm:00"), p.Arrival.ToString("yyyy-MM-dd HH:mm:00"), (p.Arrival-p.Depart).TotalMinutes, p.Airline, p.Price);
+                string sql = "INSERT INTO plane_flight(flight_number, from_city, to_city, datetime_depart, datetime_arrival, duration_in_minutes, airline_name, init_price) VALUES (@flightNum, @fromCity, @toCity, @depart, @arrival, @duration, @airline, @price)";
+                using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+                {
+                    using (MySqlCommand com = new MySqlCommand(sql, connection))
+                    {
+                        com.Parameters.AddWithValue("@flightNum", p.FlightNumber);
+                        com.Parameters.AddWithValue("@fromCity", p.FromCity.Id);
+                        com.Parameters.AddWithValue("@toCity", p.ToCity.Id);
+                        com.Parameters.AddWithValue("@depart", p.Depart.ToString("yyyy-MM-dd HH:mm:ss"));
+                        com.Parameters.AddWithValue("@arrival", p.Arrival.ToString("yyyy-MM-dd HH:mm:ss"));
+                        com.Parameters.AddWithValue("@duration", (p.Arrival - p.Depart).TotalMinutes);
+                        com.Parameters.AddWithValue("@airline", p.Airline);
+                        com.Parameters.AddWithValue("@price", p.Price);
 
-                dbConnection.ExecuteNonQuery(sql);
+                        connection.Open();
+                        com.ExecuteNonQuery();
+                    }
+                }
             }
+            #endregion
         }
-        #endregion
-    }
+    } 
 }
