@@ -77,12 +77,12 @@ namespace FlightReservationProject
             {
                 using (MySqlCommand com = new MySqlCommand(sql, connection))
                 {
-                    com.Parameters.AddWithValue("@codeTop", code);
+                    com.Parameters.AddWithValue("@codeTop", code.ToUpper() + "%");
                     connection.Open();
                     using (MySqlDataReader results = com.ExecuteReader())
                     {
                         int result = 0;
-                        while (results.Read())
+                        if (results.Read())
                         {
                             result = results.GetInt32(0);
                         }
@@ -94,7 +94,7 @@ namespace FlightReservationProject
 
         public static List<PlaneFlight> GetFlights(Reservation order)
         {
-            string sql = "SELECT flight_number, datetime_depart, datetime_arrival, airline_name, init_price, duration_in_minutes, available_seats, from_city, to_city FROM plane_flight WHERE from_city = @fromcity AND to_city = @toCity AND datetime_depart LIKE @dateDepart";
+            string sql = "SELECT flight_number, datetime_depart, datetime_arrival, airline_name, init_price, duration_in_minutes, available_seats, from_city, to_city FROM plane_flight WHERE from_city = @fromCity AND to_city = @toCity AND datetime_depart LIKE @dateDepart";
             List<PlaneFlight> flights = new List<PlaneFlight>();
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
@@ -102,7 +102,7 @@ namespace FlightReservationProject
                 {
                     com.Parameters.AddWithValue("@fromCity", order.FromCity.Id);
                     com.Parameters.AddWithValue("@toCity", order.ToCity.Id);
-                    com.Parameters.AddWithValue("@dateDepart", order.DateDepart.ToString("yyyy-MM-dd"));
+                    com.Parameters.AddWithValue("@dateDepart", order.DateDepart.ToString("yyyy-MM-dd")+"%");
                     connection.Open();
 
                     using (MySqlDataReader results = com.ExecuteReader())
@@ -156,8 +156,8 @@ namespace FlightReservationProject
                         com.Parameters.AddWithValue("@flightNum", p.FlightNumber);
                         com.Parameters.AddWithValue("@fromCity", p.FromCity.Id);
                         com.Parameters.AddWithValue("@toCity", p.ToCity.Id);
-                        com.Parameters.AddWithValue("@depart", p.Depart.ToString("yyyy-MM-dd HH:mm:ss"));
-                        com.Parameters.AddWithValue("@arrival", p.Arrival.ToString("yyyy-MM-dd HH:mm:ss"));
+                        com.Parameters.AddWithValue("@depart", p.Depart.ToString("yyyy-MM-dd HH:mm:00"));
+                        com.Parameters.AddWithValue("@arrival", p.Arrival.ToString("yyyy-MM-dd HH:mm:00"));
                         com.Parameters.AddWithValue("@duration", (p.Arrival - p.Depart).TotalMinutes);
                         com.Parameters.AddWithValue("@airline", p.Airline);
                         com.Parameters.AddWithValue("@price", p.Price);

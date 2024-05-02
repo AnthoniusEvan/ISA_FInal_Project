@@ -98,7 +98,7 @@ namespace FlightReservationProject
                 {
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
-                        cmd.Parameters.AddWithValue("@ticketNum", ticketNum);
+                        cmd.Parameters.AddWithValue("@ticketNum", TicketNum+"%");
                         connection.Open();
                         using (MySqlDataReader results = cmd.ExecuteReader())
                         {

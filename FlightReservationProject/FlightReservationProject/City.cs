@@ -40,7 +40,7 @@ namespace FlightReservationProject
         #region Methods
         public static List<City> GetCities(Country country)
         {
-            string sql = "SELECT ci.id, ci.name, ci.country_id, co.name FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE co.id = @countryid ORDER BY ci.name ASC";
+            string sql = "SELECT ci.id, ci.name, ci.country_id, co.name FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE co.id = @countryId ORDER BY ci.name ASC";
             
 
             List<City> cities = new List<City>();
@@ -71,10 +71,10 @@ namespace FlightReservationProject
             if (keyword.Contains(","))
             {
                 string[] key = keyword.Split(',');
-                sql = string.Format("SELECT ci.id, CONCAT(ci.name, ', ', co.name), ci.rank FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE ci.name = '{0}' OR co.name = '{1}'", key[0], key[1].TrimStart(' '));
+                sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name), ci.rank FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE ci.name = @ciName OR co.name = @coName";
             }
             else
-                sql = string.Format("SELECT ci.id, CONCAT(ci.name, ', ', co.name), ci.rank FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE ci.name LIKE '%{0}%' OR co.name LIKE '%{1}%'", keyword, keyword);
+                sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name), ci.rank FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE ci.name LIKE @ciName OR co.name LIKE @coName";
 
             
             List<City> cities = new List<City>();
@@ -83,7 +83,19 @@ namespace FlightReservationProject
             {
                 using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                 {
-                    connection.Open();
+                    if (keyword.Contains(","))
+                    {
+                        string[] key = keyword.Split(',');
+                        cmd.Parameters.AddWithValue("@ciName", key[0]);
+                        cmd.Parameters.AddWithValue("@coName", key[1].TrimStart(' '));
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@ciName","%"+keyword+ "%");
+                        cmd.Parameters.AddWithValue("@coName","%"+keyword+ "%");
+                    }
+
+                        connection.Open();
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
@@ -98,7 +110,7 @@ namespace FlightReservationProject
         }
         public static List<City> GetOrigins(Country country)
         {
-            string sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name) FROM city ci INNER JOIN country co ON ci.country_id = co.id ORDER BY co.id != @coName, co.name ASC LIMIT 200";
+            string sql = "SELECT ci.id, CONCAT(ci.name, ', ', co.name) FROM city ci INNER JOIN country co ON ci.country_id = co.id ORDER BY co.id != @coId, co.name ASC LIMIT 200";
 
             List<City> cities = new List<City>();
 
@@ -106,7 +118,7 @@ namespace FlightReservationProject
             {
                 using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                 {
-                    cmd.Parameters.AddWithValue("coName", country);
+                    cmd.Parameters.AddWithValue("@coId", country.Id);
                     connection.Open();
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {

@@ -60,7 +60,7 @@ namespace FlightReservationProject
                 {
                     if (pf.FlightNumber.StartsWith(airline.Substring(0, 2).ToUpper())) count += 1;
                 }
-                string flightNumber = airline.Substring(0, 2).ToUpper()+(PlaneFlight.GetFlightNumber(airline.Substring(0, 2))+count).ToString("D4");
+                string flightNumber = airline.Substring(0, 2).ToUpper()+(PlaneFlight.GetFlightNumber(airline.Substring(0, 2).ToUpper())+count).ToString("D4");
                 DateTime depart = new DateTime(order.DateDepart.Year, order.DateDepart.Month, order.DateDepart.Day, rnd.Next(24), rnd.Next(0,12)*5, 0);
                 int duration = rnd.Next(2, 10) * 30;
                 DateTime arrival = depart.AddMinutes(duration);

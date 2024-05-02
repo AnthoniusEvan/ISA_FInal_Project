@@ -78,13 +78,13 @@ namespace FlightReservationProject
         #region Methods
         public static bool IsCheckedIn(string id, string flightNum, AES aes)
         {
-            string sql = "SELECT flight_number, passenger_id FROM boarding_pass WHERE flight_number = @flightNum AND passenger_id = @p.id";
+            string sql = "SELECT flight_number, passenger_id FROM boarding_pass WHERE flight_number = @flightNum AND passenger_id = @pId";
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
                 using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@flightNum", aes.Encrypt(flightNum));
-                    cmd.Parameters.AddWithValue("@p.id", id);
+                    cmd.Parameters.AddWithValue("@pId", id);
                     connection.Open();
                     using (MySqlDataReader results = cmd.ExecuteReader())
                     {
