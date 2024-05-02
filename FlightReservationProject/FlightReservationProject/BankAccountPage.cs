@@ -75,5 +75,17 @@ namespace FlightReservationProject
                 txtExpiredDate.Text = "";
             }
         }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            pbOpen.BringToFront();
+            txtCVV.PasswordChar = '\0';
+        }
+
+        private void pbOpen_Click(object sender, EventArgs e)
+        {
+            txtCVV.PasswordChar = '•';
+            pbClose.BringToFront();
+        }
     }
 }
