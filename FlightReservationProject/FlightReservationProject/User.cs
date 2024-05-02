@@ -229,7 +229,7 @@ namespace FlightReservationProject
             byte[] key = AES.GenerateKey(out iv);
             AES aes = new AES(Convert.ToBase64String(key), Convert.ToBase64String(iv));
 
-            sql = string.Format("INSERT INTO private_key(key_value, iv, user_email) VALUES('{0}','{1}',SHA2('{2}',512),SHA2('{3}',512))", Convert.ToBase64String(key), Convert.ToBase64String(iv), GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email));
+            sql = string.Format("INSERT INTO private_key(key_value, iv, user_email) VALUES('{0}','{1}',SHA2('{2}',512))", Convert.ToBase64String(key), Convert.ToBase64String(iv), GetUInt64Hash(SHA512.Create(), user.Email));
             dbConnection.ExecuteNonQuery(sql);
 
             sql = string.Format("UPDATE user SET full_name = '{0}', address = '{1}', mobile_number = '{2}' WHERE id = SHA2('{3}',512) AND email = SHA2('{4}',512)", aes.Encrypt(user.FullName), aes.Encrypt(user.Address), aes.Encrypt(user.MobileNumber), GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());

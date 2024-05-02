@@ -171,7 +171,7 @@ namespace FlightReservationProject
             pnlPrintBoardingPass.Controls.Add(lblClass);
 
             for (int i=0; i < checkedIn.Length; i++){
-                if (checkedIn[i]) DisplayCheckedIn(ticket.ListOfPassengers[i]);
+                if (checkedIn[i]) DisplayCheckedIn(ticket.ListOfPassengers[i] , i);
             }
 
             pnlPrintBoardingPass.BringToFront();
@@ -200,7 +200,7 @@ namespace FlightReservationProject
             pnlPrintBoardingPass.Visible = false;
         }
 
-        private void DisplayCheckedIn(Passenger p)
+        private void DisplayCheckedIn(Passenger p, int index)
         {
             if (Passenger.IsCheckedIn(p.Id, ticket.FlightChosen.FlightNumber, aes))
             {
@@ -258,7 +258,7 @@ namespace FlightReservationProject
             btnPrint.Size = new System.Drawing.Size(65,25);
             btnPrint.TabIndex = 152;
             btnPrint.Text = "Print";
-            btnPrint.Tag = int.Parse(p.Id)-1;
+            btnPrint.Tag = index;
             btnPrint.UseVisualStyleBackColor = false;
             btnPrint.Click += BtnPrint_Click;
 

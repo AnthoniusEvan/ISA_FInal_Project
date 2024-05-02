@@ -42,15 +42,27 @@ namespace FlightReservationProject
         {
             string sql = "SELECT ci.id, ci.name, ci.country_id, co.name FROM city ci INNER JOIN country co ON ci.country_id = co.id WHERE co.id = " + country.Id + " ORDER BY ci.name ASC";
             
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+
             List<City> cities = new List<City>();
 
-            while (results.Read())
+
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                City ci = new City(results.GetInt32(0), results.GetString(1), country);
-                cities.Add(ci);  
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (MySqlDataReader results = cmd.ExecuteReader())
+                    {
+                        while (results.Read())
+                        {
+                            City ci = new City(results.GetInt32(0), results.GetString(1), country);
+                            cities.Add(ci);
+                        }
+                        return cities;
+                    }
+                }
             }
-            return cities;
+        
         }
         public static List<City> GetSearchCities(string keyword)
         {
