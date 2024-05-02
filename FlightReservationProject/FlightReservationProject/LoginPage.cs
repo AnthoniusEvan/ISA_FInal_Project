@@ -32,23 +32,33 @@ namespace FlightReservationProject
 
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
+
+
         }
         public User user;
         public AES aes;
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            user = User.ValidateLogin(txtId.Text, txtUsername.Text, txtPassword.Text, out aes);
-            if (user != null)
+            try
             {
-                DashboardPage dp = new DashboardPage();
-                dp.Owner = this;
-                dp.Show();
-                this.Hide();
+                user = User.ValidateLogin(txtId.Text, txtUsername.Text, txtPassword.Text, out aes);
+                if (user != null)
+                {
+                    DashboardPage dp = new DashboardPage();
+                    dp.Owner = this;
+                    dp.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    txtPassword.Text = "";
+                    lblWrong.Visible = true;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                txtPassword.Text = "";
-                lblWrong.Visible = true;
+                MessageBox.Show(ex.Message);
+                Close();
             }
         }
 

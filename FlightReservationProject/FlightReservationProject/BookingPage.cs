@@ -53,6 +53,7 @@ namespace FlightReservationProject
             }
 
             reservations = activeUser.RetrieveReservation(aes);
+            if (reservations == null) return;
             foreach (Reservation r in reservations)
             {
                 CreateBooking(r);

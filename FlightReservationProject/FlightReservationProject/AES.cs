@@ -1,22 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
-using System.IO;
+﻿    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Security.Cryptography;
+    using System.IO;
+    using System.Xml;
+    using System.Xml.Serialization;
+using System.Windows.Forms;
 
 namespace FlightReservationProject
 {
+    [XmlRoot("AES")]
     public class AES
     {
-        private string key;
-        private string iv;
+        [XmlElement]
+        public string id;
+        [XmlElement]
+        public string key;
+        [XmlElement]
+        public string iv;
         public AES()
         {
         }
-        public AES(string key, string iv)
+        public AES(string id, string key, string iv)
         {
+            this.id = id;
             this.key = key;
             this.iv = iv;
         }
@@ -48,7 +57,7 @@ namespace FlightReservationProject
             }
             catch (Exception ex)
             {
-                Console.WriteLine("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message);
                 return null;
             }
         }
@@ -59,10 +68,10 @@ namespace FlightReservationProject
                 aesAlg.Key = key;
                 aesAlg.IV = iv;
 
-                
+
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
-             
+
                 using (MemoryStream msEncrypt = new MemoryStream())
                 {
                     using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
@@ -108,6 +117,32 @@ namespace FlightReservationProject
                 rng.GetBytes(randomBytes);
             }
             return randomBytes;
+        }
+
+        public static void Save(AES aes)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(AES));
+            using (TextWriter writer = new StreamWriter(Directory.GetCurrentDirectory() + @"\keys\" + aes.id + ".xml"))
+            {
+                serializer.Serialize(writer, aes);
+            }
+        }
+
+        public static AES Retrieve(string id)
+        {
+            try {
+                XmlSerializer serializer = new XmlSerializer(typeof(AES));
+
+                using (FileStream fs = new FileStream(Directory.GetCurrentDirectory() + @"\keys\" + id + ".xml", FileMode.Open))
+                {
+                    return (AES)serializer.Deserialize(fs);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Your encryption key is missing!");
+                return null;
+            }
         }
     }
 }

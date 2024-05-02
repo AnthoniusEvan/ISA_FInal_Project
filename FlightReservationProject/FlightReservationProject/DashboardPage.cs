@@ -229,17 +229,33 @@ namespace FlightReservationProject
 
         private void btnFindFlight_Click(object sender, EventArgs e)
         {
-            City from = (City)cbCityOri.SelectedItem;
-            City to = (City)cbCityDes.SelectedItem;
-            int adult = int.Parse(txtAdult.Text);
-            int child = int.Parse(txtChild.Text);
-            int baby = int.Parse(txtBaby.Text);
-            FlightClass flightClass = (FlightClass)cbClass.SelectedItem;
-            Reservation r = new Reservation(activeUser, from, to, dtDate.Value, adult, child, baby, flightClass, aes);
+            try
+            {
+                if (cbCityOri.SelectedValue == null)
+                    throw new ArgumentException("Please select a city that is available in the list!");
 
-            FlightPage p = new FlightPage(r);
-            p.Owner = this;
-            p.Show();
+                if (cbCityDes.SelectedValue == null)
+                    throw new ArgumentException("Please select a city that is available in the list!");
+
+                if (cbClass.SelectedValue == null)
+                    throw new ArgumentException("Please select the available class!");
+
+                City from = (City)cbCityOri.SelectedItem;
+                City to = (City)cbCityDes.SelectedItem;
+                int adult = int.Parse(txtAdult.Text);
+                int child = int.Parse(txtChild.Text);
+                int baby = int.Parse(txtBaby.Text);
+                FlightClass flightClass = (FlightClass)cbClass.SelectedItem;
+                Reservation r = new Reservation(activeUser, from, to, dtDate.Value, adult, child, baby, flightClass, aes);
+
+                FlightPage p = new FlightPage(r);
+                p.Owner = this;
+                p.Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cbCityOri_TextUpdate(object sender, EventArgs e)

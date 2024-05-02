@@ -15,6 +15,7 @@ namespace FlightReservationProject
         private string fullName;
         private PlaneFlight flight;
         private string seat;
+        private string gate;
         private User user;
         private string ageType;
         private string title;
@@ -38,6 +39,7 @@ namespace FlightReservationProject
         public DateTime Dob { get => dob; set => dob = value; }
         public string Id { get => id; set => id = value; }
         public bool CheckedIn { get => checkedIn; set => checkedIn = value; }
+        public string Gate { get => gate; set => gate = value; }
         #endregion
 
         #region Constructors

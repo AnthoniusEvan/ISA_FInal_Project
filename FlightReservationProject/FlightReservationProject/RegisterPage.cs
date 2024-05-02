@@ -62,10 +62,11 @@ namespace FlightReservationProject
                 if (txtPassword.Text == "" || txtConfirmPass.Text == "") throw new ArgumentException("Please fill in your password!");
 
                 newUser.Email = txtEmail.Text;
-                if (User.IsUserRegistered(newUser.Email))
+                if (User.IsUserRegistered(true, newUser.Email))
                     throw new ArgumentException("Email " + newUser.Email + " is already registered!");
                 newUser.Password = txtPassword.Text;
                 pnlPage2.BringToFront();
+                
             }
             catch(Exception ex)
             {
@@ -87,7 +88,7 @@ namespace FlightReservationProject
             {
                 newUser.FullName = txtFullName.Text;
                 newUser.Id = txtID.Text;
-                if (User.IsUserRegistered(newUser.Id))
+                if (User.IsUserRegistered(false, newUser.Id))
                     throw new ArgumentException("ID " + newUser.Id + " is already registered!");
                 newUser.BirthDate = dtpDob.Value;
                 pnlPage3.BringToFront();
@@ -136,6 +137,18 @@ namespace FlightReservationProject
         {
             try
             {
+                if (cbCountry.SelectedValue == null)
+                    throw new ArgumentException("Please select a country that is available in the list!");
+
+                if (cbCity.SelectedValue == null)
+                    throw new ArgumentException("Please select a city that is available in the list!");
+
+                if (txtAddress.Text == "")
+                    throw new ArgumentException("Please type in your address!");
+
+                if (txtMobileNumber.Text == "")
+                    throw new ArgumentException("Please type in your mobile number!");
+
                 newUser.FromCity = (City)cbCity.SelectedItem;
                 newUser.Address = txtAddress.Text;
                 newUser.MobileNumber = lblPhoneCode.Text + "-"+ txtMobileNumber.Text;
@@ -143,20 +156,18 @@ namespace FlightReservationProject
 
                 if (rowsAffected > 0)
                 {
-                    MessageBox.Show("Succesfully created your new account!");
+                    MessageBox.Show("Succesfully created your new account!", "Success", MessageBoxButtons.OK , MessageBoxIcon.Information);
                     LoginPage p = new LoginPage();
                     p.Show();
                 }
                 else
                 {
-                    MessageBox.Show("Unknown error occured!");
+                    throw new ArgumentException("Unknown error occured!");
                 }
             }
             catch (Exception ex)
             {
-                // temporarily using msgbox but pls change it to be more visually aesthetic
-                // better if shown with label imo
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

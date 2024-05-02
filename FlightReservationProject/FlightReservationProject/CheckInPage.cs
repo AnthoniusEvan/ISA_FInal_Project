@@ -56,13 +56,37 @@ namespace FlightReservationProject
                 lblArriv.Text = ticket.DateArrival.ToString("HH:mm");
                 lblDate.Text = ticket.DateDepart.ToString("dddd, dd MMMM yyyy");
                 
+
+
                 checkedIn = new bool[ticket.ListOfPassengers.Count];
-                int i = 0;
-                foreach(Passenger p in ticket.ListOfPassengers)
+                
+                string[] seats = BoardingPass.GenerateRandomSeat(ticket.ListOfPassengers.Count);
+                string gate = BoardingPass.GenerateRandomGate();
+
+                for (int i = 0; i < seats.Length; i++)
                 {
-                    p.Seat = BoardingPass.GenerateRandomSeat();
-                    DisplayPassenger(p, i);
-                    i++;
+                    BoardingPass pass = BoardingPass.GetBoardingPass(ticket.ListOfPassengers[i], ticket.FlightChosen.FlightNumber, aes);
+
+                    if (pass != null)
+                    {
+                        seats = BoardingPass.GenerateSeatFromCheckedInPassenger(seats.Length, pass.Seat, i);
+                        gate = pass.Gate;
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < seats.Length; i++)
+                {
+                    BoardingPass pass = BoardingPass.GetBoardingPass(ticket.ListOfPassengers[i], ticket.FlightChosen.FlightNumber, aes);
+
+                    if (pass != null)
+                    {
+                        seats[i] = pass.Seat;
+                        gate = pass.Gate;
+                    }
+                    ticket.ListOfPassengers[i].Gate = gate;
+                    ticket.ListOfPassengers[i].Seat = seats[i];
+                    DisplayPassenger(ticket.ListOfPassengers[i], i);
                 }
                 pnlCheckin.BringToFront();
             }
@@ -148,6 +172,7 @@ namespace FlightReservationProject
             lblSeat.Name = "lblSeat";
             lblSeat.Size = new System.Drawing.Size(42, 22);
             lblSeat.TabIndex = 168;
+            
             lblSeat.Text = p.Seat;
 
             pnlPassengers.ResumeLayout(false);

@@ -231,21 +231,22 @@ namespace FlightReservationProject
         }
         private Passenger SavePassengerInformation(out string error)
         {
-            if (ageTypes[currIndex] == "Adult" && txtFullname.Text != "" && txtMobileNumber.Text != "" && cbBornIn.SelectedIndex!=-1)
+            if (ageTypes[currIndex] == "Adult" && txtFullname.Text != "" && txtMobileNumber.Text != "" && cbBornIn.SelectedIndex != -1)
             {
                 Passenger p = new Passenger(txtFullname.Text, flight, order.User, "Adult", cbTitle.Text, lblCode.Text + "-" + txtMobileNumber.Text, (Country)cbBornIn.SelectedItem, dtpDob.Value);
                 error = "";
                 return p;
             }
-            else if (ageTypes[currIndex] != "Adult" && txtFullname.Text != "" && cbBornIn.SelectedIndex != -1) 
+            else if (ageTypes[currIndex] != "Adult" && txtFullname.Text != "" && cbBornIn.SelectedIndex != -1)
             {
                 Passenger p = new Passenger(txtFullname.Text, flight, order.User, ageTypes[currIndex], cbTitle.Text, (Country)cbBornIn.SelectedItem, dtpDob.Value);
                 error = "";
                 return p;
             }
-            else {
+            else
+            {
                 if (txtFullname.Text == "") error = "Please fill in the passenger's name!";
-                else if (cbBornIn.SelectedIndex == -1) error = "Please select the passenger's nationality!";
+                else if (cbBornIn.SelectedValue == null) error = "Please select the passenger's nationality based on the available options!";
                 else if (ageTypes[currIndex] == "Adult" && txtMobileNumber.Text == "") error = "Pleaser provide the mobile number owned by " + txtFullname.Text + "!";
                 else error = "An error occured!";
                 return null;

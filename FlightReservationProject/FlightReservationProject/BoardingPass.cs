@@ -37,9 +37,8 @@ namespace FlightReservationProject
         public BoardingPass(FlightClass flightClass, string flightNumber, Passenger passenger, AES aes)
         {
             Random rnd = new Random();
-            Gate = Convert.ToChar(rnd.Next(65, 91)) + rnd.Next(1,11).ToString();
-            if (passenger.Seat == null || passenger.Seat=="") Seat = rnd.Next(1, 100).ToString() + (char)(rnd.Next(65, 91));
-            else Seat = passenger.Seat;
+            Gate = passenger.Gate;
+            Seat = passenger.Seat;
             FlightClass = flightClass;
             FlightNumber = flightNumber;
             Passenger = passenger;
@@ -58,10 +57,71 @@ namespace FlightReservationProject
         #endregion
 
         #region Methods
-        public static string GenerateRandomSeat()
+        public static string GenerateRandomGate()
         {
             Random rnd = new Random();
-            return rnd.Next(1, 100).ToString() + (char)(rnd.Next(65, 91));
+            return Convert.ToChar(rnd.Next(65, 91)) + rnd.Next(1, 11).ToString();
+        }
+        public static string[] GenerateRandomSeat(int qty)
+        {
+            string[] seats = new string[qty];
+            Random rnd = new Random();
+            int num = rnd.Next(1, 102 - qty);
+            int ascii = rnd.Next(65, 91);
+            seats[0] = num.ToString() + (char)ascii;
+            for (int i = 1; i < seats.Length; i++)
+            {
+                if (i % 9 == 0)
+                {
+                    ascii++;
+                    num = 1;
+
+                }
+                else
+                {
+                    num++;
+                }
+                seats[i] = num.ToString() + (char)ascii;
+            }
+            return seats;
+        }
+        public static string[] GenerateSeatFromCheckedInPassenger(int qty, string seat, int order)
+        {
+            string[] seats = new string[qty];
+            int n = int.Parse(seat.Replace(seat[seat.Length - 1],'\0'));
+            if (order > 1)
+            {
+                if (n > order)
+                {
+                    seats[0] = (n - order).ToString() + seat[seat.Length - 1];
+                }
+                else
+                {
+                    seats[0] = (102-order).ToString() + ((int)(seat[seat.Length - 1]) - 1);
+                }
+            }
+            else seats[0] = seat;
+
+            
+            Random rnd = new Random();
+            int num = int.Parse(seats[0].Replace(seats[0][seats[0].Length - 1], '\0'));
+            int ascii = (int)(seats[0][seats[0].Length - 1]);
+
+            for (int i = 1; i < seats.Length; i++)
+            {
+                if (i % 9 == 0)
+                {
+                    ascii++;
+                    num = 1;
+
+                }
+                else
+                {
+                    num++;
+                }
+                seats[i] = num.ToString() + (char)ascii;
+            }
+            return seats;
         }
         private int GenerateId(AES aes)
         {

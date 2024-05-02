@@ -53,7 +53,7 @@ namespace FlightReservationProject
                 if (value=="")
                     throw new ArgumentException("Please provide an email address!");
  
-                if (value.Contains("@") && value.EndsWith(".com"))
+                if (value.Contains("@") && (value.EndsWith(".com")||value.EndsWith(".id"))) // not perfect
                 {
                     email = value;
                 }
@@ -150,26 +150,30 @@ namespace FlightReservationProject
 
         public static User ValidateLogin(string id, string email, string password, out AES aes)
         {
-            string sql = "SELECT key_value, iv, user_email FROM private_key WHERE user_email = SHA2(@email, 512)";
-            aes = new AES();
-            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
-            {
-                using (MySqlCommand com = new MySqlCommand(sql, connection))
-                {
-                    com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), email).ToString());
-                    connection.Open();
-                    using (MySqlDataReader results = com.ExecuteReader())
-                    {
-                        if (results.Read())
-                        {
-                            aes = new AES(results.GetString(0), results.GetString(1));
-                        }
-                    }
-                }
-            }
-            
-            
-            sql = "SELECT SHA2(u.id,512), u.full_name, SHA2(u.email,512), u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.id = SHA2(@id, 512) AND u.email = SHA2(@email,512) AND u.password = SHA2(@password,512)";
+            //string sql = "SELECT key_value, iv, user_email FROM private_key WHERE user_email = SHA2(@email, 512)";
+            //aes = new AES();
+            //using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            //{
+            //    using (MySqlCommand com = new MySqlCommand(sql, connection))
+            //    {
+            //        com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), email).ToString());
+            //        connection.Open();
+            //        using (MySqlDataReader results = com.ExecuteReader())
+            //        {
+            //            if (results.Read())
+            //            {
+            //                aes = new AES(GetUInt64Hash(SHA512.Create(), email).ToString(), results.GetString(0), results.GetString(1));
+            //                AES.Save(aes);
+            //            }
+            //        }
+            //    }
+            //}
+            aes = AES.Retrieve(GetUInt64Hash(SHA512.Create(), email).ToString());
+
+            if (aes == null)
+                throw new ArgumentException("Your key is missing! If you are the actual owner of this account then unfortunately we haven't implemented a way for you to recover them back. So sorry... But if you're not... Well you're not getting in.");
+
+            string sql = "SELECT SHA2(u.id,512), u.full_name, SHA2(u.email,512), u.password, u.address, u.date_of_birth, u.mobile_number, ci.id, ci.name, ci.country_id, co.name FROM user u INNER JOIN city ci ON u.from_city_id = ci.id INNER JOIN country co ON ci.country_id = co.id WHERE u.id = SHA2(@id, 512) AND u.email = SHA2(@email,512) AND u.password = SHA2(@password,512)";
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
                 using (MySqlCommand com = new MySqlCommand(sql, connection))
@@ -197,55 +201,119 @@ namespace FlightReservationProject
             }
         }
 
-        public static bool IsUserRegistered(string val)
+        public static bool IsUserRegistered(bool isEmail, string val)
         {
-            string sql = "SELECT full_name, email FROM user";
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
+            string sql="";
+            if (isEmail)
+                sql = "SELECT full_name, email FROM user WHERE email = SHA2(@email,512)";
+            else
+                sql = "SELECT id, full_name FROM user WHERE id = SHA2(@id,512)";
+
             List<User> users = new List<User>();
-
-            while (results.Read())
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                User user = new User(results.GetString(0), results.GetString(1));
-                users.Add(user);
-            }
-
-            foreach (User u in users)
-            {
-                if (u.Email == val || u.Id == val)
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
                 {
-                    return true;
+                    if (isEmail)
+                        com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), val).ToString());
+                    else com.Parameters.AddWithValue("@id", GetUInt64Hash(SHA512.Create(), val).ToString());
+
+                    connection.Open();
+                    using (MySqlDataReader results = com.ExecuteReader())
+                    {
+                        if (results.Read())
+                        {
+                            return true;
+                        }
+                        else return false;
+                    }
                 }
             }
-            return false;
+            
         }
 
         public static int Add(User user)
         { 
-            string sql = string.Format("INSERT INTO user(id, email, full_name, password, address, date_of_birth, mobile_number, from_city_id) VALUES (SHA2('{0}',512),SHA2('{1}',512),'{2}',SHA2('{3}',512),'{4}','{5}','{6}','{7}')", GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString(), user.FullName, GetUInt64Hash(SHA512.Create(), user.Password).ToString(), user.Address, user.BirthDate.ToString("yyyy-MM-dd"), user.MobileNumber, user.FromCity.Id);
+            string sql = "INSERT INTO user(id, email, full_name, password, address, date_of_birth, mobile_number, from_city_id) VALUES (SHA2(@id,512),SHA2(@email,512),@fullname,SHA2(@password,512),@address,@dob,@mobileNumber,@fromCity)";
 
-            dbConnection.ExecuteNonQuery(sql);
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@id", GetUInt64Hash(SHA512.Create(), user.Id).ToString());
+                    com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), user.Email).ToString());
+                    com.Parameters.AddWithValue("@fullname", user.FullName);
+                    com.Parameters.AddWithValue("@password", GetUInt64Hash(SHA512.Create(), user.Password).ToString());
+                    com.Parameters.AddWithValue("@address", user.Address);
+                    com.Parameters.AddWithValue("@dob", user.BirthDate.ToString("yyyy-MM-dd"));
+                    com.Parameters.AddWithValue("@mobileNumber", user.MobileNumber);
+                    com.Parameters.AddWithValue("@fromCity", user.FromCity.Id);
+
+                    connection.Open();
+                    com.ExecuteNonQuery();
+                }
+            }
 
             byte[] iv;
             byte[] key = AES.GenerateKey(out iv);
-            AES aes = new AES(Convert.ToBase64String(key), Convert.ToBase64String(iv));
+            AES aes = new AES(GetUInt64Hash(SHA512.Create(), user.Email).ToString(), Convert.ToBase64String(key), Convert.ToBase64String(iv));
+            AES.Save(aes);
 
-            sql = string.Format("INSERT INTO private_key(key_value, iv, user_email) VALUES('{0}','{1}',SHA2('{2}',512))", Convert.ToBase64String(key), Convert.ToBase64String(iv), GetUInt64Hash(SHA512.Create(), user.Email));
-            dbConnection.ExecuteNonQuery(sql);
+            sql = "INSERT INTO private_key(key_value, iv, user_email) VALUES(@key,@iv,SHA2(@email,512))";
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@key", Convert.ToBase64String(key));
+                    com.Parameters.AddWithValue("@iv", Convert.ToBase64String(iv));
+                    com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), user.Email));
 
-            sql = string.Format("UPDATE user SET full_name = '{0}', address = '{1}', mobile_number = '{2}' WHERE id = SHA2('{3}',512) AND email = SHA2('{4}',512)", aes.Encrypt(user.FullName), aes.Encrypt(user.Address), aes.Encrypt(user.MobileNumber), GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());
+                    connection.Open();
+                    com.ExecuteNonQuery();
+                }
+            }
 
-            return dbConnection.ExecuteNonQuery(sql);
+            sql = "UPDATE user SET full_name = @fullname, address = @address, mobile_number = @mobileNumber WHERE email = SHA2(@email,512)";
+
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@fullname", aes.Encrypt(user.FullName));
+                    com.Parameters.AddWithValue("@address", aes.Encrypt(user.Address));
+                    com.Parameters.AddWithValue("@mobileNumber", aes.Encrypt(user.MobileNumber));
+                    com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), user.Email));
+
+                    connection.Open();
+                    return com.ExecuteNonQuery();
+                }
+            }
         }
         public static int Update(User user, string password, AES aes)
         {
-            string sql = string.Format("UPDATE user SET full_name = '{0}', address = '{1}', date_of_birth = '{2}', mobile_number = '{3}', from_city_id = '{4}' WHERE id = SHA2('{5}',512) AND email = SHA2('{6}',512)", aes.Encrypt(user.FullName), aes.Encrypt(user.Address), user.BirthDate.ToString("yyyy-MM-dd"), aes.Encrypt(user.MobileNumber), user.FromCity.Id, GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());
+            string sql = "UPDATE user SET full_name = @fullname, address = @address, date_of_birth = @dob, mobile_number = @mobileNumber, from_city_id = @fromCity WHERE email = SHA2(@email,512)";
 
             if (password != "")
             {
-                sql += string.Format(";UPDATE user SET password = SHA2('{0}',512) WHERE id = SHA2('{1}',512) AND email = SHA2('{2}',512)",GetUInt64Hash(SHA512.Create(), password).ToString(), GetUInt64Hash(SHA512.Create(), user.Id).ToString(), GetUInt64Hash(SHA512.Create(), user.Email).ToString());
+                sql += ";UPDATE user SET password = SHA2(@password,512) WHERE email = SHA2(@email,512)";
             }
 
-            return dbConnection.ExecuteNonQuery(sql);
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@email", GetUInt64Hash(SHA512.Create(), user.Email).ToString());
+                    com.Parameters.AddWithValue("@fullname", aes.Encrypt(user.FullName));
+                    if (password != "") com.Parameters.AddWithValue("@password", GetUInt64Hash(SHA512.Create(), user.Password).ToString());
+                    com.Parameters.AddWithValue("@address", aes.Encrypt(user.Address));
+                    com.Parameters.AddWithValue("@dob", user.BirthDate.ToString("yyyy-MM-dd"));
+                    com.Parameters.AddWithValue("@mobileNumber", aes.Encrypt(user.MobileNumber));
+                    com.Parameters.AddWithValue("@fromCity", user.FromCity.Id);
+
+                    connection.Open();
+                    return com.ExecuteNonQuery();
+                }
+            }
         }
         public static ulong GetUInt64Hash(HashAlgorithm hasher, string text)
         {

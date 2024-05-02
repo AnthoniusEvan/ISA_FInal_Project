@@ -119,25 +119,57 @@ namespace FlightReservationProject
         }
         private int GenerateId(AES aes)
         {
-            string sql = "SELECT COUNT(r.id), u.id, u.email FROM reservation r INNER JOIN user u ON r.user_email = u.email WHERE u.email = SHA2('" + User.GetUInt64Hash(SHA512.Create(), User.Email).ToString() + "',512)";
+            string sql = "SELECT COUNT(r.id), u.id, u.email FROM reservation r INNER JOIN user u ON r.user_email = u.email WHERE u.email = SHA2(@email,512)";
 
-            MySql.Data.MySqlClient.MySqlDataReader results = dbConnection.ExecuteQuery(sql);
-            int count = 0;
-            while (results.Read())
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                count = results.GetInt32(0);
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@email", User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
+
+                    connection.Open();
+                    using (MySqlDataReader results = com.ExecuteReader())
+                    {
+                        int count = 0;
+                        while (results.Read())
+                        {
+                            count = results.GetInt32(0);
+                        }
+                        return count + 1;
+                    }
+                }
             }
-            return count + 1;
+            
         }
         public int AddReservation(List<Passenger> passengers, AES aes)
         {
             if (TicketNum == null) return 0;
 
-            string sql = string.Format("INSERT INTO reservation(id, user_email, from_city, to_city, adult, child, baby, date_depart, date_arrival, flight_number, class_id, ticket_num) VALUES('{0}',SHA2('{1}',512),'{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}', '{11}')", Id, User.GetUInt64Hash(SHA512.Create(), User.Email).ToString(), FromCity.Id, ToCity.Id, Adult, Child, Baby, DateDepart.ToString("yyyy-MM-dd HH:mm:00"), DateArrival.ToString("yyyy-MM-dd HH:mm:00"), FlightChosen.FlightNumber, FlightClass.Id, aes.Encrypt(TicketNum));
+            string sql = "INSERT INTO reservation(id, user_email, from_city, to_city, adult, child, baby, date_depart, date_arrival, flight_number, class_id, ticket_num) VALUES(@id,SHA2(@email,512),@fromCity,@toCity,@adult,@child,@baby,@dated,@datea,@flightNum,@class,@ticketNum)";
 
-            int rowsAffected = dbConnection.ExecuteNonQuery(sql);
+            int rowsAffected = 0;
+            using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+            {
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
+                {
+                    com.Parameters.AddWithValue("@id", Id);
+                    com.Parameters.AddWithValue("@email", User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
+                    com.Parameters.AddWithValue("@fromCity", FromCity.Id);
+                    com.Parameters.AddWithValue("@toCity", ToCity.Id);
+                    com.Parameters.AddWithValue("@adult", Adult);
+                    com.Parameters.AddWithValue("@child", Child);
+                    com.Parameters.AddWithValue("@baby", Baby);
+                    com.Parameters.AddWithValue("@dated", DateDepart.ToString("yyyy-MM-dd HH:mm:00"));
+                    com.Parameters.AddWithValue("@datea", DateArrival.ToString("yyyy-MM-dd HH:mm:00"));
+                    com.Parameters.AddWithValue("@flightNum", FlightChosen.FlightNumber);
+                    com.Parameters.AddWithValue("@class", FlightClass.Id);
+                    com.Parameters.AddWithValue("@ticketNum", aes.Encrypt(TicketNum));
+                    connection.Open();
+                    rowsAffected = com.ExecuteNonQuery();
+                }
+            }
 
-            rowsAffected+=AddPassengers(passengers, aes);
+            rowsAffected += AddPassengers(passengers, aes);
             return rowsAffected;
         }
 
@@ -145,14 +177,16 @@ namespace FlightReservationProject
         {
             ListOfPassengers = passengers;
 
-            string sql = "SELECT COUNT(p.id), r.id, u.email FROM passenger p INNER JOIN reservation r ON p.reservation_id = r.id INNER JOIN user u ON r.user_email = u.email WHERE u.email = SHA2('" + User.GetUInt64Hash(SHA512.Create(), User.Email).ToString() + "',512) AND r.id = '" + Id + "'";
+            string sql = "SELECT COUNT(p.id), r.id, u.email FROM passenger p INNER JOIN reservation r ON p.reservation_id = r.id INNER JOIN user u ON r.user_email = u.email WHERE u.email = SHA2(@email,512) AND r.id = @id";
             int count = 0;
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
                 {
+                    com.Parameters.AddWithValue("@email", User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
+                    com.Parameters.AddWithValue("@id", Id);
                     connection.Open();
-                    using (MySqlDataReader results = cmd.ExecuteReader())
+                    using (MySqlDataReader results = com.ExecuteReader())
                     {
                         if (results.Read())
                         {
@@ -167,24 +201,43 @@ namespace FlightReservationProject
             {
                 Passenger p = passengers[i];
 
-                sql = string.Format("INSERT INTO passenger(id, title, full_name, dob, age_type, born_in, reservation_id, reservation_user_email) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}',SHA2('{7}',512))",count + 1 + i, p.Title, aes.Encrypt(p.FullName), p.Dob.ToString("yyyy-MM-dd"), p.AgeType, p.BornIn.Id, Id, User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
+                sql = "INSERT INTO passenger(id, title, full_name, dob, age_type, born_in, reservation_id, reservation_user_email) VALUES (@id,@title,@fullname,@dob,@ageType,@bornIn,@reservationId,SHA2(@email,512))";
 
-                rowsAffected += dbConnection.ExecuteNonQuery(sql);
+                using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
+                {
+                    using (MySqlCommand com = new MySqlCommand(sql, connection))
+                    {
+                        com.Parameters.AddWithValue("@email", User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
+                        com.Parameters.AddWithValue("@id", count + 1 + i);
+                        com.Parameters.AddWithValue("@title", p.Title);
+                        com.Parameters.AddWithValue("@fullname", aes.Encrypt(p.FullName));
+                        com.Parameters.AddWithValue("@dob", p.Dob.ToString("yyyy-MM-dd"));
+                        com.Parameters.AddWithValue("@ageType", p.AgeType);
+                        com.Parameters.AddWithValue("@bornIn", p.BornIn.Id);
+                        com.Parameters.AddWithValue("@reservationId", Id);
+
+                        connection.Open();
+                        rowsAffected = com.ExecuteNonQuery();
+                    }
+                }
+ 
             }
             return rowsAffected;
         }
 
         public List<Passenger> GetPassengers(AES aes)
         {
-            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.born_in, u.email, p.reservation_id FROM passenger p INNER JOIN user u ON p.reservation_user_email = u.email WHERE u.email = SHA2('" + User.GetUInt64Hash(SHA512.Create(), User.Email).ToString() + "',512) AND p.reservation_id = '" + Id + "'";
+            string sql = "SELECT p.id, p.title, p.full_name, p.dob, p.age_type, p.born_in, u.email, p.reservation_id FROM passenger p INNER JOIN user u ON p.reservation_user_email = u.email WHERE u.email = SHA2(@email,512) AND p.reservation_id = @id";
             
             List<Passenger> passengers = new List<Passenger>();
             using (MySqlConnection connection = new MySqlConnection(dbConnection.GetConnectionString()))
             {
-                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                using (MySqlCommand com = new MySqlCommand(sql, connection))
                 {
+                    com.Parameters.AddWithValue("@email", User.GetUInt64Hash(SHA512.Create(), User.Email).ToString());
+                    com.Parameters.AddWithValue("@id", Id);
                     connection.Open();
-                    using (MySqlDataReader results = cmd.ExecuteReader())
+                    using (MySqlDataReader results = com.ExecuteReader())
                     {
                         while (results.Read())
                         {
